@@ -1,0 +1,5 @@
+- friendly_name: "NTSC"
+  short_name: "ntsc"
+  linker_script: "linker.x"
+  include_dirs:
+    - include

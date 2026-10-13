@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<title>TP NetBeans / Java</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="http://www.informatics-tech.com/highlighter/prettify.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+table tr th,td{
+  border:1px solid black;
+  padding: 6px;
+} 
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+.ajout-oga {background-color: green;}
+.todo-oga {background-color: red;}
+pre.enLigne{display: inline;}
+.nicho-modif{border-left: Lime 5px solid;padding-left: 5px;background: yellow;}
+
+/* Keyboard key style */
+kbd{
+	font-size:0.7em;
+	border:1px solid gray;
+	box-shadow:1px 0 1px 0 #eee, 0 2px 0 2px #ccc, 0 2px 0 3px #444;
+	border-radius:3px;
+	margin:2px 3px;
+	padding:1px 5px;
+}
+
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>IUT<br>Département-info</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#intro" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Introduction</a> 
+    <a href="#rappels" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Partons sur de bonnes bases</a> 
+    <a href="#netbeans" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Premiers pas</a>
+    <a href="#tableaux" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Retour aux tableaux</a>
+    
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">&#9776;</a>
+  <span>IUT info BDX</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+	<div class="w3-container"  id="intro" style="margin-top:80px">
+    <h1 class="w3-jumbo"><b>TP Prise en main de NetBeans</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Un environnement de développement</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <!-- Introduction -->
+	<div  class="w3-row-padding">
+	<div class="w3-half"> <p>Dans cette séance de TP seront introduites 
+	des notions de Java et l'utilisation de NetBeans. Java est le 
+	langage de programmation sur lequel est basé le <i>langage</i> Processing, que vous avez utilisé 
+	jusqu'alors, uniquement dans l'<i>environnement</i> Processing. Alors que 
+	Processing est à la fois un langage ET un environnement de 
+	développement (éditeur graphique avec un bouton de lancement, un 
+		mode <i>debug</i>, etc),
+		<ul>
+		  <li>Java est uniquement un langage de programmation et </li>
+		  <li>NetBeans uniquement un <b>environnement de développement intégré</b> (IDE en 
+			anglais).</li>
+		</ul>
+			En général, un IDE est adapté à quelques langages 
+	seulement. Pour Java, il existe aussi Eclipse ou IntelliJ IDEA (entre autres). </p>
+	 <p>Un IDE est un outil de développement qui simplifie et
+	   accélère l'édition du code, et intègre d'autres outils
+	   utiles au développement comme la recherche de bug, les
+	   tests automatiques, la gestion de dépendances ou encore le
+	   versionnement de source.  C'est ce que vous allez découvrir
+	   avec NetBeans.
+
+	   	   <p>
+Pour vos premiers pas en Java <i>pur</i>, vous allez de 
+	nouveau travailler avec des tableaux. </p>
+    </div>
+
+    <div class="w3-half">
+      <img src="img/duke.png" alt="Duke: Mascotte Java"/>
+    </div>
+  </div>
+
+  <!-- Modal for full size images on click-->
+	<div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">&times;</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- Quelques rappels -->
+	<div class="w3-container" id="rappels" style="margin-top:75px">
+		<h1 class="w3-xxxlarge w3-text-red"><b>Partons sur de bonnes 
+	bases</b></h1> 		<hr style="width:50px;border:5px solid red" class="w3-round"> 
+	
+		<h2>De Processing à Java</h2>
+	
+		<p>Une grande partie de ce que nous avons utilisé avec Processing est utilisable à l'identique en Java pur :
+			<ul> 
+				<li>Les types de base (<pre class="enLigne">int</pre>, 
+			<pre class="enLigne">float</pre>, <pre class="enLigne">char</pre>, 
+			<pre class="enLigne">boolean</pre>), leurs opérateurs, les déclarations de 
+			variables et l'affectation
+				</li>
+<!--				<li>Les chaines de caractères (String)</li> -->
+				<li>Les structures conditionnelles (<pre class="enLigne">for</pre>, 
+			<pre class="enLigne">while</pre>, <pre class="enLigne">if/else</pre>, 
+			<pre class="enLigne">switch/case/break</pre>)
+				</li> <li>Les déclarations de fonctions, le type <pre 
+				class="enLigne">void</pre> et le mot-clé <pre 
+				class="enLigne">return</pre> </li> <li>Les tableaux, déclarés 
+				avec <pre class="enLigne">type[]</pre>, initialisés avec <pre 
+				class="enLigne">new</pre> et accédés avec <pre 
+				class="enLigne">[]</pre> <pre class="prettyprint">
+int[] nbJours = new int[12]; // Déclaration et initialisation d'un tableau de 12 entiers
+nbJours[1] = 28; // Changement de la valeur de la deuxième case
+for (int i = 0; i &lt; 12; i++) { faireQuelqueChose(nbJours[i]); }
+		</pre>
+		</li>
+		<li>Les classes avec leurs attributs et constructeurs, ainsi que le passage de référence : 
+		<pre class="prettyprint">class Salle {
+  int capacite;
+  boolean salleMachine;
+  boolean libreService;
+  boolean occupee;
+  int numero;
+} // Définition
+...
+static void reserverSalle(Salle s) { s.occupee = true; } 
+...
+static void maFonction() {
+  Salle salle1; // Déclaration d'une variable
+  salle1 = new Salle() // Initialisation d'une instance
+                       // avec le constructeur par défaut      
+  reserverSalle(salle1); // Changement de la valeur d'un attribut
+                         // par passage de référence
+}</pre>
+				</li>
+				<li>Dans ce TP nous utiliserons le mot clé <pre class="enLigne">static</pre> devant toutes les fonctions, comme ci-dessus.
+				  Nous verrons pourquoi dès la semaine prochaine.
+				</li>
+				<li>Le mot clé <pre class="enLigne">final</pre>, utilisé dans la déclaration d'une variable pour empêcher son changement de valeur.
+				<pre class="prettyprint">final int NB_SALLES = 42; // En général on écrit ces variables en majuscules.</pre>
+				</li>
+			</ul>
+		</p>
+	
+		<p> Certaines choses changent : 
+	<ul>
+	    <li>En Java, <b>n'importe quel code se trouve forcément dans une classe</b>.
+		Alors qu'en Processing on pouvait mettre du code en dehors d'une classe.
+	    </li>
+	    <li>En Java il n'y a pas de classe "principale".
+		  Par contre certaines classes contiennent une fonction
+		  <pre class="enLigne">main()</pre> qui permet de lancer cette fonction
+		  comme un programme.
+		</li>
+		<li>Pour les affichages, <pre class="enLigne">println()</pre> 
+		est remplacée par <pre 
+		class="enLigne">System.out.println()</pre>, tout comme <pre class="enLigne">print()</pre>.</li>
+		<li>Les 
+		fonctions de dessin (<pre class="enLigne">fill()</pre>, <pre 
+		class="enLigne">rect()</pre>, <pre class="enLigne">ellipse()</pre>, etc).
+		qui font partie de la bibliothèque Processing ne sont plus disponibles.</li>
+		<li>Les fonctions <pre class="enLigne">setup()</pre>, <pre 
+		class="enLigne">draw()</pre> et <pre class="enLigne">mouseXXX()</pre> n'existent pas non plus.</li>
+	</ul></p>
+
+	<h2>Raccourcis clavier</h2>
+	<p> Les raccourcis clavier permettent d'effectuer des 
+	modifications plus rapidement et de limiter le déplacement des 
+	mains entre le clavier et la souris lorsque l'on tape. Les raccourcis suivants sont 
+	communs à de nombreux éditeurs de texte. Au cours du TP, nous 
+	découvrirons d'autres raccourcis, spécifiques à NetBeans.</p>
+
+    <br>
+    <table>    
+    </div>
+		<thead>
+		<tr>
+		<td>Combinaison de touches</td><td>Action</td>
+		</tr>
+		</thead>
+		<tbody>
+		<tr><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>annuler la dernière action</td></tr>
+		<tr><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td><td>sauvegarder le fichier courant</td></tr>
+		<tr><td><kbd>Ctrl</kbd>+<kbd>A</kbd></td><td>tout sélectionner</td></tr>
+		<tr><td><kbd>Ctrl</kbd>+<kbd>C/X/V</kbd></td><td>copier/couper/coller la sélection</td></tr>
+		<tr><td><kbd>⟻</kbd> (retour) / <kbd>Suppr</kbd></td><td>supprime le caractère précédent/suivant</td></tr>
+		<!-- <tr><td><kbd>Ctrl</kbd>+<kbd>⟻/Suppr</kbd></td><td>supprime le mot précédent/suivant</td></tr> -->
+		<tr><td><kbd>Ctrl</kbd>+<kbd>←</kbd> / <kbd>→</kbd></td><td>déplace le curseur au mot précédent/suivant</td></tr>
+		<tr><td><kbd>↖</kbd> (début) / <kbd>fin</kbd></td><td>déplace le curseur au début/fin de la ligne</td></tr>
+		<!-- <tr><td><kbd>Ctrl</kbd>+<kbd>↖</kbd> / <kbd>fin</kbd></td><td>déplace le curseur au début/fin du fichier</td></tr> -->
+		<tr><td><kbd>Ctrl</kbd>+<kbd>F</kbd></td><td>rechercher dans le fichier</td></tr>
+		<tr><td><kbd>⇧</kbd> (shift/maj) +<kbd>←</kbd> / <kbd>→</kbd> / <kbd>↑</kbd> / <kbd>→</kbd></td><td>sélectionner plusieurs caractères/lignes</td></tr>
+		<tr><td><kbd>Ctrl</kbd>+<kbd>⇧</kbd> +<kbd>←</kbd> / <kbd>→</kbd> / <kbd>↑</kbd> / <kbd>→</kbd></td><td>sélectionner plusieurs mots/blocs</td></tr>
+		</tbody>	
+		
+	</table>
+
+  <!-- Premiers projets NetBeans -->
+	<div class="w3-container" id="netbeans" style="margin-top:75px">  
+		<h1 class="w3-xxxlarge w3-text-red"><b>NetBeans, pas à pas</b></h1>
+		<hr style="width:50px;border:5px solid red" class="w3-round">
+		<h2>HelloWorld : Un premier projet</h2>
+		<div>Pour ouvrir un nouveau projet, naviguez dans "File > New Project". Sélectionnez la catégorie "Java with Ant" et le modèle "Java Application", puis le nom du projet (ex: <pre class="enLigne">DemoNetBeans</pre>). Par défaut, NetBeans vous proposera de placer chaque nouveau projet dans <pre class="enLigne">votreRepertoire/NetBeansProjects/nomDuProjet</pre>. Laissez l'option "Créer une classe principale" cochée et renommez l'option (ex: <pre class="enLigne">algoProg.Main</pre>). </div>
+		<div class="w3-half"> <img width=90% src="img/newProjetWizard.png"/></div>
+		<div class="w3-half"> <img width=100% src="img/newProjetWizard2.png"/></div>
+		<br/>
+		<div><img width=80% src="img/finishedWizard.png"/></div>
+		<p>Après validation, vous devriez obtenir quelque chose comme ci-dessus.</p>
+		<h3>Architecture des fichiers</h3>
+		<div>NetBeans aura créé plusieurs fichiers pour initialiser ce projet, dont le fichier <pre class="enLigne">Main.java</pre> qui est ouvert dans la fenêtre principale. Sur la gauche, deux panneaux contiennent des onglets proposant différentes vues du projet. 
+		</div>
+		<p><ul>
+			<li>Observer que le fichier créé est dans un dossier <pre class="enLigne">algoProg</pre> (dans <pre class="enLigne">src</pre>). C'est un <i>package</i>. En Java :
+			  <ul>
+				<li><b>chaque classe doit être définie dans un fichier 
+					du même nom</b> 
+				  (par exemple la classe <pre class="enLigne">Salle</pre> 
+				  dans Salle.java), et</li>
+				<li><b>chaque fichier doit être placé dans le dossier qui correspond à 
+				  son <pre class="enLigne">package</pre></b> (en haut du fichier).
+				</li>
+			  </ul>
+			</li>
+			<li>Utiliser <kbd>Ctrl</kbd>+<kbd>R</kbd> (comme "Refactor") sur <pre class="enLigne">package algoProg;</pre> pour changer son nom. L'IDE renomme automatiquement le dossier correspondant.</li>
+			<li>Tester la même chose sur le nom de la classe.</li>
+		</ul><p>
+		<p>Au premier semestre, nous n'utiliserons qu'un package par programme.
+        Ce package aura le nom de l'application.
+		</p>
+
+		<h3>Compilation et exécution</h3>
+		<p>Dans la barre principale, au dessus de l'onglet d'édition, l'icône <i>marteau</i> ⚒ vous permet de <b>compiler</b> votre projet (aussi <kbd>F11</kbd>), l'icône <i>lecture</i> ‣ permet de lancer l'<b>exécution</b> (aussi <kbd>F6</kbd>).</p>
+		<p>La <b>compilation</b> permet de vérifier la validité du code
+		écrit, et de générer un programme exécutable. Un message
+		d'erreur sera produit si la syntaxe n'est pas bonne. Par
+		défaut, l'IDE NetBeans compile automatiquement le projet à
+		chaque enregistrement de modification
+		(<kbd>Ctrl</kbd>+<kbd>S</kbd>). Enregistrer et recompiler régulièrement
+		permet de sauvegarder son travail, mais aussi de corriger pas à
+		pas les potentielles erreurs de frappe.</b></p>
+
+		<p>L'<b>exécution</b> d'un programme Java débute toujours par l'appel d'une fonction spéciale dont le prototype/signature est :
+		<pre class="prettyprint">public static void main(String[] args)</pre>
+		Dans notre squelette de programme, cette fonction est déjà déclarée/définie. Le paramètre de cette fonction est un tableau de <i>chaînes de caractères</i> (type <pre class="enLigne">String</pre>). Chacune de ces chaînes de caractères est un <i>argument en ligne de commande</i>. Ces arguments permettent aux utilisateurs d'un programme de changer son comportement sans avoir à le recompiler. Par exemple, le programme <pre class="enLigne">head</pre> prend en argument un fichier mais permet aussi à ses utilisateurs de spécifier le nombre de lignes à afficher (avec l'argument <pre class="enLigne">-n 10</pre> par exemple).</p>
+	
+		<ul>
+			<li>Ajouter dans le corps de la fonction <pre class="enLigne prettyprint">main</pre> un affichage :
+			<pre class="prettyprint">
+public static void main(String[] args) {
+        System.out.println("Hello World");
+}			
+			</pre>
+			Le raccourci <kbd>Ctrl</kbd>+<kbd>Espace</kbd> vous propose automatiquement une/des complétion(s).
+			</li>	
+			<li>Compiler puis exécuter le programme.
+			</li>		
+			<li>Repérer le panneau d'affichage de la sortie des programmes (où s'affiche votre message).
+			</li>			
+			<li>Introduisez une ou deux erreurs dans le code pour observer les messages d'erreurs après compilation.</li>
+		</ul>
+		</div>
+		<h2>Calculatrice minimaliste</h2>
+		<div>
+		
+		Pour commencer, vous allez réaliser une calculatrice basique. Dans cet exercice, nous utiliserons les méthodes d'entrée/sortie (affichage et entrée clavier) ainsi que des tests avec <pre class="enLigne prettyprint">assert</pre>. Après son démarrage, l'utilisateur fournit au programme trois entrées : deux nombres et un opérateur. Chaque entrée est validée par <kbd>↲</kbd>. Le programme fournit ensuite le résultat de l'opération et termine.
+		<br/>
+		<div class="w3-half"> 
+			<ul>
+				<li>Récupérer dans votre répertoire <a href="code/calculatrice.zip">cette archive</a>.</li>
+				<li>Dans NetBeans, importer un nouveau projet (Fichier / Import project / From ZIP...) et lui indiquer l'archive.</li>
+				<li>Ouvrir <pre class="enLigne">Calculatrice.java</pre>. Observer l'indentation du code fourni. Pour améliorer la lisibilité du code, utiliser <kbd>⇧</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd> (reformattage automatique).</li>
+				<li>Tester le repliage du code avec <kbd>Ctrl</kbd>+<kbd>-</kbd>/<kbd>+</kbd> et <kbd>Ctrl</kbd>+<kbd>⇧</kbd>+<kbd>-</kbd>/<kbd>+</kbd>. Quelle est la différence ?</li>
+				<li>Prendre connaissance de la fonction <pre class="enLigne prettyprint">main</pre> et tester le programme en entrant quelques opérations (4 + 8, 8 * 7, 3 - 15, 2222 % 2). Si besoin, cliquer sur le panneau "output" pour lui donner le focus avant d'entrer des valeurs.</li>
+				<li>Consulter les fonctions de test et les exécuter en décommentant leur appel dans le <pre class="enLigne prettyprint">main</pre>.</li>
+                <li><b>Si jamais les tests passent</b> : c'est que les assertions ne sont pas activées. Pour s'en convaincre, ajouter le temps d'une exécution <pre class="enLigne prettyprint">assert(false)</pre> dans la fonction <pre class="enLigne prettyprint">main</pre>. Pour activer les assertions, ajouter l'option <pre class="enLigne prettyprint">-ea</pre> en faisant un clic droit sur le nom du projet (Calculatrice) / Propriétés / Exécuter / Options de machine virtuelle (ou, en anglais : Project Properties / Run / VM Options). Réexécuter ensuite.</li>
+				<li>Corriger les deux erreurs mises en évidence par les tests. Pour naviguer de l'appel d'une fonction à sa déclaration, utiliser <kbd>Ctrl</kbd>+clic sur l'appel avec la souris ou <kbd>Ctrl</kbd>+<kbd>B</kbd> avec le curseur du clavier.</li>
+			</ul>
+		</div>	
+		
+		<div class="w3-half">
+      	<img width=100% src="img/the_calculator.jpg" alt="The Calculator"/>
+      	<br/>
+      	© DC Comics
+    	</div>	
+    	</div>
+    	<h2>Bilan raccourcis NetBeans</h2>
+    	 
+    <table>    
+		<thead>
+		<tr>
+		<td>Combinaison de touches</td><td>Fonctionnalité</td>
+		</tr>
+		</thead>
+		<tbody>
+		<tr><td><kbd>F6</kbd>/<kbd>Shift</kbd>+<kbd>F6</kbd></td><td>exécuter le projet/le fichier courant</td></tr>
+		<tr><td><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd></td><td>reformater automatiquement la sélection/le fichier</td></tr>
+		<tr><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd></td><td>(dé)commenter les lignes sélectionnées</td></tr>
+		<tr><td><kbd>Ctrl</kbd>+(<kbd>⇧</kbd>)+<kbd>-</kbd>/<kbd>+</kbd></td><td>(dé)plier les blocs de code</td></tr>
+		<tr><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td><td>aller à la définition</td></tr>
+		<tr><td><kbd>Ctrl</kbd>+<kbd>R</kbd></td><td>renommer l'élément et toutes ses occurrences</td></tr>
+		<tr><td><kbd>Ctrl</kbd>+<kbd>Espace</kbd></td><td>auto-complétion</td></tr>
+		</tbody>	
+		</table>
+		<p>Quelques raccourcis pour générer des bouts de code courants (à auto-compléter):
+		<ul>
+			<li><pre class="enLigne prettyprint">sout : System.out.println ("|");</pre></li>
+			<li><pre class="enLigne prettyprint">ifelse : if (condition) {} else {}</pre></li>
+			<li><pre class="enLigne prettyprint">psvm : public static void main(String[] args){}</pre></li>				
+		</ul></p>
+		</div>
+
+	<!-- CRUD Tableaux -->
+	<div class="w3-container" id="tableaux" style="margin-top:75px">  
+		<h1 class="w3-xxxlarge w3-text-red"><b>Retour aux tableaux</b></h1>
+		<hr style="width:50px;border:5px solid red" class="w3-round">
+		<p>Cette dernière partie porte sur la manipulation et mise à jour de tableaux, triés ou non, comme vous l'avez vu en TD. 
+		Le programme qu'il vous faudra compléter propose de manipuler un tableau, trié ou non, à l’aide du menu suivant :
+		<pre>
+ 0. Sortir
+ 1. Saisie d'un tableau quelconque
+ 2. Saisie d'un tableau en le triant
+11. Recherche séquentielle d'un élément
+12. Suppression d'un élément
+13. Ajout d'un élément
+21. Recherche séquentielle d'un élément dans un tableau trié
+22. Recherche dichotomique d'un élément
+23. Suppression d'un élément dans un tableau trié
+24. Ajout d'un élément dans un tableau trié
+</pre>
+Tout en réalisant ce programme, nous allons utiliser différentes fonctionnalités de manipulation de code et de <i>debug</i> de NetBeans.</p>
+<p>
+<b>Remarque sur les tableaux :</b>
+dans ce TP nous utilisons la classe TableauEntiers pour stocker les entiers.
+Celle-ci contient un tableau de taille fixe, 
+ainsi que l'attribut <tt>taille</tt> pour indiquer 
+combien d'éléments sont présents dans le tableau (dans ses premières cases).
+En Java, on peut connaître la taille d'un tableau via son attribut <tt>length</tt>&nbsp;:
+<pre class="prettyprint">
+int[] monTableau = new int[10];
+System.out.println("longueur = " + monTableau.length); // affiche : longueur = 10
+</pre>
+Dans ce TP, nous pourrons par exemple l'utiliser pour éviter un dépassement de
+capacité.
+</p>
+		<p>Récupérer <a href="code/tableaux.zip">l'archive de départ</a> et procéder comme pour le projet de calculatrice pour l'importer dans NetBeans.</p>
+		<h2>Correction du programme de manipulation d’un tableau</h2>
+		Le programme fourni compile, mais n’est pas correct. Des erreurs se sont glissées dans certaines fonctionnalités.
+		<p>Pour utiliser le mode <i>debug</i>, poser les points d'arrêt sur la bordure gauche ou avec <kbd>Ctrl</kbd>+<kbd>F8</kbd> puis exécuter avec <kbd>Ctrl</kbd>+<kbd>F5</kbd>. Deux onglets supplémentaires apparaissent aux côtés d'"Output" : "Variables" et "Breakpoints".</p>
+		<ul>	
+			<li>Tester la fonctionnalité 2. Deux erreurs se sont glissées dans la fonction <pre class="enLigne">saisirTableauTrie</pre> et dans celles qu'elle appelle. Corrigez-les.
+			</li>
+			<li>Tester la fonctionnalité 11 et découvrez son erreur. Corrigez-la.
+			</li>
+		</ul>
+		<p>Les autres fonctionnalités sont correctes ou restent à faire. Consultez bien l’ensemble du code avant de continuer. </p>
+		<h2>Compléter les fonctionnalités du programme</h2>
+		<ul>
+			<li>Écrire la fonctionnalité 12 (suppression d'<b>un</b> élément) sur le même modèle que la fonctionalité 13 (une fonction de traitement des entrées clavier, une fonction de suppression, etc). Puisque nous nous intéressons aux tableaux non triés, une solution ne nécessitant pas de décalage des valeurs existe. </li>	
+			<li>Que faudrait-il changer pour supprimer toutes les occurrences de l'élément à supprimer ?</li>
+			<li>Compléter et ajouter la fonction de test suivante :
+			<pre class="prettyprint">
+static void testSuppression() {
+    TableauEntiers tabl = new TableauEntiers();
+    tabl.taille = 5;
+    tabl.tab[0] = 6;
+    tabl.tab[1] = 5;
+    tabl.tab[2] = 7;
+    tabl.tab[3] = 8;
+    tabl.tab[4] = 5;
+    int elem = 5;
+    int cpt = 0;
+    for (int i = 0; i < tabl.taille; i++) {
+        if (tabl.tab[i] == elem) {
+            cpt++;
+        }
+    }
+    supprimerNonTrie(tabl, elem);
+    int cptAfter = 0;
+    for (int i = 0; i < tabl.taille; i++) {
+        if (tabl.tab[i] == elem) {
+            cptAfter++;
+        }
+    }
+    assert (?? == ??);
+}
+			</pre>
+			</li>
+			<li>Écrire la fonctionnalité 21 (recherche séquentielle d'un élément dans un tableau trié). Cette fonctionnalité doit tirer parti du fait que les valeurs du tableau sont ordonnées. </li>	
+			<li>Compléter et ajouter la fonction de test suivante :
+			<pre class="prettyprint">
+static void testCherchePosSeqTrie() {
+    TableauEntiers tabl = new TableauEntiers();
+    tabl.taille = 5;
+    tabl.tab[0] = 3;
+    tabl.tab[1] = 5;
+    tabl.tab[2] = 5;
+    tabl.tab[3] = 8;
+    tabl.tab[4] = 100;
+
+    assert (cherchePosSeqTrie(tabl, 5) == ?);
+    assert (cherchePosSeqTrie(tabl, ?) == -1);
+}
+			</pre>
+			</li>
+			<li>Écrire la fonctionnalité 23 (suppression d'un élément dans un tableau trié). </li>	
+		</ul>
+	</div>	
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML =  element.alt;
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,503 @@
+
+
+<!DOCTYPE html>
+<html>
+<title>Projet Pong</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="http://www.informatics-tech.com/highlighter/prettify.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+  pre.prettyprint {
+    background-color: black;
+  }
+  li.L0, li.L1, li.L2, li.L3, li.L4,
+  li.L5, li.L6, li.L7, li.L8, li.L9 {
+    list-style-type: decimal;
+    background: black;
+  } 
+  table tr th,td{
+    border:1px solid black;
+  } 
+  body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+  body {font-size:16px;}
+  .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+  .w3-half img:hover{opacity:1}
+  pre.enLigne{display: inline;}
+  .ajout-oga {background-color: green;}
+  .todo-oga {background-color: red;}
+  .nicho-modif{border-left: Lime 5px solid;padding-left: 5px;background: yellow;}
+  .todo-id {background-color: red;}
+  .prerequis{border-left: Lime 5px solid;padding-left: 5px;background: yellow;}
+</style>
+<body>
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+    <div class="w3-container">
+      <h3 class="w3-padding-64"><b>IUT<br>Département-info</b></h3>
+    </div>
+    <div class="w3-bar-block">
+      <a href="#intro" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+      <a href="#atelier0" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Classes</a>
+      <a href="#sujet" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Sujet</a> 
+      <a href="#atelier1" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Javadoc</a> 
+      <a href="#atelier2" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Afficher 2 raquettes</a> 
+      <a href="#atelier3" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Evénements clavier</a> 
+      
+      <a href="#atelier5" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Mise en pause</a> 
+      <a href="#atelier6" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Gestion du score</a> 
+      <a href="#atelier7" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Fontes</a> 
+      <a href="#atelier8" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Images</a> 
+      <a href="#atelier9" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Menu</a> 
+      <a href="#atelier10" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Aller plus loin</a> 
+    </div>
+  </nav>
+
+  <!-- Top menu on small screens -->
+  <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+    <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">&#9776;</a>
+    <span>Iut info BDX</span>
+  </header>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+    <!-- Introduction -->
+    <div class="w3-container" style="margin-top:80px" id="intro">
+      <h1 class="w3-jumbo"><b>Projet Pong</b></h1>
+      <h1 class="w3-xxxlarge w3-text-red"><b>Once Upon A Time Game Programming: Pong</b></h1>
+      <hr style="width:50px;border:5px solid red" class="w3-round">
+    </div>
+
+    <div class="w3-row-padding">
+      <div class="w3-half">
+        <p>Dans ce projet, vous allez mettre en pratique ce que vous avez vu en cours et TD d'AP1 -Algorithmique et Programmation 1er Semestre- : notions de variables, de fonctions, de paramètres, de structures de contrôle...</p>
+        <p>Vous allez réaliser un jeu Pong, avec une balle et deux raquettes. Au fil des fonctionnalités demandées dans le sujet, vous devrez réaliser des ateliers pour découvrir ou compléter des connaissances en Processing ou algorithmique : Comment structurer son code avec des objets ? Comment bien documenter un code ? Comment gérer les événements clavier ? Comment charger une image ? Comment gérer la collision de deux rectangles ? etc
+        </p>
+        <p>Ayez confiance en vous et bossez DUR.</p>
+        <p>À vous de jouer, créez votre jeu Pong !</p>
+      </div>
+
+      <div class="w3-half">
+        <img width=80% src="img/Pong.png">
+      </div>
+    </div>
+
+
+    <h2 id="atelier0">1. Coder avec des Classes</h2>
+    
+    <p>Au début de cette séance, un <a href="../slidesClasses/classes.pdf">petit cours</a> sur les classes vous a été présenté,
+      n'hésitez pas à vous y référer. Votre projet va utiliser quelques (petites) classes pour faciliter la transmission de
+      paramètres.</p>
+	<p>Avant de commencer, copiez et ouvrez <a href="../ateliers/sketch_rectangles/sketch_rectangles.pde"> ce sketch Processing</a>.</p>
+    <p>En l'état, il affiche deux rectangles ; il doit permettre de sélectionner l'un de ces deux rectangles (un premier clic)
+      et le déplacer (second clic en dehors du rectangle), ou de le redimensionner (second clic en-dehors du rectangle).
+      On pourrait stocker huit variables globales (position en abscisse
+      et ordonnée, dimensions en largeur et hauteur, pour deux rectangles), les manipuler et les tester pour arriver au résulat
+      voulu... Nous voulons simplifier ces traitements. Observez dans le code :</p>
+      <ul>
+	<li>la classe <tt>Rectangle</tt> :
+	  <pre class="prettyprint">
+/**
+ * Rectangle avec couleur.
+ */
+class Rectangle {
+  int x;
+  int y;
+  int largeur;
+  int hauteur;
+  color col;
+}</pre>
+	</li>
+	<li>l'initialisation d'un rectangle :
+	  <pre class="prettyprint">
+/**
+ * Initialiser un rectangle.
+ */
+Rectangle initRectangle(int lx, int ly, int la, int ha, color c) {
+  Rectangle rect = new Rectangle();
+  rect.x = lx;
+  rect.y = ly;
+  rect.largeur = la;
+  rect.hauteur = ha;
+  rect.col = c;
+  return rect;
+}</pre>
+	</li>
+	<li>des exemples d'action sur un rectangle : déplacer (son coin supérieur gauche), afficher (suivant une certaine couleur
+	  s'il est sélectionné ou sa couleur sinon)
+	  <pre class="prettyprint">
+/**
+ * Modifie la position d'un rectangle.
+ *
+ * @param  x  destination-x
+ * @param  y  destination-y
+ * @param  r  rectangle
+ */
+void bouger(int x, int y, Rectangle r) {
+  r.x = x;
+  r.y = y;
+}
+
+/**
+ * Dessine un rectangle.
+ *
+ * @param r rectangle
+ */
+void dessiner(Rectangle r) {
+  if (souris && r.col == rSelect.col){
+    fill(BRIGHT_BLUE);
+  } else {
+    fill(r.col);
+  }
+  rect(r.x, r.y, r.largeur, r.hauteur);
+}
+</pre></li>
+	<li>la déclaration (portée globale) et l'initialisation (méthode <pre class="prettyprint enLigne">setup()</pre>) des
+	  deux rectangles
+
+<pre class="prettyprint">
+Rectangle rVert, rOrange, rSelect;
+
+void setup() {
+  size(640, 480);
+  rVert   = initRectangle(10, 20, 60, 80, SEMI_GREEN);
+  rOrange = initRectangle(200, 250, 300, 120, MOSTLY_ORANGE);
+}
+</pre></li>
+	<li>l'utilisation des rectangles dans le code : à tout instant, il suffit de les dessiner de la manière appropriée
+	  (l'action <pre class="prettyprint enLigne">dessiner()</pre> s'en occupera)
+<pre class="prettyprint">
+void draw() {
+  background(0);
+  dessiner(rVert);
+  dessiner(rOrange);
+}
+</pre></li>
+</ul>
+
+    <p>Pour que ce programme fonctionne, il lui suffit d'une fonctionnalité : savoir si un point est ou non dans un rectangle.
+      Il n'y a qu'une ligne à changer...</p><p>Corrigez la fonction <pre class="prettyprint enLigne">estDans()</pre> et vérifiez votre
+      programme.</p>
+<pre class="prettyprint">
+/**
+ * Appartenance d'un point a un rectangle.
+ *
+ * @param x abscisse
+ * @param y ordonnee
+ * @param r rectangle
+ * @return true  ssi (x, y) dans r (frontière incluse)
+ */
+boolean estDans(int x, int y, Rectangle r) {
+  // A FAIRE
+  return false;
+}
+</pre>
+    <p>Quand vous êtes prêt, préparez-vous à passer aux choses sérieuses...</p>
+
+    <!-- Sujet -->
+    <div class="w3-container" id="sujet" style="margin-top:75px">
+      <h1 class="w3-xxxlarge w3-text-red"><b>Sujet - Cahier des charges</b></h1>
+      <hr style="width:50px;border:5px solid red" class="w3-round">
+    </div>
+
+
+    <h2>2. Prise en main du code fourni et Correction</h2>
+
+
+
+    <p>Le sketch Processing fourni <a href="../codeForStudents.zip">ici</a> contient du code qui :</p>
+    <ul>
+      <li>gère les rebonds d'une balle sur le bord de l'écran (comme dans un des mini-projets),</li>
+      <li>contient un onglet <b>Ball</b> avec le code qui gère la balle,</li>
+      <li>contient un onglet <b>Racket</b> avec du code incomplet pour les raquettes : on ne l'utilisera pas tout de suite,</li>
+      <li>contient un onglet <b>Utils</b> avec des fonctions utilitaires, notamment <pre class="prettyprint enLigne">collision()</pre> : on ne l'utilisera pas tout de suite non plus.</li>
+    </ul>
+
+    <p>Remarquez les lignes tout en haut de chaque fichier commençant par le mot-clef "final", comme : <pre class="prettyprint enLigne">final color NOIR = color(0);</pre>. Final indique que la variable est constante (si plus loin dans le code vous tentez de la modifier ça ne compilera pas). 
+      On peut facilement tester l'effet de <pre class="prettyprint enLigne">final</pre> :
+	  <img src="img/final.png">
+	  </p>
+
+	  <!-- <p>Le fait que cette ligne soit placée en dehors de toutes les fonctions fait que cette variable est globale et donc visible et "partagée" par toutes les fonctions de votre sketch.</p> -->
+
+    <p>
+	  <!-- Observez les lignes déjà présentes et contenant un final. Pourquoi avoir choisi de les déclarer de la sorte ?<br/> -->
+	  
+	  Désormais en Processing nous déclarerons toujours les constantes avec "final" et les nommerons avec des majuscules.
+	</p>
+
+
+    <p>La gestion de la collision sur les bords n'est pas tout à fait correcte :</p>
+    <ul>
+      <li>Augmentez la largeur de la balle (constante <pre class="prettyprint enLigne">BALL_WIDTH</pre>) pour mieux voir l'erreur à l'exécution.</li>
+      <li>Identifiez le problème et corrigez le code.</li>
+    </ul>
+
+    <h2 id="atelier1">3. Documentation</h2>
+    
+    <p>Vous allez commencer à prendre de bonnes habitudes de développeur. Un code est destiné à être réutilisé/relu/modifié. Il est donc important de bien le documenter. Cela ne se fait pas n'importe comment. En Java, on utilise la Javadoc. </p>
+
+    <pre class="prettyprint">
+     /**
+      * Avant chaque fonction on peut écrire un petit texte
+      * explicatif sous la forme de commentaires.
+      * Attention aux deux étoiles sur la première ligne.
+      * Ensuite on utilise des tags de Javadoc pour donner
+      * des informations diverses.
+      *
+      * A minima dans ce projet vous devez utiliser les tags :
+      *
+      * @param val    le ou les paramètres de la fonction
+      * @return       la valeur retournée
+      * @author       l'auteur de la fonction 
+      */
+     int maFonction(int val) {
+       return 0;
+     }
+  </pre>
+
+    <p>Pour générer les pages de documentation pour votre code Pong,
+      suivez ces étapes :
+      <ol>
+	<li>dans Processing, il faut générer le code Java de votre sketch :
+	  <ul>
+	    <li>faîtes Fichier / Exporter, cochez "Linux" et décochez "Embed Java"</li>
+	  </ul>
+	</li>
+	<li>ouvrez un terminal dans le répertoire de votre sketchbook, et exécutez :
+	  <ul>
+	    <li><tt>mkdir doc</tt> (la première fois)</li>
+	    <li>
+	      <tt>javadoc -d ./doc -docencoding "iso-8859-1" application.linux64/source/sketch_Pong.java</tt>
+	    </li>
+	  </ul>
+	</li>
+	<li>
+	  la page de documentation est <tt>doc/index.html</tt> depuis votre sketchbook (à ouvrir dans votre navigateur)
+	</li>
+      </ol>
+    </p>
+
+  <p>À vous de jouer : </p>
+  <ul>
+    <li>Regardez la fonction <pre class="prettyprint enLigne">collision</pre> et sa partie documentation.</li>
+    <li>Inspirez-vous en pour compléter la documentation des fonctions du code fourni.</li>
+    <li>Par la suite, vous documenterez TOUTES les fonctions et classes que vous écrirez.</li>
+  </ul>
+
+
+
+  <h2 id="atelier2">4. Affichage des deux raquettes</h2>
+  
+  <p>On veut afficher une raquette bleue à gauche et une raquette
+  verte à droite, pour l'instant immobiles.</p>
+  <ul>
+   
+    <li>Une raquette se définit comme un rectangle de couleur pré-définie et dont le coin haut gauche est positionné aux coordonnées (x,y). Créez la classe correspondante.</li>
+    <li>Créez le constructeur permettant d'initialiser une raquette.</li>
+    <li>Créez la fonction <pre class="prettyprint enLigne">showRacket</pre> permettant d'afficher une raquette sous la forme d'un rectangle de couleur sur l'écran. </li> 
+
+    <li>Appelez correctement ces fonctions depuis l'onglet principal pour réaliser l'affichage des deux raquettes comme sur l'image ci-dessous (pour cela il faut créer les raquettes, les initialiser et gérer leur affichage).</li>
+  </ul>
+
+  <img src="img/pong1.png">
+
+
+  <h2 id="atelier3">5. Déplacement des deux raquettes</h2>
+  <p>Recopiez le code ci-dessous dans un projet à part et exécutez-le. En analysant le code, trouvez les touches permettant de faire bouger le cercle.</p>
+
+  <p>Ensuite décommentez les lignes 31 à 47 tout en commentant les lignes 15 à 29. Quelle différence observez-vous entre les deux systèmes de gestion des évènements clavier par Processing ?</p>
+
+
+  <pre class="prettyprint linenums">
+  int x;
+
+  void setup()
+  {
+    size(640, 400);
+    x = width/2;
+  }
+
+  void draw()
+  {
+    background(0);
+    fill(255);
+    ellipse(x, height/2, 30, 30);
+
+    if (keyPressed)
+    {
+      switch (key)
+      {
+        case 'a' :
+          x -= 5;
+          break;
+        case 'z' :
+          x += 5;
+          break;
+        default :
+          println("erreur");
+          break;
+      }
+    }
+  }
+/*
+void keyPressed()
+{
+  switch (key)
+  {
+    case 'a' :
+      x -= 5;
+      break;
+    case 'z' :
+      x += 5;
+      break;
+    default :
+      println("erreur");
+      break;
+  }
+}
+*/
+</pre>
+<ul>
+  <li>Créez les fonctions  <pre class="prettyprint enLigne">moveRacketUp</pre> et <pre class="prettyprint enLigne">moveRacketDown</pre> permettant respectivement de faire bouger vers le haut (vers le bas) une raquette passée en paramètre.</li>
+  <li>Dans le fichier principal créez la fonction <pre class="prettyprint enLigne">void gestionClavierDepuisDraw()</pre> réalisant le test <pre class="prettyprint enLigne">if (keyPressed)</pre> et déplace les raquettes en fonction des touches pressées. Cette fonction est appelée depuis la fonction <pre class="prettyprint enLigne">draw()</pre>.</li>
+</ul>
+
+Normalement votre projet doit donner le rendu suivant : 
+
+<video width="640" height="480" controls>
+  <source src="video/pong-1.m4v" type="video/mp4">  
+    Your browser does not support the video tag.
+  </video>
+
+
+  <h2 id="atelier5">6. Mise en pause du jeu</h2>
+  <p> En utilisant cette fois-ci la fonction Processing <pre class="prettyprint enLigne">keyPressed()</pre>, faîtes en sorte que :</p> 
+
+  <ul>
+    <li>Quand on appuie sur la touche Espace, le jeu se met en pause.</li>
+    <li>Quand on appuie de nouveau, le jeu redémarre.</li>
+    <li>Vous utiliserez les fonctions <pre class="prettyprint enLigne"><a href="https://processing.org/reference/loop_.html">loop()</a></pre> et <pre class="prettyprint enLigne"><a href="https://processing.org/reference/noLoop_.html">noLoop()</a></pre> de Processing.</li>
+  </ul>
+
+
+  <h2>7. Gestion de la collision entre la balle et les raquettes</h2>
+
+  <ul>
+    <li>Étudiez la fonction <pre class="prettyprint enLigne">collision()</pre> qui gère l'intersection de deux rectangles pour traiter les collisions de la balle avec les raquettes.</li>
+    <li>Modifiez <pre class="prettyprint enLigne">boolean collisionHorizontale(Ball b)</pre> et <pre class="prettyprint enLigne">boolean collisionVerticale(Ball b)</pre> afin que ces deux fonctions prennent maintenant en compte les deux raquettes présentes sur l'espace de jeu.</li>
+    
+
+
+  </ul>
+
+  Normalement votre projet doit donner le rendu suivant : 
+
+  <video width="640" height="480" controls>
+    <source src="video/pong-2.m4v" type="video/mp4">  
+      Your browser does not support the video tag.
+    </video>
+
+
+
+    <h2 id="atelier6">8. Gestion du score</h2>
+    <p>L'objectif maintenant est de pouvoir compter les points.</p>
+    <p>A chaque fois que la balle touche un bord vertical (gauche ou droit) :
+      <ul>
+        <li>le joueur opposé marque un point, </li>
+        <li>le score se met à jour,</li>
+        <li>le jeu reprend avec la balle au milieu.</li>
+      </ul>
+      <p>Pour cela il vous faudra 
+
+        <ul>
+          <li>trouver un moyen d'intégrer dans votre conception la gestion des points (variables globales ? attribut de classe ? ...)</li>
+          <li>créer la fonction <pre class="prettyprint enLigne">point</pre> qui vérifie la position de la balle et ajoute un point au joueur 1 si la balle sort par la droite, ou au joueur 2 si la balle sort par la gauche.   </li>
+        </ul>
+        </p>
+      <p>La vidéo ci-dessous illustre ce que doit donner votre code après cette étape.</p>
+      <video width="640" height="480" controls>
+        <source src="video/pong-3.m4v" type="video/mp4">  
+          Your browser does not support the video tag.
+        </video>
+
+
+        <h2 id="atelier7">9. Fontes</h2>
+        <p>Nous allons maintenant styliser légèrement le texte qui s'affiche (score). Pour cela commencez par regarder la <a href="https://processing.org/reference/loadFont_.html">documentation de loadFont()</a>.</p>
+
+
+        
+        <p>Pour créer une fonte, rien de plus simple. Allez dans le menu "outils/générer-la-police". Sélectionnez une fonte puis générez-la pour Processing (bouton OK). Cela génère dans votre espace de travail un répertoire data contenant cette fonte au format "vlw" compatible avec Processing.</p>
+
+        <p>Si tout marche bien, le texte est maintenant stylisé comme sur l'image ci-dessous.</p>
+        <p><img src="img/pong2.png"></p>
+
+
+        <h2 id="atelier8">10. Images</h2>
+        
+        <p>Après avoir étudié la documentation de <a href="https://processing.org/reference/loadImage_.html">loadImage()</a> et 
+          celle de <a href="https://processing.org/reference/background_.html">background()</a>, faîtes en sorte que votre zone de jeu contienne une image de fond comme sur l'image ci-dessous.</p>
+
+          <p><img src="img/pong3.png"></p>
+
+
+          <p>Plutôt que d'utiliser des rectangles pour visualiser la balle et les rectangles, je vous propose d'utiliser des sprites. Les images ci-dessous correspondent aux sprites des raquettes et de la balle. Ces images sont au format png et contiennent une couche alpha qui <a href="https://fr.wikipedia.org/wiki/Sprite_(jeu_vid%C3%A9o)">apparaitra de manière transparente</a> sur la fenêtre de Processing.</p>
+          <p><img src="img/ball.png"></p>
+          <p><img src="img/player01.png"></p>
+          <p><img src="img/player02.png"></p>
+
+
+    <p>Enregistrez ces images dans votre espace de travail.</p>
+
+          <p>Vous avez un choix de conception à faire ici pour "gérer" les sprites (variables globales ? nouveau fichier ? attribut de classe ?).</p>
+
+          <p>La vidéo ci-dessous illustre le résultat attendu.</p>
+
+          <video width="640" height="480" controls>
+            <source src="video/pong-4.m4v" type="video/mp4">  
+              Your browser does not support the video tag.
+            </video>
+
+
+            <h2 id="atelier9">11. Menu de jeu</h2> 
+            <p>Ajoutez un menu de jeu qui s'affiche avant le jeu en lui-même. Comme sur la vidéo ci-dessous, il faut que lorsque la souris est positionnée sur le bouton, celui-ci change de couleur.</p>
+            <p> <img src="img/button.png"> </p>
+
+    <p>Vous utiliserez le sprite fourni ci-dessus.
+      Consultez la documentation de <a href="https://processing.org/reference/copy_.html">la fonction copy()</a> afin d'afficher les sprites. Nous utiliserons en particulier la forme <tt>copy(src, sx, sy, sw, sh, dx, dy, dw, dh)</tt> qui prend la zone de l'image <tt>src</tt> désignée par <tt>(sx, sy, sw, sh)</tt> et l'affiche dans la zone de la fenêtre désignée par <tt>(dx, dy, dw, dh)</tt>.
+    </p>
+            <p>Lorsque l'on presse la souris et qu'elle est placée sur le bouton, le jeu se lance.</p>
+
+            <p>Vous avez un choix de conception à faire ici pour "gérer" le menu, les boutons qui changent de couleur (variables globales ? nouveau fichier ? attribut de classe ?).</p>
+
+            <video width="640" height="480" controls>
+              <source src="video/pong-5.m4v" type="video/mp4">  
+                Your browser does not support the video tag.
+              </video>
+
+              <h2 id="atelier10">12. Quelques extensions possibles</h2> 
+
+              <p>S'il vous reste du temps, vous pouvez : </p>
+              <ul>
+              <li>Ajouter un bouton "Quitter" sur le menu.</li>
+              <li>Obstacles : ajouter aléatoirement des obstacles au milieu du terrain, qui font rebondir la balle.</li>
+              <li>Téléportation : ajouter aléatoirement des paires de rectangles (entrée, sortie) numérotées 
+                telles que si la balle entre dans l'entrée numéro n, elle ressort aussitôt par la sortie numéro n.</li>
+              <li>Jouez à plusieurs balles.</li>
+              <li>Le nombre de joueurs peut varier de 2 à 4 (choix dans le menu).</li>
+			  <li>Ajoutez un facteur d'accélération pour simuler la gravité.</li>
+              </ul>
+
+              </div>
+            </body>
+            </html>

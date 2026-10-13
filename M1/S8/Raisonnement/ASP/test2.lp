@@ -1,0 +1,1 @@
+:- not frere(pierre, lea).

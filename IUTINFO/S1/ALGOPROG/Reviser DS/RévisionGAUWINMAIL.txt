@@ -1,0 +1,25 @@
+Bonjour,
+
+Le DS de lundi prochain portera sur ce que nous avons traité en TD, TP
+et projet depuis le dernier DS, c'est-à-dire :
+
+- les tableaux (1 dimension et 2 dimensions) et les algorithmes associés
+(recherche, etc),
+
+- les premières notions "objet",
+
+- les chaînes de caractères
+
+- les fichiers.
+
+Pour vous aider à vous entraîner sur les concepts objet, nous avons mis
+en place un quizz dans Moodle, section TD :
+https://moodle1.u-bordeaux.fr/mod/quiz/view.php?id=309724
+Il est facultatif, et son résultat ne sera pas utilisé pour vous
+évaluer. C'est uniquement pour vous. Pour que ce soit profitable,
+commencez par réviser les concepts vus en TD :
+https://moodle1.u-bordeaux.fr/mod/resource/view.php?id=275887
+puis faîtes le quizz.
+
+Bon courage !
+Olivier Gauwin

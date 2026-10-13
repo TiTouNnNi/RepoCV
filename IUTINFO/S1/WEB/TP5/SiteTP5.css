@@ -1,0 +1,64 @@
+body{
+    padding: 2%;
+    background-color: cyan;
+}
+
+#dimension{
+    width: 80%;
+}
+
+
+.lien{
+    position: absolute;
+    top: 6%;
+    right: 22%;
+}
+
+#titre{
+    font-style: red ;
+    font-size: 200%;
+    font-family: 'Lucida Console', Courier, monospace;
+    text-decoration: underline;
+}
+
+section{
+    max-height: 20%;
+    width: 80%;
+    display:inline;
+    justify-content:center;
+}
+
+li a {
+    color : green;
+}
+
+li a:hover  {
+    color : yellow;
+}
+
+li a::after  {
+    color : red;
+}
+
+.jeux{
+    margin-top: -1%;
+    color: rebeccapurple;
+}
+
+aside p {
+    width: 50%
+}
+
+aside{
+    margin-top: -7%;
+    width: 60%;
+    float: right;
+    font-style: italic;
+}
+
+footer{
+    height: 20%;
+    width: 80%;
+    display:inline-block;
+    justify-content: space-evenly;
+}

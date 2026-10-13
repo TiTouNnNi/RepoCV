@@ -1,0 +1,670 @@
+
+<!DOCTYPE html>
+<html>
+<title>TP Fichiers</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="http://www.informatics-tech.com/highlighter/prettify.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+table tr th,td{
+  border:1px solid black;
+} 
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+.ajout-oga {background-color: green;}
+.todo-oga {background-color: red;}
+pre.enLigne{display: inline;}
+.nicho-modif{border-left: Lime 5px solid;padding-left: 5px;background: yellow;}
+tt {background-color: #ffd6cc;}
+/* Keyboard key style */
+kbd{
+	font-size:0.7em;
+	border:1px solid gray;
+	box-shadow:1px 0 1px 0 #eee, 0 2px 0 2px #ccc, 0 2px 0 3px #444;
+	border-radius:3px;
+	margin:2px 3px;
+	padding:1px 5px;
+}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>IUT<br>Département-info</b></h3>
+  </div>
+  <div class="w3-bar-block">
+     
+    <a href="#intro" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Introduction</a> 
+    <a href="#ecrire" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Écrire dans un fichier</a> 
+    <a href="#lire" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Lire un fichier</a> 
+    <a href="#bonus" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Exercices facultatifs</a> 
+    
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">&#9776;</a>
+  <span>Iut info BDX</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>TP Gestion des fichiers </b></h1>
+    <!-- <h1 class="w3-xxxlarge w3-text-red"><b>Mise en oeuvre avec le jeu du morpion</b></h1> -->
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <p>Lors cette séance vous allez découvrir comment manipuler les fichiers en Java.</p>
+      <p>
+	Ce TP constitue la suite du TP précédent : reprenez le projet NetBeans
+	de la semaine dernière et continuez dessus.
+      </p>
+    </div>
+
+    <div class="w3-half">
+      <img src="img/file.jpeg">
+    </div>
+  </div>
+
+
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">&times;</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <div class="w3-container" id="intro" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Introduction</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+
+<h3>Fichiers physiques et logiques</h3>
+
+	<p>
+	  En Java, comme dans la plupart des langages, nous faisons la différence entre&nbsp;:
+<ul>
+  <li>
+	les <em>fichiers physiques</em> désignés par leur nom (et leur chemin)
+	sur le système de fichiers, donnés par une chaîne de caractères.
+	Par exemple "/etc/hostname" ou "C:\Temp\test.txt".
+  </li>
+  <li>
+	les <em>fichiers logiques</em> (parfois appelés descripteurs, flux, ...).
+	Il s'agit d'objets permettant de manipuler les fichiers dans le langage
+	de programmation&nbsp;:
+	les ouvrir, fermer, lire, écrire, etc.
+	Par exemple un objet FileReader pour lire un fichier.
+	On peut alors utiliser des variables pour manipuler les fichiers.
+  </li>
+</ul>
+Par exemple, en Java, l'instruction&nbsp;:
+<pre class="prettyprint enLigne">FileReader monFichier = new FileReader("/home/identifiant/unfichier.txt");</pre>
+crée un objet "monFichier" de type FileReader (fichier logique) qui ouvre
+le fichier physique "/home/identifiant/unfichier.txt"
+et permet ensuite d'en lire le contenu via 
+<pre class="prettyprint enLigne">monFichier.read()</pre>.
+	</p>
+	
+<p>
+Cela dit, cette dernière méthode ne fait que lire, caractère par caractère, et
+sans buffer. Il existe en Java d'autres classes permettant par
+exemple de lire ligne par ligne, avec buffer
+(pour optimiser les accès à la mémoire), etc.
+C'est ce que nous verrons dans la Question 1.
+</p>
+
+
+<h3>Gestion des exceptions</h3>
+
+<p>
+La manipulation des fichiers donne lieu à beaucoup de problèmes potentiels
+d'accès au fichier : lire un fichier absent ou protégé, créer un fichier
+dans un dossier inexistant, etc.
+</p>
+
+	<p>
+Java introduit un mécanisme pour gérer les erreurs à l’exécution&nbsp;:
+les <b>exceptions</b>.
+Les exceptions servent à détecter une erreur à l'exécution,
+pas forcément liée à la manipulation des fichiers.
+	</p>
+	
+	<p>
+	  Ainsi vous avez certainement déjà croisé certaines exceptions, par exemple
+	  lorsque vous tentez d'accéder
+	  à une case d'un tableau à une position incorrecte
+	  (en dehors des bornes, "out of bounds") : ArrayIndexOutOfBoundsException.
+	  <img src="img/ArrayIndexOutOfBoundsException.png"/>
+	</p>
+
+	<p>
+	  Une exception est <em>levée</em> (<em>throw</em>)
+	  lorsqu'un problème est détecté.
+	  Elle peut être levée par Java, ou par votre propre code
+	  (vous verrez comment au S2).
+	  Dans l'exemple ArrayIndexOutOfBoundsException ci-dessus,
+	  l'exception a été levée par Java
+	  (au moment de l'évaluation de valeurs[2])
+	  et a fait planter le programme : il est stoppé avec comme
+	  message d'erreur la pile d'appel (<em>stacktrace</em>)
+	  qui a mené à l'exception.
+	</p>
+
+	<p>
+	  Il est possible de <em>rattraper</em> (<em>catch</em>) une exception,
+	  pour éviter de stopper le programme, en traitant les cas d'erreurs
+	  détectés par les exceptions. Cela se fait par l'intermédiaire
+	  d'un <tt>try/catch</tt> :
+<pre class="prettyprint">
+// simple illustration du try/catch
+int[] valeurs = {17, 2};
+try {
+    int somme = valeurs[1] + valeurs[2]; // levée de l'exception
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Exception rattrapée : " + e); // rattrapage
+}
+// le programme continue ensuite
+</pre>
+Dans ce code, l'évaluation de <tt>valeurs[2]</tt>
+va lever une exception de type <tt>ArrayIndexOutOfBoundsException</tt>.
+Comme elle se trouve dans un bloc <tt>try</tt>,
+et qu'un bloc <tt>catch</tt> pour ce type d'exception existe,
+le programme entre dans ce <tt>catch</tt>, et
+le message suivant est affiché&nbsp;:
+<pre>
+Exception rattrapée : java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for length 2
+</pre>
+Notez que l'exception est elle-même un objet,
+accessible via la variable "e", et de type <tt>ArrayIndexOutOfBoundsException</tt>
+(c'est <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/ArrayIndexOutOfBoundsException.html">une classe</a>).
+Dans tous les cas, le programme continue ensuite
+après le bloc <tt>try/catch</tt>.
+</p>
+<p>
+Ici le <tt>try/catch</tt> n'a pas d'intérêt puisqu'il s'agit d'un bug
+à corriger.
+Par contre, pour la <em>gestion des fichiers</em>, il deviendra essentiel,
+et nous verrons des formes plus élaborées de <tt>try/catch</tt> dans ce cas.
+	</p>
+
+	<p><img src="img/attention.png">
+	  Les exceptions sont levées à l'<em>exécution</em>
+	  (lorsqu'un problème intervient), pas à la <em>compilation</em>.
+	  C'est tout leur intérêt. Les exceptions sont levées par
+	  la JVM (<em>java</em>) alors que les erreurs de compilation sont levées
+	  par le compilateur (<em>javac</em>).
+	</p>
+  </div>
+
+  <!-- --------------------------------------------------------------- -->
+	
+  <div class="w3-container" id="ecrire" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Écrire dans un fichier</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+    <p>
+      Comme pour Unix (et donc Linux), <b>lire/écrire dans un fichier</b>
+      n'est pas très différent de <b>lire/écrire dans un terminal</b>.
+      En Java, il y a plusieurs façons de faire,
+      et nous vous présentons dans ce TP des classes et méthodes
+      assez "haut niveau", qui masquent les aspects très techniques.
+    </p>
+
+    <p>
+      Pour écrire dans un fichier, nous utiliserons la classe
+      <a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintWriter.html"><tt>PrintWriter</tt></a>.
+      Celle-ci possède notamment&nbsp;:
+      <ul>
+	<li>
+	  un <a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintWriter.html#PrintWriter-java.lang.String-">constructeur</a> prenant directement le nom du fichier en paramètre,
+	</li>
+	<li>
+	  des méthodes <a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintWriter.html#print-java.lang.String-"><tt>print()</tt></a> et <a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintWriter.html#println-java.lang.String-"><tt>println()</tt></a> pour écrire dans le fichier (similaires aux mêmes méthodes de <tt>System.out</tt>),
+	</li>
+	<li>
+	  une méthode <a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintWriter.html#format-java.lang.String-java.lang.Object...-"><tt>format()</tt></a> similaire à <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#format-java.lang.String-java.lang.Object...-">celle de String</a> vue la semaine dernière, pour écrire de manière formatée,
+	</li>
+	<li>
+	  une méthode <a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintWriter.html#flush--"><tt>flush()</tt></a> qui écrit le buffer sur le disque.
+	  En effet, Java utilise, en mémoire vive, une copie du fichier,
+	  appellée "buffer" pour y appliquer les opérations de
+	  lecture/écriture plus rapidement.
+	  Lorsque ces opérations sont terminées (fermeture du fichier),
+	  ce buffer écrase réellement l'ancien fichier sur le disque.
+	  Ceci peut être forcé via l'opération <tt>flush()</tt>,
+	  sans fermer le fichier.
+	</li>
+	<li>
+	  une méthode <a href=""><tt>close()</tt></a>
+	  qui permet de fermer le fichier.
+	  Cette opération est <b>indispensable</b> avant de quitter le programme,
+	  pour que les modifications soient réellement sauvegardées sur le
+	  disque.
+	</li>
+      </ul>
+      Ainsi le code suivant ouvre le fichier <tt>test.txt</tt>, y écrit "Ligne 1" sur la ligne 1, "Ligne 2" sur la ligne 2, puis ferme ce fichier&nbsp;:
+<pre class="prettyprint">
+// version simpliste, sans gestion des exceptions	
+PrintWriter fichier = new PrintWriter("test.txt");
+fichier.println("Ligne 1");
+fichier.println("Ligne 2");
+fichier.close();
+</pre>
+      Mais ce code ne gère pas les exceptions.
+Pour ce faire, il y a 2 méthodes en Java&nbsp;:
+<ul>
+  <li>
+    le <em><a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html">try-with-resources</a></em>
+    est la manière moderne, disponible depuis Java 8.
+    Elle permet de gérer la fermeture des ressources (fichiers...)
+    automatiquement, qu'une exception ait été levée ou non.
+    <pre class="prettyprint">
+// version "try-with-resources" (meilleure manière)
+try (PrintWriter fichier = new PrintWriter("test.txt")) {
+    fichier.println("Ligne 1");
+    fichier.println("Ligne 2");
+} catch (FileNotFoundException e) {
+    System.out.println("Exception rattrapée : " + e);
+}
+</pre>
+    La syntaxe est :
+    <pre class="prettyprint">
+try (/* déclaration des ressources (fichiers...) */) {
+    // utilisation des ressources (lecture, écriture...)
+} catch (FirstException e1) {
+    // traitement des exceptions de type FirstException 
+} catch (SecondException e2) {
+    // traitement des exceptions de type SecondException 
+}
+</pre>
+    On peut déclarer plusieurs ressources dans le même <tt>try</tt>
+    en les séparant par des points-virgules.
+    Les ressources sont fermées automatiquement
+    à la sortie du <tt>try/catch</tt>.
+  </li>
+  <li>
+    le <em><a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/finally.html">try/catch/finally</a></em>,
+    qui fonctionne comme le <tt>try/catch</tt>,
+    avec un bloc <tt>finally</tt> supplémentaire,
+    qui s'exécute dans tous les cas (que l'on passe dans un <tt>catch</tt>
+    ou non).
+ <pre class="prettyprint">
+//  version "try/catch/finally" (moins élégante)
+PrintWriter fichier = null;
+try {
+    fichier = new PrintWriter("test.txt");
+    fichier.println("Ligne 1");
+    fichier.println("Ligne 2");
+} catch (FileNotFoundException e) {
+    System.out.println("Exception rattrapée : " + e);
+} finally {
+    if (fichier != null) {
+        fichier.close();
+    }
+}
+</pre>
+  </li>
+</ul>
+    </p>
+    
+    <p>
+      Remarque&nbsp;:
+      il y a d'autres manières que <tt>PrintWriter</tt>
+      pour écrire dans un fichier, par exemple via les classes
+      <tt><a href="https://docs.oracle.com/javase/8/docs/api/java/io/FileWriter.html">FileWriter</a></tt> et
+      <tt><a href="https://docs.oracle.com/javase/8/docs/api/java/io/BufferedWriter.html">BufferedWriter</a></tt>
+      qui sont plus "bas niveau".
+    </p>
+
+    
+<h3>1. Fichier de logs du serveur</h3>
+
+    <p>
+      Pour l'instant les logs du serveur sont uniquement affichées
+      dans la console, via la méthode <tt>log()</tt> de la
+      classe <tt>Serveur</tt>.
+      Nous allons également écrire ces logs dans un fichier.
+      Ces logs seront vidées à chaque démarrage du serveur.
+    </p>
+
+    <p>
+      Pour cela, dans la classe <tt>Serveur</tt>&nbsp;:
+      <ol>
+	<li>
+	  au tout début du <tt>main()</tt>,
+	  initialisez l'attribut <tt>logfile</tt>, en utilisant le nom
+	  de fichier stocké dans la constante <tt>LOG_FILENAME</tt>.
+	  Utilisez un <tt>try/catch</tt> simple
+	  (sans <tt>finally</tt>, ni try-with-resources)
+	  car le fichier doit rester
+	  ouvert tant que le serveur tourne.
+	</li>
+	<li>
+	  dans la méthode <tt>log()</tt>,
+	  écrivez dans le fichier <tt>logfile</tt> de la même
+	  manière que ce qui est fait dans la console
+	  (conservez l'écriture dans <tt>System.out</tt>).
+	  Faîtes aussi un <tt>flush()</tt>,
+	  car le serveur est en général fermé via <kbd>Ctrl</kbd>+<kbd>C</kbd>
+	  donc sans fermer le fichier.
+	</li>
+	<li>
+	  compilez, relancez le serveur, et vérifiez que le fichier <tt>jump.log</tt> est créé et contient les logs.
+	</li>
+	<li>
+	  commentez le <tt>flush()</tt> et réessayez :
+	  il y a de fortes chances pour que votre fichier soit vide.
+	  Décommentez le <tt>flush()</tt>.
+	</li>
+      </ol>
+    </p>
+
+    
+    <h3>2. Sauvegarder la partie en cours</h3>
+
+    <p>
+      La <em>sérialisation</em> d'une variable consiste à
+      obtenir une description de sa valeur (ici, sous la forme d'une
+      chaîne de caractères), qui contienne toutes les informations de
+      l'objet. Ainsi, on peut reconstruire l'objet à partir de sa sérialisation.
+    </p>
+    <p>
+      Nous allons utiliser ce principe pour sauvegarder la partie en cours.
+      Pour sérialiser une partie, il faut donc décrire
+      tous ses attributs&nbsp;: le tour de jeu,
+      le nombre de joueurs,
+      les informations de chaque joueur (nom, points, colonne, etc),
+      le plateau, etc.
+      Il faut donc aussi sérialiser tous ces éléments.
+      Les classes <tt>Partie</tt>, <tt>Plateau</tt>, <tt>Joueur</tt>
+      et l'énumération <tt>StatutJoueur</tt> disposent toutes d'une
+      méthode <tt>serialiser()</tt> dans ce but.
+    </p>
+    <p>
+      <ol>
+	<li>codez la méthode <tt>serialiser()</tt> de la classe <tt>Joueur</tt>, en renvoyant une chaîne contenant les informations suivantes, chacune suivie d'un caractère séparateur (donné dans <tt>SEPARATEUR</tt>) : le nom, la colonne, le score, et le statut (utiliser la méthode <tt>serialiser()</tt> de <tt>StatutJoueur</tt> dans ce cas). Le test <tt>testSerialiser</tt> de la classe <tt>JoueurTest</tt> doit passer.</li>
+	<li>codez la méthode <tt>sauvegarder()</tt> de la classe <tt>Partie</tt> : vous devez simplement écrire dans le fichier <tt>FICHIER_SAUVEGARDE</tt> le résultat de <tt>serialiser()</tt>.</li>
+	<li>testez dans le jeu : lancez une partie, démarrez-la, et lancez la sauvegarde. Vérifier que le fichier indiqué dans <tt>FICHIER_SAUVEGARDE</tt> a été créé et contient la sérialisation de la partie.</li>
+      </ol>
+    </p>
+
+    <h3>3. Sauvegarder les scores&nbsp;: le mode rajout</h3>
+
+    <p>
+      Nous allons maintenant sauvegarder les scores, à chaque fin de partie.
+      Pour l'instant nous sauvegarderons tous les scores de toutes les parties
+      dans un même fichier.
+    </p>
+    <p>
+      Cela implique d'<em>ajouter</em> des informations dans un fichier,
+      alors que jusqu'ici nous écrasions tout.
+      La classe <tt>PrintWriter</tt> ne le permet pas directement,
+      donc nous utilisons un <tt>FileWriter</tt> pour ouvrir le fichier
+      en mode rajout, et construisons ensuite un <tt>PrintWriter</tt>
+      à partir de celui-ci&nbsp;:
+<pre class="prettyprint">
+try (
+    FileWriter fileWriter = new FileWriter("/chemin/vers/fichier", true);
+    PrintWriter fichier = new PrintWriter(fileWriter);
+    ) {
+        fichier.println("ligne ajoutée en fin de fichier");
+} catch (FileNotFoundException ex) {
+    Serveur.log(TypeLog.ERREUR, "Ouverture du fichier impossible : " + ex);
+} catch (IOException ex) {
+    Serveur.log(TypeLog.ERREUR, "Erreur d'écriture : " + ex);
+}
+</pre>
+C'est le booléen <tt>true</tt> dans le <a href="https://docs.oracle.com/javase/8/docs/api/java/io/FileWriter.html#FileWriter-java.lang.String-boolean-">constructeur de <tt>FileWriter</tt></a>
+qui indique le mode "rajout" (append).
+    </p>
+    <p>
+      <ol>
+	<li>
+	  codez la méthode <tt>ligneFichierScore()</tt>
+	  de la classe <tt>Joueur</tt>.
+	  Celle-ci renvoie la ligne qui sera écrite dans le fichier de score
+	  pour le joueur. Cette ligne doit contenir
+	  le nom du joueur, puis <tt>Joueur.SEPARATEUR</tt>,
+	  puis le score du joueur.
+	  Le test <tt>testLigneFichierScore()</tt> de la classe
+	  <tt>JoueurTest</tt> doit passer.
+	</li>
+	<li>
+	  codez la méthode <tt>sauverScores()</tt> de la classe
+	  <tt>Partie</tt>.
+	  Cette méthode doit ouvrir le fichier dont le nom est stocké dans
+	  <tt>FICHIER_SCORES</tt> en mode rajout,
+	  et, pour chaque joueur de la partie,
+	  écrire sur une ligne le résultat de <tt>ligneFichierScore()</tt>.
+	  Vérifiez que les scores sont bien ajoutés dans le fichier.
+	</li>
+      </ol>
+    </p>
+  </div>
+
+  <!-- --------------------------------------------------------------- -->
+	
+  <div class="w3-container" id="lire" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Lire un fichier</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+    <p>
+      Là aussi, en Java, il y a plusieurs façons de lire un fichier.
+      Nous allons utiliser la classe
+      <tt><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html">Scanner</a></tt>,
+      qui sert, de manière générale,
+      à découper une chaîne de caractères
+      en fonction d'un séparateur (spécifié par la méthode
+      <tt><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html#useDelimiter-java.lang.String-">useDelimiter()</a></tt>) et
+      à en retourner les éléments l'un après l'autre, via les méthodes
+      <ul>
+	<li>
+	  <tt><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html#hasNext--">hasNext()</a></tt>
+	  pour savoir s'il reste quelque chose à lire,
+	  et
+	</li>
+	<li>
+	  <tt><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html#next--">next()</a></tt> pour accéder à la chaîne suivante.
+	</li>
+      </ul>
+      On peut ainsi utiliser un <tt>Scanner</tt> pour&nbsp;:
+      <ul>
+	<li>découper une chaîne de type <tt>String</tt>
+<pre class="prettyprint">
+Scanner scanner = new Scanner("Bordeaux,105.2,102.4");
+scanner.useDelimiter(",");
+while (scanner.hasNext()) {
+    String mot = scanner.next();
+    // ...
+}
+</pre>	  
+	</li>
+	<li>lire dans un fichier
+	  (on utilise alors <tt><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html#hasNextLine--">hasNextLine()</a></tt> et
+	      <tt><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html#nextLine--">nextLine()</a></tt> pour lire ligne par ligne)
+<pre class="prettyprint">
+try (Scanner scanner = new Scanner(new File("/chemin/vers/fichier"))) {
+    while (scanner.hasNextLine()) {
+        String ligne = scanner.nextLine();
+        // ...
+    }    
+} catch (FileNotFoundException ex) {
+    System.out.println("Fichier non trouvé : " + ex);
+}
+</pre>
+<!--
+Notez qu'avec <tt>Scanner</tt> il n'y a pas besoin de fermer le fichier
+explicitement.
+L'objet <tt>Scanner</tt> le fait automatiquement après la lecture
+du dernier élément.
+-->
+	</li>
+	<li>lire depuis le clavier (voir dans <tt>Client</tt> par exemple)
+<pre class="prettyprint">
+Scanner scanner = new Scanner(System.in);
+String nomJoueur;
+do {
+    nomJoueur = scanner.next();
+} while (!correct(nomJoueur));
+</pre>	  
+	</li>
+      </ul>
+      Dans les trois cas, on peut aussi utiliser
+      <tt><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html#hasNextInt--">hasNextInt()</a></tt> et
+      <tt><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html#nextInt--">nextInt()</a></tt> pour lire un entier au lieu d'une chaîne.
+    </p>
+
+    <p>
+      Enfin, à la place de <tt>Scanner</tt>,
+      on aurait pu utiliser des méthodes plus "bas niveau"
+      pour lire un fichier, via les classes
+      <tt><a href="https://docs.oracle.com/javase/8/docs/api/java/io/FileReader.html">FileReader</a></tt> et
+      <tt><a href="https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html">BufferedReader</a></tt>, par exemple.
+      Dans ce cas, ne pas oublier de fermer le fichier
+      (méthode <tt>close()</tt>) à la fin de son utilisation.
+    </p>
+
+    
+    <h3>4. Charger une partie sauvegardée</h3>
+
+    <p>
+      Nous allons maintenant implémenter la restauration
+      d'une partie sauvegardée.
+      <ol>
+	<li>
+	  dans la classe <tt>Partie</tt>, lisez le code de la méthode
+	  <tt>restaurer()</tt>
+	</li>
+	<li>
+	  dans cette même classe, lisez le code de la méthode <tt>deserialiser()</tt>
+	</li>
+	<li>
+	  codez la méthode <tt>deserialiser()</tt> de la
+	  classe <tt>Joueur</tt>. Utilisez pour cela un <tt>Scanner</tt>
+          pour lire la sérialisation du joueur passée en paramètre.
+	  Pensez à utiliser Joueur.SEPARATEUR comme séparateur.
+	  Créez un nouveau joueur et affectez-lui les attributs récupérés
+	  depuis la sérialisation.
+	  L'ordre des éléments lus est le même que dans <tt>serialiser()</tt>.
+	</li>
+	<li>
+	  le test <tt>testDeserialiser()</tt> de la classe <tt>JoueurTest</tt>
+	  doit passer.
+	</li>
+	<li>
+	  pourquoi les méthodes <tt>deserialiser()</tt> sont-elles des méthodes
+	  de classe (<tt>static</tt>)&nbsp;?
+	</li>
+      </ol>
+    </p>
+   
+
+  <!-- --------------------------------------------------------------- -->
+	
+  <div class="w3-container" id="bonus" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Exercices facultatifs</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+    <h3>Meilleurs scores</h3>
+    <p>
+      On souhaite, à chaque fin de partie,
+      vérifier si certains scores sont parmi les 10 meilleurs,
+      les insérer, et afficher ces 10 meilleurs scores.
+      <ol>
+	<li>
+	  dans <tt>Partie</tt>, modifiez la méthode <tt>sauverScore()</tt>
+	  dans ce sens, lui faire renvoyer le tableau des meilleurs scores
+	  sous forme de chaîne,
+	  et envoyer cette chaîne aux clients
+	  après l'appel à <tt>partie.sauverScore()</tt> dans <tt>Serveur</tt>.
+	</li>
+	<li>
+	  gérez le cas des ex-aequo : dans ce cas
+	  les joueurs doivent avoir le même classement.
+	</li>
+      </ol>
+    </p>
+    
+    <h3>Vérifier l'intégrité d'un fichier de sauvegarde</h3>
+
+    <p>
+      Écrire une méthode vérifiant que le fichier de sauvegarde est
+      correct&nbsp;:
+      <ul>
+	<li>
+	  tous les champs sont présents,
+	</li>
+	<li>
+	  le nombre de joueurs correspond au nombre de joueurs listés,
+	</li>
+	<li>
+	  les dimensions du plateau sont cohérentes avec sa largeur et sa hauteur,
+	</li>
+	<li>
+	  tous les joueurs encore en jeu sont présents sur le plateau, et uniquement ceux-là,
+	</li>
+	<li>
+	  le score des joueurs est cohérent avec le nombre de tours.
+	</li>
+      </ul>
+    </p>
+
+    <h3>Vérifier qu'il existe un chemin sur le plateau</h3>
+
+    <p>
+      Écrire une méthode qui vérifie qu'un chemin existe pour chacun
+      des joueurs en jeu, jusqu'à l'extrémité droite du plateau.
+    </p>
+    
+</div>
+
+
+</div>
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML =  element.alt;
+}
+</script>
+
+</body>
+</html>

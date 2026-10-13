@@ -1,0 +1,50 @@
+
+There are no discarded input sections
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .text set to 0x80001800
+                0x8005eb90                        GetSpecificPlayerActor = 0x8005eb90
+                0x8042a748                        _ZN19ClassWithCameraInfo8instanceE = 0x8042a748
+                0x80061e30                        _Z11CreateActor6ActorsjP4VEC3Pvc = 0x80061e30
+
+.text           0x80001800      0x204
+                0x80001800                        __text_start = .
+ *(.text .text.*)
+ .text          0x80001800      0x204 tmp\1.o
+                0x80001800                MyHook
+                0x80001880                ExecuteTwitchCommands
+                0x80001a04                        __text_end = .
+
+.data           0x80001a04        0x8
+ *(.data .data.*)
+ .data          0x80001a04        0x8 tmp\1.o
+
+.bss            0x80001a0c        0x0
+ *(.bss .bss.*)
+ .bss           0x80001a0c        0x0 tmp\1.o
+
+.rodata         0x80001a0c       0x1c
+ *(.rodata .rodata.*)
+ .rodata.cst4   0x80001a0c       0x1c tmp\1.o
+
+.eh_frame       0x80001a28       0x3c
+ .eh_frame      0x80001a28       0x3c tmp\1.o
+
+.kamek
+ *(.kamek .kamek.*)
+LOAD tmp\1.o
+OUTPUT(Build/ntsc_ntsc_object.bin binary)
+
+.comment        0x00000000       0x19
+ .comment       0x00000000       0x19 tmp\1.o
+
+.gnu.attributes
+                0x00000000       0x10
+ .gnu.attributes
+                0x00000000       0x10 tmp\1.o

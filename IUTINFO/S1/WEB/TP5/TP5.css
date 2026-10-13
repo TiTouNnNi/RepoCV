@@ -1,0 +1,48 @@
+p{
+    width: 22%;
+    height: 33%;
+    display: inline;
+    background-color: aqua;
+}
+div{
+    display:flex;
+    justify-content: center;
+    background-color: green;
+}
+
+span{
+    height: 15%;
+    width: 3%;
+    display: inline;
+    background-color: red;
+}
+a{
+    height: 33%;
+    width: 44%;
+    display: block;
+    background-color: yellow;
+}
+
+input{
+    width: 25%;
+    display: inline;
+    background-color: orange;
+}
+
+#bro1 {
+    background-color: red;
+    margin-bottom: 20px;
+}
+
+#bro2 {
+    background-color: green;
+    margin-top: 30px;
+}
+
+div p {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    background-color: orange;
+}
+

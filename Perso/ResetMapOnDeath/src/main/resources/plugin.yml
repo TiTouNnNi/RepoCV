@@ -1,0 +1,19 @@
+# Main configuration file for the Spigot/Paper plugin.
+name: ResetMapOnDeath
+version: 1.0
+main: fr.votreplugin.resetmapondeath.ResetMapOnDeath
+api-version: '26.1.2'
+
+commands:
+  forcereset:
+    description: Forces the map to reset.
+    permission: resetmap.admin
+  setattempts:
+    description: Sets the current number of attempts.
+    permission: resetmap.admin
+  editdeaths:
+    description: Modifies a player's death count.
+    permission: resetmap.admin
+  listeffects:
+    description: Lists all available potion effects in the console.
+    permission: resetmap.admin

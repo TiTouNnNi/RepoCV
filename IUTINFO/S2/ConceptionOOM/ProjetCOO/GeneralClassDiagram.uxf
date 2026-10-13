@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>30</y>
+      <w>180</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>GAME
+--
+-List&lt;ROOM&gt;() rooms;
+-inventory: Inventory
+-List&lt;String&gt;() dialogs;
+-healthPoint: int=5
+-timer : int=100
+--
+-mouseDrag(): void
+-select(Items item): Items
+-mouseClick(): void
+-displayInventory(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>250</y>
+      <w>360</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>INVENTORY
+--
+-Map&lt;Int,ITEMS&gt;() inventory;
+--
+-Inventory()
+-combinationPossible(Items one,Items two): boolean
+-combine(Items one,Items two): Items
+-addItem(Items add): void
+-removeItem(Items remove): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>570</x>
+      <y>40</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>ITEMS
+--
+-pickingDialog: String
+-displayed: boolean =true
+-item: Image
+-finaltem: Items
+--
+Items(String,Image)
+Items(String,Image,Items)
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>260</y>
+      <w>230</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>PUZZLES
+--
+-solvingDialog: String
+-solved: boolean = false
+-initialPuzzle: Image
+-finalPuzzle: Image
+-item: Items 
+--
+Puzzle(String,Items,Image,Image)
+Puzzle(String,Image,Image)
+-useItem(Items item): boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1010</x>
+      <y>190</y>
+      <w>240</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>ROOM
+--
+-Map&lt;Int,String&gt;() dialogs;
+-Map&lt;Int,Puzzle&gt;() puzzles;
+-List&lt;Items&gt;() items;
+-objective: String
+-room: Image
+-puzzleToSolve: int=1
+--
+-solveAPuzzle(Puzzle puzzle): boolean 
+-displayRoom():void
+-addPuzzle(Puzzle puzzle): void
+-addItem(Items item): void
+-removeItem(Items item): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

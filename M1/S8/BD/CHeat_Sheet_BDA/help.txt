@@ -1,0 +1,235 @@
+La clause GROUP BY
+
+La clause GROUP BY permet de regrouper des lignes qui ont les mêmes valeurs dans une ou plusieurs colonnes spécifiques afin de créer des lignes de résumé.
+
+On l'utilise presque systématiquement avec des fonctions d'agrégation telles que :
+
+    COUNT() : pour compter le nombre d'éléments.
+
+    SUM() : pour faire la somme d'une colonne.La clause GROUP BY
+
+La clause GROUP BY permet de regrouper des lignes qui ont les mêmes valeurs dans une ou plusieurs colonnes spécifiques afin de créer des lignes de résumé.
+
+On l'utilise presque systématiquement avec des fonctions d'agrégation telles que :
+
+    COUNT() : pour compter le nombre d'éléments.
+
+    SUM() : pour faire la somme d'une colonne.
+
+    AVG() : pour calculer une moyenne.
+
+    MAX() / MIN() : pour trouver la valeur la plus haute ou la plus basse.
+
+Exemple pratique
+
+Imaginons une table employees contenant les employés d'une entreprise et leur département. Si vous voulez savoir combien d'employés travaillent dans chaque département, vous devez grouper les données par département, puis compter les employés.
+SQL
+
+-- Calculates the total number of employees per department.
+-- Uses the COUNT aggregate function alongside GROUP BY.
+SELECT
+  department_id,
+  COUNT(employee_id) AS total_employees
+FROM
+  employees
+GROUP BY
+  department_id;
+
+La clause HAVING
+
+La clause HAVING a été spécifiquement ajoutée au langage SQL pour pallier une limitation de la clause WHERE : il est impossible d'utiliser une fonction d'agrégation dans un WHERE.
+
+Tout comme WHERE filtre des lignes individuelles, HAVING filtre des groupes de lignes (ceux générés par le GROUP BY).
+HAVING vs WHERE : Pourquoi et quand les utiliser ?
+
+La différence cruciale entre les deux réside dans l'ordre d'exécution de votre requête par le moteur SQL. Voici comment une requête est lue et traitée en arrière-plan :
+
+    FROM : Récupère l'ensemble des données de la table de base.
+
+    WHERE : Filtre les lignes individuelles avant tout calcul.
+
+    GROUP BY : Rassemble les lignes restantes en groupes.
+
+    HAVING : Filtre ces groupes selon les résultats des fonctions d'agrégation.
+
+    SELECT : Formate et affiche les résultats finaux.
+
+Comparaison rapide
+Caractéristique	WHERE	HAVING
+Cible du filtre	Lignes individuelles	Groupes de lignes
+Moment d'exécution	Avant le regroupement (GROUP BY)	Après le regroupement (GROUP BY)
+Fonctions d'agrégation	❌ Interdites	✅ Autorisées et recommandées
+Exemple combiné
+
+Prenons un scénario complet : Vous voulez trouver les départements qui ont plus de 5 employés, mais vous ne voulez compter que les employés qui sont actuellement actifs dans l'entreprise.
+
+    On utilise WHERE pour ne garder que les employés actifs (on filtre les lignes).
+
+    On utilise GROUP BY pour les rassembler par département.
+
+    On utilise HAVING pour ne garder que les groupes (départements) dont le total dépasse 5.
+
+SQL
+
+-- Retrieves departments with more than 5 active employees.
+SELECT
+  department_id,
+  COUNT(employee_id) AS total_employees
+FROM
+  employees
+WHERE
+  status = 'ACTIVE'  -- Filters individual rows before grouping.
+GROUP BY
+  department_id
+HAVING
+  COUNT(employee_id) > 5;  -- Filters the aggregated groups.
+
+    En résumé : Utilisez WHERE pour nettoyer ou restreindre vos données brutes avant de faire vos calculs. Utilisez HAVING pour filtrer les résultats de vos calculs une fois qu'ils ont été effectués sur vos groupes.
+
+    AVG() : pour calculer une moyenne.
+
+    MAX() / MIN() : pour trouver la valeur la plus haute ou la plus basse.
+
+Exemple pratique
+
+Imaginons une table employees contenant les employés d'une entreprise et leur département. Si vous voulez savoir combien d'employés travaillent dans chaque département, vous devez grouper les données par département, puis compter les employés.
+SQL
+
+-- Calculates the total number of employees per department.
+-- Uses the COUNT aggregate function alongside GROUP BY.
+SELECT
+  department_id,
+  COUNT(employee_id) AS total_employees
+FROM
+  employeesLa clause GROUP BY
+
+La clause GROUP BY permet de regrouper des lignes qui ont les mêmes valeurs dans une ou plusieurs colonnes spécifiques afin de créer des lignes de résumé.
+
+On l'utilise presque systématiquement avec des fonctions d'agrégation telles que :
+
+    COUNT() : pour compter le nombre d'éléments.
+
+    SUM() : pour faire la somme d'une colonne.
+
+    AVG() : pour calculer une moyenne.
+
+    MAX() / MIN() : pour trouver la valeur la plus haute ou la plus basse.
+
+Exemple pratique
+
+Imaginons une table employees contenant les employés d'une entreprise et leur département. Si vous voulez savoir combien d'employés travaillent dans chaque département, vous devez grouper les données par département, puis compter les employés.
+SQL
+
+-- Calculates the total number of employees per department.
+-- Uses the COUNT aggregate function alongside GROUP BY.
+SELECT
+  department_id,
+  COUNT(employee_id) AS total_employees
+FROM
+  employees
+GROUP BY
+  department_id;
+
+La clause HAVING
+
+La clause HAVING a été spécifiquement ajoutée au langage SQL pour pallier une limitation de la clause WHERE : il est impossible d'utiliser une fonction d'agrégation dans un WHERE.
+
+Tout comme WHERE filtre des lignes individuelles, HAVING filtre des groupes de lignes (ceux générés par le GROUP BY).
+HAVING vs WHERE : Pourquoi et quand les utiliser ?
+
+La différence cruciale entre les deux réside dans l'ordre d'exécution de votre requête par le moteur SQL. Voici comment une requête est lue et traitée en arrière-plan :
+
+    FROM : Récupère l'ensemble des données de la table de base.
+
+    WHERE : Filtre les lignes individuelles avant tout calcul.
+
+    GROUP BY : Rassemble les lignes restantes en groupes.
+
+    HAVING : Filtre ces groupes selon les résultats des fonctions d'agrégation.
+
+    SELECT : Formate et affiche les résultats finaux.
+
+Comparaison rapide
+Caractéristique	WHERE	HAVING
+Cible du filtre	Lignes individuelles	Groupes de lignes
+Moment d'exécution	Avant le regroupement (GROUP BY)	Après le regroupement (GROUP BY)
+Fonctions d'agrégation	❌ Interdites	✅ Autorisées et recommandées
+Exemple combiné
+
+Prenons un scénario complet : Vous voulez trouver les départements qui ont plus de 5 employés, mais vous ne voulez compter que les employés qui sont actuellement actifs dans l'entreprise.
+
+    On utilise WHERE pour ne garder que les employés actifs (on filtre les lignes).
+
+    On utilise GROUP BY pour les rassembler par département.
+
+    On utilise HAVING pour ne garder que les groupes (départements) dont le total dépasse 5.
+
+SQL
+
+-- Retrieves departments with more than 5 active employees.
+SELECT
+  department_id,
+  COUNT(employee_id) AS total_employees
+FROM
+  employees
+WHERE
+  status = 'ACTIVE'  -- Filters individual rows before grouping.
+GROUP BY
+  department_id
+HAVING
+  COUNT(employee_id) > 5;  -- Filters the aggregated groups.
+
+    En résumé : Utilisez WHERE pour nettoyer ou restreindre vos données brutes avant de faire vos calculs. Utilisez HAVING pour filtrer les résultats de vos calculs une fois qu'ils ont été effectués sur vos groupes.
+GROUP BY
+  department_id;
+
+La clause HAVING
+
+La clause HAVING a été spécifiquement ajoutée au langage SQL pour pallier une limitation de la clause WHERE : il est impossible d'utiliser une fonction d'agrégation dans un WHERE.
+
+Tout comme WHERE filtre des lignes individuelles, HAVING filtre des groupes de lignes (ceux générés par le GROUP BY).
+HAVING vs WHERE : Pourquoi et quand les utiliser ?
+
+La différence cruciale entre les deux réside dans l'ordre d'exécution de votre requête par le moteur SQL. Voici comment une requête est lue et traitée en arrière-plan :
+
+    FROM : Récupère l'ensemble des données de la table de base.
+
+    WHERE : Filtre les lignes individuelles avant tout calcul.
+
+    GROUP BY : Rassemble les lignes restantes en groupes.
+
+    HAVING : Filtre ces groupes selon les résultats des fonctions d'agrégation.
+
+    SELECT : Formate et affiche les résultats finaux.
+
+Comparaison rapide
+Caractéristique	WHERE	HAVING
+Cible du filtre	Lignes individuelles	Groupes de lignes
+Moment d'exécution	Avant le regroupement (GROUP BY)	Après le regroupement (GROUP BY)
+Fonctions d'agrégation	❌ Interdites	✅ Autorisées et recommandées
+Exemple combiné
+
+Prenons un scénario complet : Vous voulez trouver les départements qui ont plus de 5 employés, mais vous ne voulez compter que les employés qui sont actuellement actifs dans l'entreprise.
+
+    On utilise WHERE pour ne garder que les employés actifs (on filtre les lignes).
+
+    On utilise GROUP BY pour les rassembler par département.
+
+    On utilise HAVING pour ne garder que les groupes (départements) dont le total dépasse 5.
+
+SQL
+
+-- Retrieves departments with more than 5 active employees.
+SELECT
+  department_id,
+  COUNT(employee_id) AS total_employees
+FROM
+  employees
+WHERE
+  status = 'ACTIVE'  -- Filters individual rows before grouping.
+GROUP BY
+  department_id
+HAVING
+  COUNT(employee_id) > 5;  -- Filters the aggregated groups.
+
+    En résumé : Utilisez WHERE pour nettoyer ou restreindre vos données brutes avant de faire vos calculs. Utilisez HAVING pour filtrer les résultats de vos calculs une fois qu'ils ont été effectués sur vos groupes.

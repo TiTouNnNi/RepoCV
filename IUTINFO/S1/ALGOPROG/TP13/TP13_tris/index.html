@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<html>
+<title>TP Tris</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="http://www.informatics-tech.com/highlighter/prettify.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+table tr th,td{
+  border:1px solid black;
+} 
+table {
+ border-collapse:collapse;
+ width:90%;
+}
+th, td {
+ border:1px solid black;
+ width:20%;
+}
+td:first-child{
+  font-weight:bold;
+}
+td {
+ text-align:center;
+}
+caption {
+ font-weight:bold
+}
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+pre.enLigne{display: inline;}
+tt {background-color: #ffd6cc;}
+</style>
+<body>
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+    <div class="w3-container">
+      <h3 class="w3-padding-64"><b>IUT<br>Département-info</b></h3>
+    </div>
+    <div class="w3-bar-block">
+
+
+      <a href="#exo1" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">1. Tri par sélection </a> 
+      <a href="#exo2" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">2. Tri à bulle </a> 
+      <a href="#exo3" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">3. Comparaison </a> 
+      <a href="#exo4" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">4. Tri par comptage </a> 
+      <a href="#exo5" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">5. Les autres tris </a> 
+      <a href="#exo6" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">6. Améliorer vos tests</a> 
+
+
+    </div>
+  </nav>
+
+  <!-- Top menu on small screens -->
+  <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+    <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">&#9776;</a>
+    <span>Iut info BDX</span>
+  </header>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+    <!-- Header -->
+    <div class="w3-container" style="margin-top:80px" id="showcase">
+      <h1 class="w3-jumbo"><b>TP Tris</b></h1>
+      <!-- <h1 class="w3-xxxlarge w3-text-red"><b>Mise en oeuvre avec le jeu du morpion</b></h1> -->
+      <hr style="width:50px;border:5px solid red" class="w3-round">
+    </div>
+
+    <!-- Photo grid (modal) -->
+    <div class="w3-row-padding">
+      <div>
+        <p>Vous allez travailler sur la création d'algorithmes de tris&nbsp;:
+          <ul>
+            <li>
+             cette semaine, vous travaillerez sur les exercices 1 à 4
+             (et les remettrez sur Moodle avant le prochain TP)&nbsp;;
+           </li>
+           <li>
+             la semaine prochaine, vous travaillerez sur les exercices 5 et 6.
+           </li>
+         </p>
+         <p><img src="img/sort.jpg"></p>
+       </div>
+     </div>
+
+
+
+     <!-- Modal for full size images on click-->
+     <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+      <span class="w3-button w3-black w3-xxlarge w3-display-topright">&times;</span>
+      <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image">
+        <p id="caption"></p>
+      </div>
+    </div>
+
+
+
+
+
+
+    <div class="w3-container" id="exo1" style="margin-top:75px">
+      <h1 class="w3-xxxlarge w3-text-red"><b>Exercice 1 : Tri par sélection </b></h1>
+      <hr style="width:50px;border:5px solid red" class="w3-round">
+
+      <h2>Question 1</h2>
+      Dans la classe <tt>Sort</tt>, codez la méthode <pre class="prettyprint enLigne">echanger(int[] tab, int i, int j)</pre>, qui échange les éléments d'indices <tt>i</tt> et <tt>j</tt> dans le tableau <tt>tab</tt>. Les tests dans <pre class="prettyprint enLigne">testEchanger()</pre> doivent passer.
+
+      <h2>Question 2</h2>
+      Préparez les tests unitaires de la méthode <pre class="prettyprint enLigne">triParSelection(int[] tab)</pre> dans la méthode <pre class="prettyprint enLigne">testTriParSelection()</pre>.
+
+      <h2>Question 3</h2>
+      Implémentez la méthode <pre class="prettyprint enLigne">triParSelection(int[] tab)</pre>  à partir de l'algorithme vu en TD.
+
+    </div>
+
+
+
+
+    <div class="w3-container" id="exo2" style="margin-top:75px">
+      <h1 class="w3-xxxlarge w3-text-red"><b>Exercice 2 : Tri à bulle </b></h1>
+      <hr style="width:50px;border:5px solid red" class="w3-round">
+
+      <h2>Question 1</h2>
+      Préparez les tests unitaires de la méthode <pre class="prettyprint enLigne">triABulle(int[] tab)</pre>   dans la méthode <pre class="prettyprint enLigne">testTriABulle()</pre>.
+
+      <h2>Question 2</h2>
+      Implémentez la méthode <pre class="prettyprint enLigne">triABulle(int[] tab)</pre>  à partir de l'algorithme vu en TD.
+
+    </div>
+
+
+
+
+    <div class="w3-container" id="exo3" style="margin-top:75px">
+      <h1 class="w3-xxxlarge w3-text-red"><b>Exercice 3 : Comparaison des algorithmes de tri</b></h1>
+      <hr style="width:50px;border:5px solid red" class="w3-round">
+
+
+      Nous allons maintenant comparer les algorithmes de tris, pour estimer lequel est le plus rapide. Pour cela nous vous
+      fournissons le fichier <pre class="prettyprint enLigne">Benchmark.java</pre>, qui permet de lancer les différents algorithmes de tri sur des tableaux remplis aléatoirement.
+      Les algorithmes sont lancés sur des tableaux ayant des tailles variant de 10000 à 90000 entiers (voir la variable tailleMax).
+
+
+      <h2>Question 1</h2>
+
+       
+      <ul>
+	<li>Faîtes tourner ce benchmark, en utilisant la méthode  <pre class="prettyprint enLigne">testBench()</pre> de <pre class="prettyprint enLigne">BenchmarkTest.java</pre>. Cela va lancer les tests, et écrire les temps d’exécution dans un fichier <tt>benchmark.txt</tt>.</li>
+        <li>Placez-vous dans le répertoire <tt>tris/</tt>.</li>
+	<li>Vérifiez que le fichier <tt>benchmark.txt</tt> a bien été généré.</li>
+	<li>Lancez la commande suivante :
+          <pre class="prettyprint enLigne">gnuplot tris.plt</pre>.
+	</li>
+	<li>
+      Cela va générer une image <tt>tris.svg</tt>, que vous pouvez par exemple ouvrir via la commande
+      <pre class="prettyprint enLigne">eog tris.svg</pre>.
+	</li>
+      </ul>
+      Vous devriez obtenir un graphique proche de celui-ci : 
+
+      <p><img src="img/plot.svg"></p>
+
+      Seuls les tris que vous avez implémentés sont représentés pour l’instant, ainsi que le <b>tri par défaut de Java</b> (via la méthode <pre class="prettyprint enLigne">Arrays.sort()</pre>). Interprétez ce graphique : quel est le tri le plus rapide ? Pourquoi ? Comparez les temps de calcul du tri par sélection pour 40000 et 80000 éléments pour les tris par sélection et à bulle :
+      est-ce le double ? Pourquoi ?
+
+    </div>
+
+
+
+    <div class="w3-container" id="exo4" style="margin-top:75px">
+      <h1 class="w3-xxxlarge w3-text-red"><b>Exercice 4 : Tri par comptage</b></h1>
+      <hr style="width:50px;border:5px solid red" class="w3-round">
+      <p>Le tri par comptage fonctionne de la manière suivante.
+        À chaque case du tableau <tt>tab</tt> à trier, on associe un compteur.
+        Ces compteurs sont initialisés à zéro, puis modifiés de la manière suivante.
+        Pour chaque case <tt>i</tt>, on parcourt toutes les cases <tt>j</tt> strictement inférieures à <tt>i</tt> :
+        <ul>
+          <li>si la case <tt>j</tt> du tableau est strictement  inférieure à la case <tt>i</tt>,
+            le compteur associé à la case <tt>i</tt> est incrémenté, </li>
+            <li>sinon, le compteur associé à la case <tt>j</tt> est incrémenté.</li>
+          </ul>
+
+
+          Chaque compteur contient alors l'indice auquel sera placée la valeur 
+          dans le tableau trié. Par exemple si le compteur de la case <tt>2</tt> vaut <tt>5</tt>, 
+          alors <tt>tab[2]</tt> sera placé dans la case d'indice <tt>5</tt> du tableau trié.
+        </p>
+        <p>
+          Voici un exemple. On veut trier le tableau <tt>tab</tt> suivant :
+          {3, 1, 3, 2}.
+        </p>
+
+        Initialement, on a la situation suivante :
+        <table>
+          <tr>
+            <td>tab</td>
+            <td>3</td>
+            <td>1</td>
+            <td>3</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Compteurs</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+
+        </table>
+
+
+        <ul>
+          <li>[Pour <tt>i=0</tt>,] on compare <tt>tab[0]</tt> à ses prédécesseurs <tt>j < i</tt>.  Il n'y en a aucun, donc rien à faire.</li>
+
+          <li>[Pour <tt>i=1</tt>,] on compare <tt> tab[1]</tt> à ses prédécesseurs <tt>j < i</tt> :
+
+            <ul>
+              <li> pour <tt>j=0</tt>, on a <tt> tab[j] > tab[i] </tt>  donc on incrémente le compteur de <tt>j</tt>.
+              </li>
+
+            </ul>
+            On obtient : 
+
+            <table>
+              <tr>
+                <td>tab</td>
+                <td>3</td>
+                <td>1</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Compteurs</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </table>
+            </li>
+
+            <li>[Pour <tt>i=2</tt>,] on compare <tt> tab[2]</tt> à ses prédécesseurs <tt>j < i</tt> 
+            <ul>
+              <li> pour <tt>j=0</tt>, on a <tt> tab[j] = tab[i] </tt>  donc on incrémente le compteur de <tt>j</tt>.
+              </li>
+
+              <li> pour <tt>j=1</tt>, on a <tt> tab[j] < tab[i] </tt>  donc on incrémente le compteur de <tt>i</tt>.
+              </li>
+
+            </ul>
+            On obtient : 
+
+            <table>
+              <tr>
+                <td>tab</td>
+                <td>3</td>
+                <td>1</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Compteurs</td>
+                <td>2</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+              </tr>
+            </table>
+            </li>
+
+
+            <li>[Pour <tt>i=3</tt>,] on compare <tt> tab[2]</tt> à ses prédécesseurs <tt>j < i</tt> 
+            <ul>
+              <li> pour <tt>j=0</tt>, on a <tt> tab[j] > tab[i] </tt>  donc on incrémente le compteur de <tt>j</tt>.
+              </li>
+
+              <li> pour <tt>j=1</tt>, on a <tt> tab[j] < tab[i] </tt>  donc on incrémente le compteur de <tt>i</tt>.
+              </li>
+
+              <li> pour <tt>j=2</tt>, on a <tt> tab[j] > tab[i] </tt>  donc on incrémente le compteur de <tt>j</tt>.
+              </li>
+
+            </ul>
+            On obtient : 
+
+            <table>
+              <tr>
+                <td>tab</td>
+                <td>3</td>
+                <td>1</td>
+                <td>3</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Compteurs</td>
+                <td>3</td>
+                <td>0</td>
+                <td>2</td>
+                <td>1</td>
+              </tr>
+            </table>
+            </li>
+</ul>
+
+<p>Les compteurs indiquent bien les indices des cases 
+dans le tableau trié </p>
+ 
+ <h2>Question 1 </h2>
+
+ <p>
+<ol>
+  <li>Écrire le code du tri par comptage.</li>
+  <li>Écrivez au minimum 4 tests unitaires.</li>
+  <li>Regénérez les courbes afin de le comparer aux autres tris. Pensez à décommenter les lignes correspondantes à ce tri dans la méthode <tt>testBench()</tt> de <tt>BenchmarkTest</tt>.</li>
+</ol>
+  </p>
+
+          </div>
+
+
+          <div class="w3-container" id="exo5" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-red"><b>Exercice 5 : Les autres tris</b></h1>
+            <hr style="width:50px;border:5px solid red" class="w3-round">
+
+            <p>Implémentez les nouveaux tris vus en TD&nbsp;: tri par insertion, tri fusion et tri rapide. Comparez leurs performances aux autres tris.</p>
+
+	    <p>Une illustration du tri rapide, 
+              <a href="https://idea-instructions.com/">façon notice Ikea</a> (pour l'étape 1 nous choisissons le pivot au milieu du tableau, plutôt qu'aléatoirement)&nbsp;:<br/>
+	      <img src="img/quick-sort.svg"/><br/>
+	      et du tri fusion&nbsp;:<br/>
+	      <img src="img/merge-sort.svg"/><br/>
+	    <p>
+          </div>
+
+	  
+          <div class="w3-container" id="exo6" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-red"><b>Exercice 6 : Améliorer vos tests</b></h1>
+            <hr style="width:50px;border:5px solid red" class="w3-round">
+
+            <p>Il est assez simple de vérifier que le tableau trié l'est effectivement. Par contre il est plus compliqué de tester si on retrouve toutes les valeurs du tableau
+            d’origine.</p>
+
+            Écrivez une fonction <pre class="prettyprint enLigne">memesValeurs</pre> prenant deux tableaux d’entiers en paramètres et retournant <tt>true</tt> si les deux contiennent les mêmes valeurs avec le même nombre d’occurrence, et <tt>false</tt> sinon.
+          </div>
+
+
+
+
+          <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+          <script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML =  element.alt;
+}
+</script>
+
+</body>
+</html>

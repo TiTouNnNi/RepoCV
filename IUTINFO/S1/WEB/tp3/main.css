@@ -1,0 +1,35 @@
+h1{
+    color:red;
+}
+body {
+    background-color: aqua;
+    margin: 40px 20px 25px;
+}
+#margeheader{
+    position: relative;
+    border: solid blue;
+    margin: 20px 20px 10px;
+}
+#margefooter{
+    border: solid red;
+    margin: 20px 10px 20px;
+}
+h4{
+    font-style: italic;
+    color: #395699;
+    margin: 5px; 
+}
+h5{
+    font-style: italic;
+    color: #395699;
+    margin: 5px; 
+}
+img{
+    position: absolute; 
+    top: 0px; right: 0px;
+    width: 300px;
+    height: 100px;
+}
+a {
+    align-items: center;
+}

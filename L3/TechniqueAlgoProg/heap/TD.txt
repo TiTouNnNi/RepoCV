@@ -1,0 +1,37 @@
+Question 1 : Définition d'un tas binaire et implémentation par un tableau
+
+Définition d'un tas binaire :
+Un tas binaire est une structure de données arborescente qui satisfait la propriété de tas. Il existe deux types de tas binaires :
+
+    Tas min : Pour chaque nœud, la valeur de ce nœud est inférieure ou égale à celle de ses fils.
+
+    Tas max : Pour chaque nœud, la valeur de ce nœud est supérieure ou égale à celle de ses fils.
+
+Implémentation par un tableau :
+Un tas binaire peut être implémenté efficacement à l'aide d'un tableau. Pour un élément d'indice i dans le tableau :
+
+    Fils gauche : L'indice du fils gauche est 2*i + 1.
+
+    Fils droit : L'indice du fils droit est 2*i + 2.
+
+    Père : L'indice du père est (i-1)//2 (division entière).
+
+Question 2 : Principe de l'ajout d'un élément dans le tas et complexité
+
+Principe de l'ajout d'un élément :
+
+L'élément est ajouté à la fin du tableau (c'est-à-dire à la première position disponible dans le tas).
+
+Réorganisation : L'élément est ensuite "remonté" dans l'arbre pour rétablir la propriété du tas. Cela consiste à comparer l'élément ajouté avec son père et à les échanger si nécessaire, et ce jusqu'à ce que la propriété du tas soit respectée.
+
+Complexité : O(log n)
+
+
+Question 3 : Principe de la suppression du minimum et complexité
+
+Principe de la suppression du minimum (pour un tas min) :
+Le minimum est toujours à la racine du tas (premier élément du tableau). On le retire et on le remplace par le dernier élément du tableau.
+
+Réorganisation : L'élément déplacé à la racine est ensuite "descendu" dans l'arbre pour rétablir la propriété du tas. Cela consiste à comparer cet élément avec ses fils et à l'échanger avec le plus petit (pour un tas min) ou le plus grand (pour un tas max) jusqu'à ce que la propriété du tas soit respectée.
+
+Complexité : O(log n)

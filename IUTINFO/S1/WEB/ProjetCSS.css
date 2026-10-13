@@ -1,0 +1,341 @@
+@font-face{
+    font-family: "LiberationSans-Regular";
+    src: url("font/LiberationSans-Regular.ttf");
+    font-display: auto;
+}
+
+body{
+   background-color: #f7f7f7;
+   width:1110px;
+   margin: auto;
+   font-family: "LiberationSans-Regular";
+}
+
+header{
+    margin-bottom: 15px;
+    height: 75px;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: solid #00678e;
+    background-color: #f7f7f7;
+}
+
+#logoHexa{
+    margin-left: 40px;
+    display: inline-block;
+    width: 230px;
+    text-align: center;
+}
+
+#logoHexa img{
+    margin-top: 15px;
+    height: 50px;
+    width: 200px;
+    display: inline-block;
+}
+
+#menu{
+    font-weight: bold;
+    margin-top: 50px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+#evenement{
+    margin-left: 13px;
+    margin-right: 10px;
+}
+#menu a {
+    vertical-align: bottom;
+}
+
+#menu img{
+    height: 15px;
+    width: 15px;
+}
+
+.gras{
+    font-weight: bold;
+}
+
+#compte{
+    margin-right: 40px;
+    display: inline-block;
+    width:250px;
+    text-align:center;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+#compte img{
+    margin-top: 25px;   
+}
+
+
+.lien{
+    font-weight: bold;
+    font-family: "LiberationSans-Regular";
+    color:#00678e;
+    text-decoration: none;
+}
+
+.lien:hover{
+    text-decoration: underline;
+}
+
+#menu * {
+    padding-left: 3px;
+    margin-bottom:2px;
+}
+
+#premiere{
+    position: relative;
+    background-image: url("Images/background-accueil.png");
+    background-size: 100%;
+    height: 470px;
+    margin:0px 25px 0px 25px;
+}
+
+#blocconference h1{
+    margin-top: 2px;
+    text-align: center;
+    color:#00678e;
+    font-size: 35px;
+}
+
+#blocconference{
+    position: absolute;
+    padding:15px;
+    color:#00678e;
+    background-color:white;
+    height:290px;
+    width:550px;
+    top:15%;
+    left:23%;
+}
+
+#blocconference button{
+    margin-top:1%;
+    margin-left:35%;
+}
+
+section{
+    font-family: "LiberationSans-Regular";
+    color: #00678e;
+}
+#blocconference p{
+    margin-top: -20px;
+    text-align: justify;
+}
+
+button{
+    width:170px;
+    text-align: center;
+    color: #f7f7f7;
+    background-color: #00678e;
+    padding:15px;
+    font-size:15px;
+}
+
+#deuxieme{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#boiteun button{
+    margin-left:33%;
+}
+#boiteun{
+    font-weight: bold;
+    width: 500px;
+    height: 700px;
+    padding: 10px;
+    margin-top: 30px;
+    border: 1px solid #00678e;
+    box-shadow: 2px 2px 2px #00678e;
+    display: table;
+}
+#BDXIO{
+    display:table;
+    width: 50%;
+}
+#ox10{
+    width: 350px;
+}
+.blocdubas{
+    display: flex;
+}
+.lieuetdate{
+    width: 50%;
+}
+
+#lieu{
+    display:flex;
+}
+
+#lieu img{
+    height: 30px;
+}
+
+#lieu p{
+    margin-top: auto;
+    margin-left:6%;
+}
+
+#date{
+    margin-top:-20%;
+    display:flex;
+}
+
+#date img{
+    height: 30px;
+}
+
+#date p{
+    margin-top: 3%;
+    margin-left:6%;
+}
+
+#quatrepar6{
+    color:white;
+    top: 96%;
+    left:41.5%;
+    position: absolute;
+}
+
+#interrosur6{
+    position: absolute;
+    top: 70.5%;
+    left:69.8%;
+    color:white;
+}
+
+#hexagone4par6{
+    position: relative;
+    margin-top:-25%;
+    clip-path: inset(75px 85px 60px 83px);
+}
+
+#boiteun h2{
+    text-align: center;
+}
+
+#boitedeux{
+    width: 500px;
+    height: 700px;
+    padding: 10px;
+    margin-top: 30px;
+    border: 1px solid #00678e;
+    box-shadow: 2px 2px 2px #00678e;
+    display: table;
+}
+
+#forumavignon{
+    width: 50%;
+}
+
+
+#boitedeux h2{
+    text-align: center;
+}
+
+#boitedeux p{
+    font-weight: bold;
+}
+
+#dateboitedeux{
+    margin-top:-50%;
+    display:flex;
+}
+
+#dateboitedeux img{
+    height: 30px;
+}
+
+#dateboitedeux p{
+    margin-top:1%;
+    margin-left: 5%;
+}
+
+#lieuetdateboitedeux{
+    margin-left:2%;
+}
+
+#lieuboitedeux{
+    display:flex;
+}
+
+#lieuboitedeux p{
+    margin-left: 5%;
+    margin-top:2%;
+}
+
+#lieuboitedeux img{
+    height: 30px;
+}
+
+#boitedeux button{
+    margin-left:33%;
+}
+
+#hexagoneorange{
+    clip-path: inset(0px 168px 145px 1px);
+    margin-left:30%;
+}
+footer{
+    font-family: "LiberationSans-Regular";
+    color: #00678e;
+    margin-top: 15px;
+    border-top: solid #00678e;
+    background-color: gray;
+    display:flex;
+    justify-content: space-evenly;
+}
+
+#liendefin{
+    margin-top:3px;
+    width: 200px;
+}
+#liendefin a{
+    display: table;
+    justify-content: space-evenly;
+}
+
+hr{
+    border:1px dashed #00678e;
+}
+
+#deuxlogo{
+    width: 300px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#HexaLogoFin{
+    margin-top: 25px;
+    width: 130px;
+    height: 30px;
+}
+
+#LogoIUT{
+    width: 100px;
+    height: 80px;
+}
+
+#deuxlogo p{
+    font-weight: bold;
+    margin-top: 33px;
+}
+
+#twitterETmail {
+    font-size:15px;
+    display:table;
+    justify-content: space-evenly;
+}
+
+#twitter img{
+    margin-top:2%;
+    height: 25px;
+    width: 25px;
+}

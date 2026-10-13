@@ -1,0 +1,911 @@
+
+<!DOCTYPE html>
+<html>
+<title>TP Morpion - JUnit</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="http://www.informatics-tech.com/highlighter/prettify.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+table tr th,td{
+  border:1px solid black;
+} 
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+pre.enLigne{display: inline;}
+tt {background-color: #ffd6cc;}
+/* Keyboard key style */
+kbd{
+	font-size:0.7em;
+	border:1px solid gray;
+	box-shadow:1px 0 1px 0 #eee, 0 2px 0 2px #ccc, 0 2px 0 3px #444;
+	border-radius:3px;
+	margin:2px 3px;
+	padding:1px 5px;
+}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>IUT<br>Département-info</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <!-- <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Introduction</a>  -->
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Principe des TU</a> 
+    <a href="#exo1" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Morpion</a>
+    <a href="#exo2" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Recherche d'une valeur dans un tableau</a> 
+    <a href="#exo3" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Opérations entre matrices</a> 
+    <a href="#exo4" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Carré magique</a> 
+    
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">&#9776;</a>
+  <span>Iut info BDX</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>TP matrice - Tests unitaires</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Mise en oeuvre avec le jeu du morpion</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div class="w3-half">
+    <p>Lors cette séance vous allez découvrir l'importance et l'intérêt de faire des tests unitaires. Pour cela, vous allez devoir débugger un code Java permettant de jouer au Morpion.</p>
+    </div>
+
+    <div class="w3-half">
+      <img src="img/morpion.jpeg">
+    </div>
+  </div>
+
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">&times;</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div class="w3-container" id="services" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Principe des tests unitaires</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>
+    
+    </p>
+    
+    <h2>L'interface de tests</h2>
+    <p>
+    Nous allons commencer par prendre en main l'interface permettant de réaliser des tests.
+    En premier lieu, récupérer <a href="code/morpion.zip">ce projet Morpion</a>.</p>
+    <p>Ce projet contient tout le code permettant de jouer au morpion.
+      Nous utilisons ici une variante du morpion, avec score.
+      En toute logique il devrait fonctionner de la sorte :
+    </p><ul>
+      <li>Chaque joueur pose à tour de rôle son pion.</li>
+      <li>Le programme vérifie que le pion est posé sur une case libre et qui existe.</li>
+      <li>Le vainqueur est annoncé quand 3 pions sont alignés.</li>
+      <li>Le match nul est annoncé si la grille est remplie sans que 3 pions soient alignés.</li>
+      <li>En parallèle, chaque joueur dispose d'un score (ce n'est pas le cas du morpion "classique").
+	Lorsqu'un joueur joue un coup sur une case, son score augmente de :
+	    <blockquote><tt>
+	      1 + (le nombre de case voisines lui appartenant)
+	      - (le nombre de cases voisines appartenant à son adversaire)
+	    </tt></blockquote>
+	    Le score de son adversaire ne change pas.
+	    Le terme <em>case voisine</em> désigne toutes les cases jouxtant
+	    la case jouée, soit par l'un de ses côtés,
+	    soit par l'une de ses diagonales.
+	    Cela fait donc 3 cases voisines pour l'un des 4 coins du plateau,
+	    8 cases voisines pour une case loin de tout bord, etc.
+      </li>
+      <li>À la fin de la partie, le gagnant (= celui qui a aligné 3 pions)
+	marque le nombre de points de son score, et l'adversaire
+	ne marque pas de point.
+      </li>
+    </ul>
+
+    <p>
+     
+    <video width="640" height="480" controls="">
+    <source src="video/runMorpion.m4v" type="video/mp4">  
+    Your browser does not support the video tag.
+    </video>
+    </p>
+
+  
+
+   
+
+
+
+
+
+
+
+<h3>Question 1</h3>
+
+<p>Compilez le code du morpion et testez-le. Vous observerez que le calcul des scores est buggé.</p>
+<p>Votre premier réflexe est j'imagine d'aller chercher les bugs et de les corriger. C'est un bon reflexe, mais ça ne se fait pas n'importe comment ! Ca s'anticipe !</p>
+
+<h1>Les tests unitaires</h1>
+ 
+ <h2>Présentation</h2>
+<p> 
+De manière générale, les tests servent à détecter des bugs, c'est-à-dire des différences entre ce qu'on attend de votre programme, et ce qu'il fait réellement. Par exemple l'appel somme(2,3) devrait renvoyer 5 mais renvoie 4.
+
+Tout développeur produit des bugs. L'important c'est d'en faire peu, et surtout de les détecter tôt.
+
+En effet, plus ils sont détectés tôt, plus ils sont faciles à trouver et  corriger, et accessoirement moins ils coûtent cher aux entreprises.
+
+Plusieurs pratiques se développent dans ce sens, et plus généralement pour
+améliorer la qualité logicielle :
+
+</p><ul>
+  <li>mieux définir ce qui doit être développé (qualité des spécifications,
+meilleure communication avec le client via les méthodes agiles, etc).</li>
+  <li>pair programming (coder à deux)</li>
+  <li>revue de code (pour les curieux, exemple chez <a href="http://www.openbsd.org/security.html">OpenBSD</a> : paragraphe Audit Process)</li>
+  <li>validation (prouver formellement des programmes, abordé en Licence Pro DAGPI)</li>
+  <li>tests</li>
+
+</ul> 
+
+
+<img src="img/tests.jpg"><p></p>
+<p>
+Il existe plusieurs types de tests : unitaires, fonctionnels, d'intégration, 
+etc.
+Pour l'instant on ne s'intéresse qu'aux tests unitaires, c'est-à-dire des tests qui portent sur des petites portions de code, typiquement une fonction.
+Un test unitaire consiste alors à lancer la fonction sur plusieurs valeurs,
+et comparer chaque résultat avec la valeur souhaitée.
+
+Le test possède une bonne couverture s'il teste beaucoup de valeurs, et surtout différents cas de figure, les cas critiques, etc.
+
+Par exemple pour la fonction somme, on peut tester:
+</p><ul>
+  <li>somme(2,3) == 5 la somme de deux entiers positifs</li>
+  <li>somme(2,0) == 2 la somme d'un positif avec zéro</li>
+  <li>somme(0,3) == 3 la somme de zéro avec un entier positif</li>
+  <li>somme(0,0) == 0 la somme de zéro avec lui-même</li>
+  <li>somme(1,-1) == 0 la somme d'un positif et d'un négatif</li>
+  <li>somme(-1,-1) == -2 la somme de deux négatifs</li>
+  <li>somme(-1,0) == -1 la somme d'un négatif avec zéro</li>
+</ul>
+
+
+
+<p>
+Une fois ces tests rédigés (on verra comment ci-dessous), ils constituent une partie de votre programme, et peuvent être relancés à tout moment.
+Par exemple les serveurs d'intégration continue permettent de relancer
+automatiquement tous les tests unitaires à chaque modification de 
+votre programme (abordé au S4).
+</p>
+
+<p>
+Quand faut-il écrire les tests unitaires&nbsp;?
+À vous de voir, les pratiques divergent selon les organisations.
+Un premier réflexe est de les écrire <em>après</em> que la fonction soit codée.
+On peut aussi les écrire <em>avant</em>, en laissant au début la fonction vide
+(exemple : somme() renvoie toujours zéro). 
+Les tests seront faux au début, puis vrais petit à petit quand vous coderez.
+L'intérêt est de réfléchir à tous les cas limites avant de coder,
+et de ne pas écrire les tests sous l'influence de son code.</p>
+
+
+<div class="w3-container" id="exo1" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Morpion</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  
+
+<h2>JUnit</h2>
+
+<p>Un module très utilisé en Java pour faire des tests unitaires est   <a href="http://junit.org/junit4/">JUnit</a>. 
+
+<br>
+
+<img src="img/junit.png">
+
+<p>
+  Dans le projet Morpion, la classe <tt>Coordonnees</tt> permet de stocker
+  les coordonnées <em>(ligne, colonne)</em> d'une case.
+  Nous allons créer une classe <tt>CoordonneesTest</tt> contenant
+  les tests unitaires des fonctions de la classe <tt>Coordonnees</tt>.
+</p>
+
+<p>
+  Dans chaque projet NetBeans (dans l'arborescence de gauche) apparaît :
+  <ul>
+    <li>Source Packages : emplacement du <em>code source</em></li>
+    <li>Test Packages : emplacement des <em>tests unitaires</em>.</li>
+  </ul>
+
+  Ainsi, dans <em>Test Packages</em>,
+  faire un clic droit sur le dossier <tt>morpion</tt>
+  (à créer si ce n'est pas déjà fait), choisir New / Java class...
+  et créer ainsi la classe <tt>CoordonneesTest.java</tt>.
+  
+  Y créer la fonction <tt>testEstDansPlateau()</tt> avec le code ci-dessous : 
+</p><pre class="prettyprint">
+@Test
+public void testEstDansPlateau() {
+    assertTrue(new Coordonnees(0, 0).estDansPlateau(14));
+    assertTrue(new Coordonnees(13, 13).estDansPlateau(14));
+    assertTrue(new Coordonnees(0, 1).estDansPlateau(14));
+    assertFalse(new Coordonnees(-1, 1).estDansPlateau(14));
+    assertTrue(new Coordonnees(7, 13).estDansPlateau(14));
+    assertFalse(new Coordonnees(7, 14).estDansPlateau(14));
+    assertTrue(new Coordonnees(13, 0).estDansPlateau(14));
+    assertFalse(new Coordonnees(14, 0).estDansPlateau(14));
+    assertTrue(new Coordonnees(7, 0).estDansPlateau(14));
+    assertFalse(new Coordonnees(7, -1).estDansPlateau(14));
+    assertTrue(new Coordonnees(0, 1).estDansPlateau(2));
+    assertFalse(new Coordonnees(0, 1).estDansPlateau(1));
+}
+</pre>
+    <p>
+      Pour que ce code compile, se placer sur les lignes en rouge,
+      faire <kbd>Alt</kbd>+<kbd>Entrée</kbd>,
+      et choisir les imports des méthodes de <tt>org.junit...</tt>.
+    </p>
+
+Ce test contient du code qui, pour chaque ligne&nbsp;:
+
+<ul>
+  <li>déclare de nouvelles coordonnées
+    (par exemple <pre class="prettyprint enLigne">new Coordonnees(0, 0)</pre>),</li>
+  <li>effectue l'appel à la fonction <pre class="prettyprint enLigne">estDansPlateau()</pre>,</li>
+  <li>vérifie que celle-ci renvoie <tt>true</tt> si les coordonnées dans le plateau, et faux sinon.
+    Ainsi, l'instruction <pre class="prettyprint enLigne">assertTrue(new Coordonnees(0, 0).estDansPlateau(14))</pre>
+    s'assure que, d'après <tt>estDansPlateau</tt>,
+    les coordonnées (0,0) sont bien sur un plateau de taille 14x14.
+    Si ce n'est pas le cas alors un message d'erreur sera affiché.</li>
+</ul>
+
+	<p>Concernant JUnit :
+	  <ul>
+		<li>
+		  l'annotation <b><tt>@Test</tt></b> permet à JUnit d'identifier
+		  les fonctions qui sont des tests unitaires.
+		  Remarque : si une annotation <tt>@Test</tt> ne compile pas,
+		  importez la bibliothèque JUnit comme suggéré par NetBeans.
+		  Les fonctions de test doivent être déclarées
+		  <tt>public void</tt> et ne pas prendre de paramètre.
+		</li>
+		<li>
+		  la méthode <b><tt>assertEquals(valeurAttendue, valeurCalculee)</tt></b>
+		  s'assure que <tt>valeurCalculee</tt> vaut bien le résultat attendu,
+		  c'est-à-dire <tt>valeurAttendue</tt>.
+		</li>
+		<li>
+		  la méthode <b><tt>assertTrue(monTest)</tt></b>
+		  s'assure que le booléen <tt>monTest</tt> est vrai.
+		</li>
+		<li>
+		  symétriquement, la méthode <b><tt>assertFalse(monTest)</tt></b>
+		  s'assure que le booléen <tt>monTest</tt> est faux.
+		</li>
+	  </ul>
+	</p>
+
+	<p>
+	  Il y a plusieurs façons de lancer les tests unitaires,
+	  selon ce que l'on veut faire :
+	  <table>
+		<tr>
+		  <td>lancer tous les tests d'une classe</td>
+		  <td>clic droit sur le fichier (à gauche), puis "Test File" ("Tester le fichier")</td>
+		</tr>
+		<tr>
+		  <td>idem, mais en mode debug</td>
+		  <td>clic droit sur le fichier (à gauche), puis "Debug Test File" ("Déboguer en testant fichier")</td>
+		</tr>
+		<tr>
+		  <td>lancer un test unitaire (une méthode)</td>
+		  <td>clic droit sur le nom de la méthode, puis "Run Focused Test Method"</td>
+		</tr>
+		<tr>
+		  <td>idem, en mode debug</td>
+		  <td>clic droit sur le nom de la méthode, puis "Debug Focused Test Method"</td>
+		</tr>
+	  </table>
+	</p>
+
+
+<p>Lorsque vous exécutez ces tests, une fenêtre s'ouvre et vous indique les tests réussis et ceux qui ont échoué. Par exemple dans notre cas voici ce que vous indique JUnit selon qu'un assert ait détecté une erreur ou pas.<br/>
+
+  <img src="img/testsOK.png">
+  <img src="img/testsNOK.png">
+</p>
+    <p><img src="img/attention.png"/>
+      Lorsqu'on débogue un test unitaire 
+      (une seule méthode, via "Debug focused test method"),
+      il arrive que le test ne se lance pas, et
+      que le message suivant apparaisse : 
+      <em>Target method "debug-single-method" does not exist in the project...</em>.
+      Dans ce cas, il faut éditer le fichier 
+      <tt>nbproject/build-impl.xml</tt> (depuis le répertoire du projet),
+      dupliquer la ligne contenant "debug-test-method" et changer cette chaîne par "debug-single-method" dans la ligne copiée.
+    </p>
+    
+
+<h3>Question 2</h3>
+
+<p>Corrigez le code de la fonction <tt>estDansPlateau()</tt> pour qu'elle passe les tests.</p>
+
+<h3>Question 3</h3>
+
+    <p>La méthode <tt>Coordonnees suivante(Direction d)</tt>
+      de la classe <tt>Coordonnees</tt> permet d'obtenir les coordonnées
+      de la case atteinte lorsqu'on part de la case courante (<tt>this</tt>)
+      et que l'on applique la direction <tt>d</tt> passée en paramètre.
+    <p>
+    <p>
+      Par exemple&nbsp;:
+      <pre class="prettyprint">
+Coordonnees avant = new Coordonnees(3, 3);
+Coordonnees apres = avant.suivante(Direction.EST);
+System.out.println(apres); // affiche (3, 4)
+</pre>
+    </p>
+
+    <p>Recopiez le code du test de la fonction <tt>suivante()</tt> dans
+      <tt>CoordonneesTest</tt>
+      et exécutez le test unitaire. Vous remarquerez qu'il ne passe pas.</p>
+
+<pre class="prettyprint">
+@Test
+public void testSuivante() {
+    assertEquals(new Coordonnees(5, 4),
+            new Coordonnees(4, 4).suivante(Direction.SUD));
+    assertEquals(new Coordonnees(2, 2),
+            new Coordonnees(1, 1).suivante(Direction.NORD_OUEST));
+    assertEquals(new Coordonnees(-1, -1),
+            new Coordonnees(0, 0).suivante(Direction.NORD_OUEST));
+    assertEquals(new Coordonnees(199, 201),
+            new Coordonnees(200, 200).suivante(Direction.NORD_EST));
+}
+</pre>
+
+
+    <p>Dans le cas testé, la fonction <tt>suivante()</tt> est bonne.
+      C'est le test unitaire qui présente une erreur.
+      Hé oui, un test unitaire reste un code comme un autre.
+      Il peut contenir des erreurs.
+      Identifiez l'erreur commise dans ce test unitaire et corrigez-le.
+    </p>
+
+<h3>Énumérations, suite</h3>
+
+    <p>
+      Nous avons vu dans le TP précédent le principe d'une <em>énumération</em> en Java&nbsp;: une liste fixe de valeurs possibles.
+      Les énumérations peuvent également contenir des <em>méthodes</em>.
+    </p>
+    <p>
+      Observez, dans le code du Morpion, l'énumération nommée <tt>Direction</tt>.
+      Certaines méthodes sont des méthodes de classe (comme <tt>toutes()</tt>),
+      d'autres sont des méthodes d'instance (comme <tt>mvtHoriz()</tt>).
+    </p>
+    <p>
+      En fait, en Java, une énumération est une classe un peu spéciale,
+      dont toutes les instances sont déclarées de manière fixe.
+      Ainsi <tt>NORD</tt> est une instance de l'énumération <tt>Direction</tt>.
+      De ce fait, on peut également trouver des attributs et des
+      constructeurs dans les énumérations (nous ne les utiliserons pas
+      ce semestre, mais les plus curieux pourront regarder
+      <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html">la doc</a>).
+    </p>
+
+<h3>Boucle sur les éléments d'un tableau</h3>
+
+    <p>
+      Jusqu'ici pour parcourir les éléments d'un tableau de taille <tt>n</tt>,
+      nous faisions varier un indice de <tt>0</tt> à <tt>n-1</tt>.
+      Rappellons que la taille du tableau <tt>t</tt> est accessible via
+      son attribut <tt>t.length</tt>.
+    </p>
+    <p>
+      Il existe en Java un moyen de parcourir les éléments d'un tableau,
+      de sa première à sa dernière case, sans passer par les indices&nbsp;:
+      <pre class="prettyprint">
+int[] tab = {5, -4, 3};
+int somme = 0;
+for (int val : tab) {
+  somme += val;
+}</pre>
+      Ici, la variable <tt>val</tt>, de type <tt>int</tt>,
+      va prendre chaque valeur du tableau <tt>tab</tt>, successivement.
+    </p>
+    <p>
+      Ainsi, le code suivant affiche toutes les directions&nbsp;:
+<pre class="prettyprint">
+for (Direction d : Direction.toutes()) {
+    System.out.println(d);
+}
+</pre>
+    
+<h3>Question 4</h3>
+
+    <p>
+      Codez la méthode <tt>voisines()</tt> de la classe <tt>Coordonnees</tt>.
+      Cette méthode prend en paramètre la taille de la grille
+      (toujours supposée carrée), et renvoie un tableau contenant
+      les coordonnées de ses cases voisines.
+    </p>
+    <p>
+      L'instruction <tt>Arrays.copyOf(voisines, nbVoisines)</tt>
+      permet ici de renvoyer une copie du tableau <tt>voisines</tt>
+      ne contenant que ses <tt>nbVoisines</tt> premières cases.
+    </p>
+    <p>
+      Codez des tests unitaires pour la méthode <tt>voisines()</tt>,
+      dans <tt>CoordonneesTest</tt>.
+      Vous testerez notamment que&nbsp;:
+      <ul>
+	<li>une case dans un coin ne possède que 3 voisines,</li>
+	<li>une case sur un bord mais loin d'un coin possède 5 voisines,</li>
+	<li>une case loin des bords possède 8 voisines.</li>
+      </ul>
+      Vérifiez que ces tests passent.
+    </p>
+
+
+  <h3>Question 5</h3>
+
+    <p>
+      Dans la classe <tt>Grille</tt>, codez la méthode
+      <tt>nbVoisinsAppartenantAuJoueur()</tt>.
+      Référez-vous à sa documentation pour en comprendre la définition.
+      Vous pourrez utiliser la méthode <tt>contenuCase()</tt>
+      pour accéder au contenu d'une case à partir de ses coordonnées.
+    </p>
+  
+    <p>
+      Dans <em>Test Packages</em>, créez la classe <tt>GrilleTest</tt>
+      dans <tt>morpion</tt>
+      et ajoutez-y la méthode ci-dessous.
+      Vérifiez que ces tests passent.
+    </p>
+  
+<pre class="prettyprint">
+@Test
+public void testNbVoisinsAppartenantAuJoueur() {
+    int[][] contenu = {{2, 1, 1}, {2, 0, 0}, {2, 0, 0}};
+    Grille grille = new Grille(3);
+    grille.changerContenuGrille(contenu);
+    assertEquals(2, grille.nbVoisinsAppartenantAuJoueur(1, new Coordonnees(1, 1)));
+    assertEquals(3, grille.nbVoisinsAppartenantAuJoueur(2, new Coordonnees(1, 1)));
+    assertEquals(0, grille.nbVoisinsAppartenantAuJoueur(1, new Coordonnees(2, 2)));
+    assertEquals(1, grille.nbVoisinsAppartenantAuJoueur(2, new Coordonnees(0, 0)));
+}
+</pre>
+  
+  <p> Une fois les tests passés, réalisez plusieurs parties et vérifiez que tout est conforme à la vidéo du début de l'exercice. </p>
+
+  <h3>Question 6</h3>
+	<p>Lorsque l'on programme, il est important de commenter son code. Nous l'avons vu, Java propose un format appelé <a href="https://fr.wikipedia.org/wiki/Javadoc">javadoc</a> qui permet de générer une documentation (quasi) automatiquement.</p>
+
+	<h4>Générer le site de documentation</h4>
+	
+	<p>Par défaut NetBeans ne génère la documentation que pour les attributs et méthodes <em>public</em>. 
+	  Pour générer la documentation pour tous les attributs et méthodes :
+	  <ul>
+		<li>faîtes un clic droit sur votre projet Morpion-ETU et allez dans Properties / Build / Documenting,</li>
+		<li>cochez "Include Private and Package Private Members" et validez,</li>
+		<li>en cliquant droit à nouveau sur le projet puis
+		  sur "Generate Javadoc" un site web contenant toute la documentation
+		  sera généré automatiquement.</li>
+	  </ul>
+	  Observez la correspondance entre votre documentation dans le code,
+	  et celle du site&nbsp;:
+	</p>
+
+<p><img src="img/javadoc.png"></p>
+
+    <h4>Gestion de la javadoc dans le code</h4>
+	
+
+    <p>Effectuez le réglage suivant dans NetBeans : menu
+	Tools / Options / Editor / Hints / Javadoc / Create Javadoc (et Error in Javadoc) / passer de <tt>protected</tt> à <tt>private</tt>
+	  (en français : Outil / Options / Éditeur / Indices / Javadoc / Créer Javadoc (et Error in Javadoc)).
+	  </p>
+    <p>Puis cliquez droit sur votre fichier <tt>Grille.java</tt>,
+        faîtes Tools / Analyze Javadoc.
+        NetBeans vous propose de sélectionner les
+	fonctions à commenter puis va, en fonction des paramètres de la
+	fonction, ajouter en commentaire des mots clefs qui seront
+        utilisés plus tard par le générateur de documentation
+        (cliquer sur "Fix Selected").
+    </p>
+    <p>Commentez TOUTES les fonctions du Morpion (en particulier dans
+      la classe <tt>Grille</tt>), et générez la Javadoc.</p>
+
+</div>
+
+    <div class="w3-container" id="exo2" style="margin-top:75px">
+      <h1 class="w3-xxxlarge w3-text-red"><b>Recherche d'une valeur dans un tableau</b></h1>
+      <hr style="width:50px;border:5px solid red" class="w3-round">
+
+
+      <p>Nous allons nous intéresser à la recherche d’une valeur dans un tableau d’entiers. Nous prendrons les conventions
+        suivantes :
+        <ul>
+          <li>si la valeur recherchée est dans le tableau, la fonction de recherche doit retourner l’indice d’une case contenant cette valeur</li>
+          <li>sinon, la fonction de recherche retourne -1.</li>
+        </ul>
+
+        Deux méthodes sont à implémenter dans cet exercice. La première permet de chercher une valeur dans un tableau non trié, la seconde dans un tableau trié.
+		Le projet à importer est <a href="./code/Recherche.zip">Recherche.zip</a>.
+      </p>
+
+      <h2>Question 1</h2>
+
+      Préparez les tests unitaires de <pre class="prettyprint enLigne">rechercheLineaire()</pre> et <pre class="prettyprint enLigne">rechercheDichotomique()</pre>  dans les méthodes <pre class="prettyprint enLigne">testRechercheLineaire()</pre> et <pre class="prettyprint enLigne">testRechercheDichotomique()</pre>
+
+      <h2>Question 2</h2>
+      Implémentez les méthodes <pre class="prettyprint enLigne">rechercheLineaire()</pre> et <pre class="prettyprint enLigne">rechercheDichotomique()</pre> en respectant les signatures données. 
+
+    </div>
+
+
+
+
+<div class="w3-container" id="exo3" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Opérations entre matrices (facultatif)</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+<h3>Addition et soustraction de matrices</h3>
+
+
+<p>Pour additionner ou soustraire deux matrices rien de plus simple. Il suffit que les deux matrices aient la même taille et de soustraire/additionner terme à terme les éléments.
+</p>
+<p>
+Par exemple : 
+
+</p><table style="display:inline-block">
+   <tbody><tr>
+       <td>5</td>
+       <td>0</td>
+       <td>4</td>
+   </tr>
+   <tr>
+       <td>2</td>
+       <td>3</td>
+       <td>4</td>
+   </tr>
+  
+</tbody></table>
++
+<table style="display:inline-block">
+   <tbody><tr>
+       <td>1</td>
+       <td>0</td>
+       <td>1</td>
+   </tr>
+   <tr>
+       <td>2</td>
+       <td>0</td>
+       <td>1</td>
+   </tr>
+  
+</tbody></table>
+=
+<table style="display:inline-block">
+   <tbody><tr>
+       <td>6</td>
+       <td>0</td>
+       <td>5</td>
+   </tr>
+   <tr>
+       <td>4</td>
+       <td>3</td>
+       <td>5</td>
+   </tr>
+  
+</tbody></table>
+
+et
+
+
+<table style="display:inline-block">
+   <tbody><tr>
+       <td>5</td>
+       <td>0</td>
+       <td>4</td>
+   </tr>
+   <tr>
+       <td>2</td>
+       <td>3</td>
+       <td>4</td>
+   </tr>
+  
+</tbody></table>
+-
+<table style="display:inline-block">
+   <tbody><tr>
+       <td>1</td>
+       <td>0</td>
+       <td>1</td>
+   </tr>
+   <tr>
+       <td>2</td>
+       <td>0</td>
+       <td>1</td>
+   </tr>
+  
+</tbody></table>
+=
+<table style="display:inline-block">
+   <tbody><tr>
+       <td>4</td>
+       <td>0</td>
+       <td>3</td>
+   </tr>
+   <tr>
+       <td>0</td>
+       <td>3</td>
+       <td>3</td>
+   </tr>
+  
+</tbody></table>
+<p></p>
+<h3>Question 1</h3>
+Récupérez le <a href="code/matriceMath.zip">code java du projet "matriceMath"</a>. Ce projet contient deux fonctions contenant des "bugs".
+
+
+  
+<pre class="prettyprint">
+    /**
+     * Addition de deux matrices de même taille.
+     * 
+     * @param mat1 la première matrice
+     * @param mat2 la seconde matrice
+     * @return la matrice résultat de l'addition des matrices en paramètre
+     */
+    static int[][] add(int[][] mat1, int[][] mat2) {
+        int[][] matRes = new int[mat1.length][mat1[0].length];
+        for (int i = 0; i < mat1.length; i++) {
+            for (int j = 0; j < mat1.length; j++) {
+                matRes[i][j] = mat1[i][j] + mat2[i][j];
+            }
+        }
+        return matRes;
+    }
+
+    /**
+     * Soustraction de deux matrices de même taille.
+     * 
+     * @param mat1 la première matrice
+     * @param mat2 la seconde matrice
+     * @return la matrice résultat de la soustraction des matrices en paramètre
+     */
+    static int[][] sub(int[][] mat1, int[][] mat2) {
+        int[][] matRes = new int[mat1.length][mat1[0].length];
+        for (int i = 0; i < mat1.length; i++) {
+            for (int j = 0; j < mat1.length; j++) {
+                matRes[i][j] = mat1[i][j] - mat1[i][j];
+            }
+        }
+        return matRes;
+    }
+</pre>
+
+<p>
+Dans cet exercice on supposera que l'utilisateur est intelligent et qu'il rentrera toujours deux matrices de même taille.
+
+
+Créez les deux tests unitaires nécessaires. Identifiez la ou les erreurs et corrigez-les.
+
+
+Nous vous invitons à utiliser la méthode </p><pre class="prettyprint enLigne">assertArrayEquals(,)</pre> qui permet de comparer deux tableaux sans avoir à faire soi-même la double boucle.
+
+Par exemple 
+<pre class="prettyprint enLigne ">assertArrayEquals(new int[]{1,2,3}, new int[]{1,21,3});</pre>
+ génèrera un affichage dans lequel sera indiqué l'indice du tableau dont les cases diffèrent.
+<p></p>
+
+<p><img src="img/array.png"></p>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="w3-container" id="exo4" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Carré magique (facultatif)</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+<p>Lors de la création d'un gros projet de développement, il se peut que les tests (unitaires ou autres) soient confiés à une équipe différente de celle qui a codé les fonctions. Cet exercice reproduit ce cas de figure. Une équipe a codé 8 versions d'une fonction permettant de créer un carré magique de dimension 3X3.</p>
+
+
+<p>Pour rappel, lisez la <a href="https://fr.wikipedia.org/wiki/Carr%C3%A9_magique_(math%C3%A9matiques)">définition Wikipédia d'un carré magique</a>.</p>
+
+<h3>Question 1</h3>
+
+<p>Récupérez <a href="code/carreMagique.zip">le projet</a>.
+
+Il permet de demander à un service web (a priori buggé) de générer, case par case, les chiffres d'un carré magique 3X3.</p>
+<p>
+    <video width="640" height="480" controls="">
+    <source src="video/magique.m4v" type="video/mp4">  
+    Your browser does not support the video tag.
+    </video>
+</p>
+
+<p>
+Regardez le main() :
+</p><pre class="prettyprint ">
+public static void main(String[] args) {
+    int[][] carre = {{-1, -1, -1}, {-1, -1, -1}, {-1, -1, -1}};
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            carre[i][j] = requeteCarre.getVal(1, 5, i, j);
+            System.out.print(carre[i][j] + " ");
+        }
+        System.out.println(" ");
+    }
+}
+</pre>
+
+
+<img src="img/attention.png">Il y a un passage important. C'est celui de l'appel à la fonction que vous n'avez pas codée et que vous devez tester.
+
+<pre class="prettyprint ">requeteCarre.getVal(int version, int valeurInitiale, int ligne, int colonne);</pre>
+
+L'équipe ayant codé les 8 versions de cette fonction vous donne les indications suivantes : 
+
+<ul>
+  <li>version est un entier entre 1 et 8 et correspond à la version de la fonction que vous souhaitez tester</li>
+  <li>valeurInitiale est un entier strictement POSITIF et correspond à la valeur placée en ligne 1 colonne 2 du carré magique et permettant de générer n'importe quel carré magique.</li>
+  <li>les variables ligne et colonne servent à préciser la case du carré 3X3 que l'on souhaite obtenir.</li>
+  <li>la fonction retourne la valeur située en [ligne][colonne]. Elle retourne -1 si version n'est pas entre 1 et 8, -1 si valeurInitiale&lt;=0 , -1 si les variables lignes ou colonnes ne sont pas comprises entre 0 et 2.</li>
+  
+</ul>
+
+
+
+Avec une valeur initiale de 4 (obligatoirement placée en [1,2] par le serveur), le serveur créera le carré magique suivant :
+<table>
+   <tbody><tr>
+       <td>5</td>
+       <td>0</td>
+       <td>4</td>
+   </tr>
+   <tr>
+       <td>2</td>
+       <td>3</td>
+       <td style="color:red;">4</td>
+   </tr>
+   <tr>
+       <td>2</td>
+       <td>6</td>
+       <td>1</td>
+   </tr>
+</tbody></table>
+
+
+
+Avec une valeur initiale de 5 (obligatoirement placée en [1,2] par le serveur), la fonction sans bug (parmi les 8) sur le serveur créera le carré magique suivant :
+
+<table>
+   <tbody><tr>
+       <td>6</td>
+       <td>1</td>
+       <td>5</td>
+   </tr>
+   <tr>
+       <td>3</td>
+       <td>4</td>
+       <td style="color:red;">5</td>
+   </tr>
+   <tr>
+       <td>3</td>
+       <td>7</td>
+       <td>2</td>
+   </tr>
+</tbody></table>
+
+Si vous voulez récupérer les 9 valeurs de la version 1 de la fonction, il vous faudra 9 appels :
+<pre class="prettyprint">
+  int[][] carre = {{-1, -1, -1}, {-1, -1, -1}, {-1, -1, -1}};
+  carre[0][0] = requeteCarre.getVal(1, 5, 0, 0); // doit retourner 6
+  carre[0][1] = requeteCarre.getVal(1, 5, 0, 1); // doit retourner 1
+  carre[0][2] = requeteCarre.getVal(1, 5, 0, 2); // doit retourner 5
+  carre[1][0] = requeteCarre.getVal(1, 5, 1, 0); // doit retourner 3
+  ...
+  carre[2][2] = requeteCarre.getVal(1, 5, 2, 2); // doit retourner 2
+</pre>
+
+C'est exactement ce que fait le code que je vous ai donné (avec la double boucle).
+
+<h3>Question 2</h3>
+
+<p>À vous de coder la fonction 
+</p><pre class="prettyprint">static boolean isMagique(int[][] magique)</pre>
+Cette fonction permet de vérifier qu'une matrice 3X3 est un carré magique (si vous êtes malin, inspirez-vous du code du morpion).<p></p>
+
+<h3>Question 3</h3>
+
+Réalisez les tests unitaires de cette fonction.
+
+<h3>Question 4</h3>
+
+<p>Utilisez cette fonction pour réaliser les tests unitaires et découvrir la SEULE fonction valide parmi les 8 qui ont été codées.</p>
+
+</div>
+<!-- 
+<pre class="prettyprint">
+void nextStep()
+</pre>
+permettant de faire une itération du cycle de vie de la matrice.
+</p>
+
+<p>Si votre code est correct, la grille suivante devrait apparaitre</p>
+<p><img src="img/life1.png"></p>
+ -->
+
+</div>
+<!-- 
+<pre class="prettyprint">
+void nextStep()
+</pre>
+permettant de faire une itération du cycle de vie de la matrice.
+</p>
+
+<p>Si votre code est correct, la grille suivante devrait apparaitre</p>
+<p><img src="img/life1.png"></p>
+ -->
+
+</div>
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML =  element.alt;
+}
+</script>
+
+</body>
+</html>

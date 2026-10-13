@@ -1,0 +1,5 @@
+TD2 :
+1/ Facteur de branchement : Nombre d'arêtes divisé par nombre de noeuds non-feuilles, ICI 33/16 donc environ 2.0625. Non toutes les branches de jeu ne sont pas nécesseraiement à la même hauteur car certaines permettent de finir plus rapidement que d'autres.
+2/ La partie gauche de l'arbre est la meilleure pour Ami car il a un point, alors que la partie droite de l'arbre est meilleure pour Ennemi qui donne un -4 à Ami. Si un noeud à un seul fils alors c'est qu'il n'y a qu'une seule possibilité de jeu.
+Si le coup est favorable ( pas négatif ), c'est intéressant pour Ami.
+3/

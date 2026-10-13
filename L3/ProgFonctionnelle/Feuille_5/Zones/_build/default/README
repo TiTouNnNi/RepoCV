@@ -1,0 +1,35 @@
+Dans le dossier principal:
+
+Fichier: dune_project
+(lang dune 2.9)
+(name zones)
+
+dans src:
+Fichier: dune
+(library
+ (name geometry)
+ (libraries graphics))
+
+Pour compiler:
+dune build (dans src)
+
+puis dans utop:
+utop> # #use_output "dune top";;
+
+
+utop> # open Geometry (où geometry est le nom de module donné dans le fichier dune de src)
+
+Puis éventuellement,
+utop> # open Mycomplex;;
+utop> # open Zones;;
+utop> # open Visu_zones;;
+ 
+pour éviter d'avoir à préfixer les opérations par le nom du module.
+
+Le fichier "Extras/load.ml" contient ces 4 "open"; on peut donc remplacer tous ces "open" par 
+
+utop> # #use "Extras/load.ml";;
+
+puis par exemple
+
+utop> view_zone (translate_zone (make_disk0 20.) (make_point (-10.) 20.))

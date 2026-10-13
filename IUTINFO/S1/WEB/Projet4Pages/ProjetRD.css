@@ -1,0 +1,380 @@
+@font-face{
+    font-family: "SDR";
+    src: url("SDR2.ttf");
+    font-display: auto;
+}
+
+#MenuPourTelephone{
+    display:none;
+}
+
+body{
+    font-family: "SDR";
+    font-size: 2.3vh;
+    max-width: 1920px;
+    max-height: 1080px;
+}
+
+header img {
+	width: 20%;
+}
+
+header{
+    background-color: #2374AB;
+    display:flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1.5vh ridge rgba(170, 50, 220, .6);
+    padding:2%;
+}
+
+header a{
+    color:darkblue;
+}
+
+.lien a{
+    margin-right: 1em;
+    font-size: 1em;
+}
+
+a:hover{
+    color:orange;
+}
+
+
+
+.desc{
+    margin:auto;
+    width: 95%;
+}
+
+.desc h1{
+    text-align: center;
+}
+
+
+.Description{
+    background-color:#5F9DBF;
+    display:flex;
+    justify-content: space-around;
+    justify-items: center;
+    align-items: center;
+    vertical-align: middle;
+    height: 40vh;
+    border-left:1.5vh ridge rgba(170, 50, 220, .6);
+    border-right:1.5vh ridge rgba(170, 50, 220, .6);
+    border-top:0.00000001vh ridge rgba(170, 50, 220, .6);
+    border-bottom:0.00000001vh ridge rgba(170, 50, 220, .6);
+}
+
+.NormeImageDansDesc{
+    width: 60%;
+}
+
+.imagedesc{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 15%;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    justify-items: center;
+}
+
+footer{
+    background-color: #2374AB;
+    display:flex;
+    align-items:center;
+    justify-items: center;
+    vertical-align: middle;
+    max-height: 50%;
+    border: 1.5vh ridge rgba(170, 50, 220, .6);
+}
+
+footer img{
+    width: 10%;
+    align-self: flex-start;
+    margin-right: auto;
+}
+
+footer p{
+    margin-right: 1vh;
+}
+
+#CVDePage {
+    border: 1.5vh ridge rgba(170, 50, 220, .6);
+    background-color:#5F9DBF;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#PosterDePaul{
+    background-color:#5F9DBF;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    border: 1.5vh ridge rgba(170, 50, 220, .6);
+}
+
+#PosterDePaul div{
+    background-color:lightblue;
+    padding:2vh;
+    border:0.5vh solid #00678e;
+    width: 40vh;
+    margin-bottom: 1vh;
+}
+#PosterDePaul img{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    width:65vh;
+}
+
+.blocCV{
+    background-color:lightblue;
+    margin:2vh;
+    width: auto;
+    padding:1vh;
+    border: 1vh ridge rgba(170, 50, 220, .6);
+}
+
+.blocCV h2{
+    text-align: center;
+    color:lightgray;
+    text-shadow: #000000 2px 2px, #000000 -5px 5px, #000000 -5px -5px, #000000 5px -5px;
+}
+
+#MaTete{
+    background-color:lightblue;
+    margin-left: 2vh;
+    height: 30vh;
+    margin-top: 2vh;
+    margin-right:1vh;
+    width: auto;
+    padding:1vh;
+    border: 1vh ridge rgba(170, 50, 220, .6);
+}
+
+#Questionnaire {
+    background-color:#5F9DBF;
+    text-align:center;
+    list-style-position:inside ;
+    border-left:1vh ridge rgba(170, 50, 220, .6);
+    border-right:1vh ridge rgba(170, 50, 220, .6);
+    border-top:1vh ridge rgba(170, 50, 220, .6);
+    border-bottom:0.00000001vh ridge rgba(170, 50, 220, .6);
+    padding:1vh;
+}
+
+
+#SyntheseInterview{
+    background-color:#5F9DBF;
+    border:1vh ridge rgba(170, 50, 220, .6);
+
+}
+
+#SyntheseInterview h2{
+    text-align: center;
+}
+
+#SyntheseInterview p{
+    margin-left:2vh;
+    margin-right:2vh;
+}
+
+#Journeetype{
+    text-align:center;
+    list-style-position:inside;
+    border-top:1vh ridge rgba(170, 50, 220, .6);
+}
+
+
+@media (max-width: 600px){
+
+    body{
+        font-size: 1.4vh;
+    }
+
+    header{
+        font-size: 0.7em;
+        border: 1vh ridge rgba(170, 50, 220, .6);
+    }
+
+    header img{
+       width:23vh;
+    }
+
+    footer img{
+        width:20vh;
+    }
+    
+    footer{
+            border: 1vh ridge rgba(170, 50, 220, .6);
+            font-size: 0.7em;
+    }
+
+    .imagedesc{
+        width: 60%;
+    }
+
+    #MenuPourTelephone{
+        display:flex;
+    }
+    
+
+    /*Le menu hamburger n'est pas entièrement de moi j'ai suivi un tutoriel que j'ai recopié mot pour mot : voici le twitter de la personne ( il n'a pas d'autre réseau ) 
+    https://twitter.com/ljc_dev. J'ai bien sûr modifié le code pour qu'il s'adapte au mien, mais je ne suis pas l'auteur intégrant de cette partie là*/
+
+    .hamburger, .close {
+        border: none;
+        cursor: pointer;
+        /* position absolute position the icons relative to the body because they have no position relative parents*/
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 36px;
+        height: 36px;
+      }
+      
+      .hamburger {
+        background: white;
+        border: 0.5vh solid darkblue;
+      }
+      
+      .close {
+        background: red;
+        border: 0.7vh solid rgba(170, 50, 220, .6);
+      }
+      
+      .hamburger img, .close img {
+        width: 100%;
+        height: 100%;
+      }
+    
+      .navbar {
+        font-weight: bold;
+        font-size:1.5em;
+        position: absolute;
+        /* a higher z-index put navbar above hamburger */
+        z-index: 1000;
+        top: 0;
+        right: 0;
+        width: 30%;
+        height: 40vh;
+        overflow: hidden;
+        /* basic menu styling*/
+        list-style: none;
+        background: lightblue;
+        border: 1vh ridge rgba(170, 50, 220, .6);
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+        /* animate slide up/down */
+        transform: translateY(-120%);
+        transition: transform 0.2s ease;
+    
+      }
+
+      #burgerCV{
+          margin-top: 8vh;
+      }
+
+        .trait{
+          width: 25vh;
+          border:0.3vh dashed #00678e;
+      }
+    
+      .navbar:target {
+        /* show navbar */
+        transform: translateY(0);
+      }
+
+    .lien{
+    display: none;
+    }
+
+    .Description{
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+        height:auto;
+    }
+
+    .blocCV{
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+        }
+
+        #PosterDePaul{
+         display:flex;
+        align-items: center;
+        flex-direction: column;
+        }
+
+        #PosterDePaul img{
+            width:45vh;
+        }
+
+        #SyntheseInterview p{
+            font-size: 0.85em;
+        }
+
+}
+
+@media screen and (min-width: 600px) and (max-width: 1100px){
+
+    #MenuPourTelephone{
+        display:none;
+    }
+
+    #PosterDePaul img{
+        width:45vh;
+        margin-bottom: 1vh;
+        margin-right:1vh;
+    }
+
+    #SyntheseInterview p{
+        font-size: 0.9em;
+    }
+
+    header img{
+        width:10em;
+     }
+ 
+     footer img{
+         width:20vh;
+     }
+
+     header{
+        font-size: 0.8em;
+        border: 1.20vh ridge rgba(170, 50, 220, .6);
+    }
+
+    footer{
+        font-size: 0.8em;
+        border: 1.20vh ridge rgba(170, 50, 220, .6);
+    }
+
+    .Description{
+        height: auto;
+    }
+    
+    #PosterDePaul img{
+        width:40vh;
+        margin-bottom: 1vh;
+    }
+
+
+
+
+
+
+
+
+
+} 

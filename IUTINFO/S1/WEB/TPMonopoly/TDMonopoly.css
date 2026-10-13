@@ -1,0 +1,150 @@
+/* grid-1 div {
+ color: white;
+ font-size: 20px;
+ padding: 20px;
+ }
+/* specific item styles 
+.item-1 {
+ background: #b03532;
+ grid-column: 1 / 3;
+ grid-row: 1 / 7;
+
+}
+.item-2 {
+ background: #33a8a5;
+ grid-row: 1 / 5;
+}
+.item-3 {
+ background: #30997a;
+ grid-column: 1;
+ grid-row: 7/10;
+}
+.item-4 {
+ background: #6a478f;
+ grid-row: 5/10;
+ grid-column: 3 / 4;
+}
+.item-5 {
+ background: #da6f2b;
+ grid-column: 2;
+ grid-row: 7/10;
+}
+
+.item-6 {
+ background: #3d8bb1;
+ display:none;
+}
+.item-7 {
+ background: #e03f3f;
+ display:none;
+}
+.item-8 {
+ background: #59a627;
+ display:none;
+}
+.item-9 {
+ background: #4464a1;
+ display:none;
+}
+
+.grid-1 {
+    display: grid;
+    grid-template-columns: repeat(12, 10%);;
+    grid-template-rows: auto auto auto;
+    grid-gap: 20px;
+   } */
+
+/*.grid-1 {
+    height: 500px;
+    width:50%;
+    display:grid;
+    grid-template-areas: 
+    "header header header"
+    "main main sidebar"
+   "footer footer footer";
+    column-gap:2%;
+    row-gap: 3%;
+}
+
+.grid-1 div {
+ color: white;
+ font-size: 20px;
+ padding: 20px;
+ }
+
+.item-1 {
+    background: #b03532;
+    grid-area: header;
+   }
+
+.item-2 {
+    display: grid;
+    grid-template-columns: 1fr 30%;
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
+    grid-template-areas: 
+    "header header"
+    "article sidebar";
+    background: #33a8a5;
+    grid-area: main;
+ }
+
+.item-3 {
+    background: lightgreen;
+    grid-area: sidebar;
+}
+
+.item-4 {
+    background: #6a478f;
+    grid-area: footer;
+}
+
+.item-5 {
+    margin-top:2%;
+    margin-left:2%;
+    margin-right:2%;
+    grid-area: header;
+    background-color:orange;
+}
+
+.item-6 {
+    margin-bottom:2%;
+    margin-left:3%;
+    grid-area: article;
+    background-color:darkblue;
+}
+
+.item-7 {
+    margin-bottom:5%;
+    margin-right:6%;
+    grid-area: sidebar;
+    background-color:yellow;
+} */
+
+header{
+    grid-area: header;
+   }
+
+article {
+    grid-area: content;
+   }
+
+nav {
+    grid-area: nav;
+}
+
+aside {
+    grid-area: sidebar;
+}
+
+#ad {
+    grid-area: ad;
+}
+
+footer {
+    grid-area: footer;
+}
+   
+   
+   
+   

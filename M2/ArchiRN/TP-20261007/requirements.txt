@@ -1,0 +1,16 @@
+ipykernel
+
+keras>=3.0
+tensorflow>=2.16
+tf-keras
+numpy
+pandas<3
+sentence-transformers
+
+torch<2.12
+transformers<5
+datasets==3.6.0
+pillow
+faiss-cpu
+matplotlib
+tqdm

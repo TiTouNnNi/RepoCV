@@ -1,0 +1,3 @@
+# Module configuration for Twitch Crowd Control
+source_files:
+  - src/twitch_hook.cpp

@@ -1,0 +1,19 @@
+Une partie considérable des fonctions du TD1 ont été réutilisés, notamment les fonctions, inbound, around, getAllClauses et encode.
+Chaque fait possible du monde est representé de manière unique tel que :
+
+`M_x_y` : Il y a un Monstre en x,y.
+`T_x_y` : Il y a un Trou en x,y.
+`O_x_y` : Il y a une odeur en x,y.
+`V_x_y` : Il y a du vent en x,y.
+
+Pour savoir si une case voisine est safe on raisonne par l'absurde :
+
+Si `KB + Observations + monstre ou trou` est insatisfiable, alors il est impossible qu'il y ait un trou ou un monstre
+La case est sure s'il y a ni monstre ni trou.
+
+L'IA Gemini a été utilisée pour m'aider à corriger des problèmes de syntaxe/compilation, pour la gestion des doublons de clauses, et pour structurer le cheminement logique du code. 
+L'IA a fractionné l'énoncé en plusieurs étapes afin que je puisse avoir un plan précis à suivre.
+
+Commande pour lancer le programme :
+
+python devoir.py

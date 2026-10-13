@@ -1,0 +1,173 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;474&lt;/x&gt;&lt;y&gt;160&lt;/y&gt;&lt;w&gt;50&lt;/w&gt;&lt;h&gt;90&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m2=0,1
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;10;70&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;824&lt;/x&gt;&lt;y&gt;130&lt;/y&gt;&lt;w&gt;360&lt;/w&gt;&lt;h&gt;90&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m1=1,
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;330;70;330;10;10;10&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1050&lt;/x&gt;&lt;y&gt;130&lt;/y&gt;&lt;w&gt;50&lt;/w&gt;&lt;h&gt;260&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m2=1,1
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;20;240;10;10&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;114&lt;/x&gt;&lt;y&gt;260&lt;/y&gt;&lt;w&gt;50&lt;/w&gt;&lt;h&gt;100&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m2=0,n
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;20;10;10;80&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;360&lt;/x&gt;&lt;y&gt;370&lt;/y&gt;&lt;w&gt;100&lt;/w&gt;&lt;h&gt;150&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m2=1,1
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;80;10;10;130&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;550&lt;/x&gt;&lt;y&gt;370&lt;/y&gt;&lt;w&gt;110&lt;/w&gt;&lt;h&gt;90&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m2=1,n&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;90;70&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;550&lt;/x&gt;&lt;y&gt;370&lt;/y&gt;&lt;w&gt;110&lt;/w&gt;&lt;h&gt;90&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m2=1,n&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;90;70&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;690&lt;/x&gt;&lt;y&gt;260&lt;/y&gt;&lt;w&gt;50&lt;/w&gt;&lt;h&gt;140&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m2=1,n&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;10;120&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;680&lt;/x&gt;&lt;y&gt;150&lt;/y&gt;&lt;w&gt;50&lt;/w&gt;&lt;h&gt;100&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m1=1,1&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;20;80&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;550&lt;/x&gt;&lt;y&gt;370&lt;/y&gt;&lt;w&gt;110&lt;/w&gt;&lt;h&gt;90&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m2=1..n&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;90;70&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;230&lt;/x&gt;&lt;y&gt;180&lt;/y&gt;&lt;w&gt;190&lt;/w&gt;&lt;h&gt;50&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m1=0..n
+m2=0..1
+teaches to &amp;gt;&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;20;170;20&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;690&lt;/x&gt;&lt;y&gt;230&lt;/y&gt;&lt;w&gt;140&lt;/w&gt;&lt;h&gt;90&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;Animal
+--
+_idAnimal_
+nomEspèce
+nomRace
+propriétaire
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;300&lt;/x&gt;&lt;y&gt;110&lt;/y&gt;&lt;w&gt;140&lt;/w&gt;&lt;h&gt;120&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;Client
+--
+_idClient_
+nomClient
+prénomClient
+numéroClient
+factures
+animal
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;300&lt;/x&gt;&lt;y&gt;110&lt;/y&gt;&lt;w&gt;140&lt;/w&gt;&lt;h&gt;120&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;Client
+--
+_idClient_
+nomClient
+prénomClient
+numéroClient
+factures
+animal
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;690&lt;/x&gt;&lt;y&gt;230&lt;/y&gt;&lt;w&gt;140&lt;/w&gt;&lt;h&gt;90&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;Animal
+--
+_idAnimal_
+nomEspèce
+nomRace
+propriétaire
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;Space for diagram notes&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;230&lt;/x&gt;&lt;y&gt;180&lt;/y&gt;&lt;w&gt;190&lt;/w&gt;&lt;h&gt;50&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m1=0..n
+m2=0..1
+teaches to &amp;gt;&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;20;170;20&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;690&lt;/x&gt;&lt;y&gt;260&lt;/y&gt;&lt;w&gt;50&lt;/w&gt;&lt;h&gt;140&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m2=1,n&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;10;120&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;360&lt;/x&gt;&lt;y&gt;370&lt;/y&gt;&lt;w&gt;100&lt;/w&gt;&lt;h&gt;150&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m2=1,1
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;80;10;10;130&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1050&lt;/x&gt;&lt;y&gt;130&lt;/y&gt;&lt;w&gt;50&lt;/w&gt;&lt;h&gt;260&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=-
+m2=1,1
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;20;240;10;10&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;</help_text><element><id>UMLClass</id><coordinates><x>884</x><y>696</y><w>140</w><h>110</h></coordinates><panel_attributes>Client
+--
+_idClient_
+nomClient
+prénomClient
+numéroClient
+animal
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1154</x><y>226</y><w>140</w><h>130</h></coordinates><panel_attributes>Animal
+--
+_idAnimal_
+nomEspèce
+nomRace
+nomAnimal
+dateDeNaissance
+taille
+poids</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>864</x><y>386</y><w>140</w><h>100</h></coordinates><panel_attributes>RendezVous
+--
+_idRdv_
+client
+heures
+raison
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>474</x><y>396</y><w>140</w><h>90</h></coordinates><panel_attributes>Facture Produit
+--
+_idFactures_
+numéro de facture
+date
+montant
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1064</x><y>496</y><w>140</w><h>50</h></coordinates><panel_attributes>Ordonnance
+--
+_idOrdonnance_
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>294</x><y>546</y><w>140</w><h>120</h></coordinates><panel_attributes>Produit
+--
+__idProduit__
+quantitéEnStock
+nomProduit
+imageProduit
+prixDeVenteClient
+prixD'achat</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>1234</x><y>576</y><w>120</w><h>40</h></coordinates><panel_attributes>Être propriétaire</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>934</x><y>476</y><w>50</w><h>90</h></coordinates><panel_attributes>lt=-
+m1=1,1</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>884</x><y>546</y><w>120</w><h>40</h></coordinates><panel_attributes>Prendre un RDV</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>934</x><y>576</y><w>50</w><h>140</h></coordinates><panel_attributes>lt=-
+m2=0,n</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>544</x><y>616</y><w>360</w><h>160</h></coordinates><panel_attributes>lt=-
+m2=0,n</panel_attributes><additional_attributes>10;10;10;130;340;130</additional_attributes></element><element><id>Relation</id><coordinates><x>544</x><y>476</y><w>50</w><h>130</h></coordinates><panel_attributes>lt=-
+m1=1,1</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>494</x><y>586</y><w>120</w><h>40</h></coordinates><panel_attributes>Acheter produits</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>304</x><y>416</y><w>120</w><h>50</h></coordinates><panel_attributes>Produit vendu
+--
+quantité</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>344</x><y>456</y><w>50</w><h>110</h></coordinates><panel_attributes>lt=-
+m2=0,n
+</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>414</x><y>416</y><w>80</w><h>50</h></coordinates><panel_attributes>lt=-
+m2=0,n
+</panel_attributes><additional_attributes>60;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>990</x><y>416</y><w>110</w><h>50</h></coordinates><panel_attributes>lt=-
+m2=0,n
+</panel_attributes><additional_attributes>90;20;10;20</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>1080</x><y>416</y><w>120</w><h>40</h></coordinates><panel_attributes>Délivrer</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>940</x><y>276</y><w>120</w><h>40</h></coordinates><panel_attributes>Patient
+--
+montant</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1270</x><y>346</y><w>50</w><h>250</h></coordinates><panel_attributes>lt=-
+m2=0,1
+</panel_attributes><additional_attributes>10;230;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1010</x><y>606</y><w>290</w><h>170</h></coordinates><panel_attributes>lt=-
+m1=0,n
+</panel_attributes><additional_attributes>10;140;270;140;270;10</additional_attributes></element><element><id>Relation</id><coordinates><x>964</x><y>306</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=-
+m1=1,n</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1050</x><y>276</y><w>120</w><h>50</h></coordinates><panel_attributes>lt=-
+m2=0,n
+</panel_attributes><additional_attributes>100;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>130</x><y>146</y><w>150</w><h>70</h></coordinates><panel_attributes>Maladie
+--
+_idMaladie_
+nomMaladie
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>136</x><y>346</y><w>120</w><h>40</h></coordinates><panel_attributes>Traitement</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>206</y><w>50</w><h>160</h></coordinates><panel_attributes>lt=-
+m1=0,n
+</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>376</y><w>120</w><h>260</h></coordinates><panel_attributes>lt=-
+m1=0,n
+</panel_attributes><additional_attributes>100;230;10;230;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>186</y><w>840</w><h>60</h></coordinates><panel_attributes>lt=-
+m1=0,n
+</panel_attributes><additional_attributes>800;40;800;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>286</x><y>266</y><w>140</w><h>90</h></coordinates><panel_attributes>Salarié
+--
+__idCompte__
+login
+mdp
+données personnelles</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1126</x><y>446</y><w>50</w><h>70</h></coordinates><panel_attributes>lt=-
+m2=0,1
+</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>266</x><y>176</y><w>90</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0,n
+</panel_attributes><additional_attributes>10;20;70;20</additional_attributes></element><element><id>Relation</id><coordinates><x>776</x><y>506</y><w>50</w><h>80</h></coordinates><panel_attributes>lt=-
+m2=0,n
+</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>696</x><y>566</y><w>150</w><h>60</h></coordinates><panel_attributes>Type
+--
+_idType_
+nomType
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>726</x><y>476</y><w>120</w><h>40</h></coordinates><panel_attributes>Être de type</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>796</x><y>436</y><w>90</w><h>60</h></coordinates><panel_attributes>lt=-
+m2=0,1
+</panel_attributes><additional_attributes>70;10;10;40</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>336</x><y>176</y><w>100</w><h>40</h></coordinates><panel_attributes>Maladie liée</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1196</x><y>416</y><w>70</w><h>120</h></coordinates><panel_attributes>lt=-
+m2=1,1
+</panel_attributes><additional_attributes>10;100;30;100;30;10</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>1196</x><y>386</y><w>70</w><h>40</h></coordinates><panel_attributes>Est pour</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1220</x><y>346</y><w>50</w><h>60</h></coordinates><panel_attributes>lt=-
+m2=0,n
+</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>139</x><y>36</y><w>80</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0,n
+</panel_attributes><additional_attributes>60;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>36</y><w>150</w><h>60</h></coordinates><panel_attributes>Soins
+--
+_idSoins_
+description
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>574</x><y>276</y><w>140</w><h>60</h></coordinates><panel_attributes>Journée
+--
+__idJournée__
+date
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>869</x><y>326</y><w>50</w><h>80</h></coordinates><panel_attributes>lt=-
+m1=1,1
+</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>790</x><y>296</y><w>120</w><h>40</h></coordinates><panel_attributes>Planifier RDV</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>709</x><y>296</y><w>100</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0,n
+</panel_attributes><additional_attributes>10;20;80;20</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>470</x><y>286</y><w>60</w><h>40</h></coordinates><panel_attributes>Travaille</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>419</x><y>286</y><w>70</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0,n
+</panel_attributes><additional_attributes>50;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>519</x><y>286</y><w>70</w><h>50</h></coordinates><panel_attributes>lt=-
+m2=0,n
+</panel_attributes><additional_attributes>50;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>546</y><w>390</w><h>140</h></coordinates><panel_attributes>lt=-
+m1=0,n
+</panel_attributes><additional_attributes>350;10;350;120;10;120</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>663</x><y>646</y><w>120</w><h>40</h></coordinates><panel_attributes>Produit liés</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>205</x><y>26</y><w>120</w><h>40</h></coordinates><panel_attributes>Soigner</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>246</x><y>56</y><w>50</w><h>110</h></coordinates><panel_attributes>lt=-
+m2=0,n
+</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>396</x><y>656</y><w>350</w><h>70</h></coordinates><panel_attributes>lt=-
+m2=1,1
+</panel_attributes><additional_attributes>330;30;330;50;10;50;10;10</additional_attributes></element></diagram>

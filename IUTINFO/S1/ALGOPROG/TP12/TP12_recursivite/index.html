@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<html>
+<title>TP récursivité</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="http://www.informatics-tech.com/highlighter/prettify.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+table tr th,td{
+  border:1px solid black;
+} 
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+.ajout-oga {background-color: green;}
+.todo-oga {background-color: red;}
+pre.enLigne{display: inline;}
+.nicho-modif{border-left: Lime 5px solid;padding-left: 5px;background: yellow;}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>IUT<br>Département-info</b></h3>
+  </div>
+  <div class="w3-bar-block">
+     
+    
+    <a href="#exo1" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">1. Ping pong</a> 
+    <a href="#exo2" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">2. Fichiers</a> 
+    <a href="#exo3" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">3. Binaire</a> 
+    <a href="#exo4" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">4. Puissance</a> 
+    <a href="#exo5" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">5. Voyelles et consonnes</a> 
+    
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">&#9776;</a>
+  <span>Iut info BDX</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>TP récursivité </b></h1>
+    <!-- <h1 class="w3-xxxlarge w3-text-red"><b>Mise en oeuvre avec le jeu du morpion</b></h1> -->
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div>
+    <p>Lors cette séance vous allez travailler sur la création d'algorithmes récursifs.</p>
+    </div>
+
+    <div>
+      <img src="img/recur.jpg">
+    </div>
+  </div>
+
+
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">&times;</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  
+
+<div class="w3-container" id="exo1" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Exercice 1 : ping pong</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+    <p>Soit l'algorithme suivant : </p>
+
+<img src="img/ping.png" width="700">
+
+<h3>Question 1</h3>
+<ul>
+  <li>Importez le projet dans NetBeans depuis <a href="./code/recursivite.zip">ce fichier zip</a>.</li>
+  <li>
+    Implémentez cet algorithme dans la classe <tt>PingPong</tt>,
+  </li>
+  <li> puis testez&nbsp;:
+<tt>ping(0), ping(-2), ping(1), ping(2), ping(3)</tt>.
+  </li>
+</ul>
+
+</div>
+
+
+
+
+ <div class="w3-container" id="exo2" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Exercice 2 : arborescence de fichiers</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+<p>
+Un système de fichiers est organisé de manière arborescente&nbsp;:
+chaque répertoire peut contenir des fichiers et des répertoires.
+Dans cet exercice nous considérons qu'un répertoire n'est pas un fichier. 
+Nous distinguons le <em>nom</em> d'un répertoire (par exemple <tt>"rep"</tt>)
+de son <em>chemin</em> (par exemple <tt>"."</tt>, <tt>"./rep"</tt>, ou <tt>"/etc/network"</tt>).
+</p>
+
+<p>
+  La classe <tt>RechercheFichier.java</tt> contient deux méthodes&nbsp;:
+
+  <ul>
+	<li><pre class="prettyprint enLigne">String[] sousRepertoires(String cheminRep)</pre>
+	  prend en paramètre le chemin d'un répertoire, et renvoie un tableau
+	  avec les noms des répertoires situés directement dans le premier répertoire.
+Par exemple si le répertoire dont le chemin est <tt>"./tmp"</tt> contient un répertoire "<tt>test1</tt>" et un répertoire "<tt>test2</tt>", alors
+le tableau renvoyé contiendra les chaînes "<tt>test1</tt>" et "<tt>test2</tt>".
+</li>
+	<li><pre class="prettyprint enLigne">String[] fichiers(String cheminRep)</pre> fonctionne sur le même principe,
+	  en renvoyant les fichiers au lieu des sous-répertoires.
+	</li>
+  </ul>
+</p>
+
+<p>
+  Remarque : les fonctions prennent en paramètre des chemins
+  (comme par exemple <tt>"./monrep"</tt>), alors que la fonction <tt>sousRepertoires</tt>
+  renvoie des noms de répertoires (par exemple "<tt>monsousrep</tt>").
+  <br>
+  Il faudra donc concaténer les deux avec un slash (/) pour obtenir
+  un chemin de répertoire (<tt>"./monrep"+"/"+"monsousrep" = "./monrep/monsousrep"</tt>).
+  <br>
+  Pour faire encore mieux on utilisera <tt>File.separatorChar</tt> à la place du slash.
+  Cette constante contient le caractère séparant les répertoires
+  ('/' sous unix, '\' sous Windows).
+</p>
+
+<p>
+Nous allons nous intéresser à deux méthodes que vous allez devoir créer/tester&nbsp;:
+<ul>
+<li> <pre class="prettyprint enLigne">int nbFichiers(String cheminRep) </pre> qui prend en paramètre
+un répertoire (son chemin), et renvoie le nombre de fichiers, parmi tous les
+répertoires qu'il contient.</li>
+<li><pre class="prettyprint enLigne">bool contientFichier(String cheminRep, String nomFichier) </pre> prend en paramètre
+le chemin d'un répertoire, un nom de fichier, et renvoie <tt>true</tt>
+si le répertoire (ou l'un des répertoires qu'il contient)
+contient un fichier avec ce nom, et <tt>false</tt> sinon.</li>
+</ul>
+</p>
+<p>
+
+  <h3>Question 1</h3>
+  <ul>
+    <li>
+  Écrivez des tests unitaires pour ces deux fonctions,
+  dans la classe <tt>RechercheFichiersTest</tt>.
+    </li>
+    <li>
+Pour cela vous utiliserez l'arborescence présente dans le
+dossier <tt>code/rep_pour_tests</tt>. C'est une arborescence avec des
+répertoires et des fichiers. Elle contient 5 fichiers et 3
+répertoires.
+    </li>
+    <li>
+     Lancez vos tests : certains doivent être positifs (chercher des fichiers qui
+      existent) et d'autres négatifs (chercher des fichiers qui n'existent pas).
+    </li>
+    </ul>
+
+<h3>Question 2</h3>
+
+<p>
+  Implémenter la fonction <pre class="prettyprint enLigne">nbFichiers</pre>
+  dans la classe <tt>RechercheFichier</tt>.
+  Vérifier que ses tests unitaires sont validés.
+</p>
+
+<h3>Question 3</h3>
+<p>
+Implémenter la fonction <pre class="prettyprint enLigne">contientFichier</pre>.
+Vérifier que ses tests unitaires sont validés.
+</p>
+
+</div>
+
+
+
+<div class="w3-container" id="exo3" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Exercice 3 : décomposition en binaire</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+	<p>
+	On s'intéresse à la décomposition binaire d'un entier.
+	Par exemple 6 (en base 10) s'écrira 110 (en binaire),
+	car 6 = 1*2<sup>2</sup> + 1*2<sup>1</sup> + 0*2<sup>0</sup>.
+	<em>On supposera que l'entier est toujours positif ou nul</em>. 
+	</p>
+
+	<p>
+	La décomposition (en base 2) d'un entier n (en base 10)
+	se calcule facilement de manière récursive :
+	<ul>
+	  <li>si n>=2 alors les premiers chiffres sont la décomposition en binaire de n/2
+	  </li>
+	  <li>
+		le dernier chiffre est n modulo 2.
+	  </li>
+	</ul>
+	</p>
+	
+<h3>Question 1</h3>
+
+	<p>Implémentez cet algorithme (dans la
+	  classe <tt>Binaire</tt>) et testez-le sur les entiers 0, 1,
+	  8 et 13 (dans la classe <tt>BinaireTest</tt>).</p>
+<br>
+
+</div>
+
+
+<div class="w3-container" id="exo4" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Exercice 4 : puissance</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+<p>
+  Soient a et n deux entiers positifs.
+  Nous nous intéressons au calcul de a<sup>n</sup>.
+</p>
+
+
+<h3>Question 1</h3>
+Commencez par rédiger vos tests unitaires dans la classe <tt>PuissanceTest</tt>.
+
+<h3>Question 2</h3>
+
+Écrivez la méthode (récursive) <pre class="prettyprint enLigne">int puissance(int a, int n)</pre> dans la classe <tt>Puissance</tt>, calculant la puissance,
+et reposant sur l'observation suivante :
+<ul>
+  <li>
+	si n est pair, a<sup>n</sup> = a <sup>n/2</sup> . a <sup>n/2</sup>
+  </li>
+  <li>
+	si n est impair, a<sup>n</sup> = a . a <sup>(n-1)/2</sup> . a <sup>(n-1)/2</sup>.
+  </li>
+</ul>
+Vos tests unitaires doivent être validés.
+</p> 
+</div>
+
+
+
+
+<div class="w3-container" id="exo5" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Exercice 5 : voyelles et consonnes</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>
+      Dans la classe <tt>VoyellesConsonnes</tt>,
+      la méthode <tt>estVoyelle(char c)</tt> indique si un caractère
+      est une voyelle. Dans cet exercice, nous ne considérons que les lettres
+      non accentuées. Des tests unitaires vous sont fournis.
+</p>
+
+
+    <h3>Question 1</h3>
+    Écrivez la méthode (non récursive)
+    <pre class="prettyprint enLigne">int nbVoyellesNonRec(String mot)</pre>
+    permettant de compter le nombre de voyelles dans une chaîne de caractères.
+
+<h3>Question 2</h3>
+    Écrivez la méthode récursive
+    <pre class="prettyprint enLigne">int nbVoyellesRec(String mot)</pre>
+    équivalente.
+
+    Pour cela vous pourrez par exemple définir une méthode supplémentaire
+    <pre class="prettyprint enLigne">int nbVoyellesAPartirDe(String mot, int pos)</pre>
+    permettant de compter le nombre de voyelles dans une chaîne, à partir d'une position donnée.
+
+<h3>Question 3</h3>
+    Écrivez la méthode récursive
+<pre class="prettyprint enLigne">String voyellesPuisConsonnes(String mot)</pre> prenant une chaîne de caractères en paramètre, et renvoyant la chaîne :
+<ul>
+  <li>commençant par toutes les voyelles de la chaîne en paramètres,</li>
+  <li>suivies par toutes les consonnes de la chaîne en paramètre, <em>dans l'ordre inverse</em>.
+</ul>
+Par exemple la chaîne "Algorithme" devient "Aoiemhtrgl".
+Vous pourrez utiliser une (ou plusieurs) méthodes intermédiaires.
+</div>
+
+
+
+
+
+<!-- <pre class="prettyprint">
+</pre> 
+ -->
+
+
+
+</p>
+
+</div>
+</div>
+
+
+
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML =  element.alt;
+}
+</script>
+
+</body>
+</html>

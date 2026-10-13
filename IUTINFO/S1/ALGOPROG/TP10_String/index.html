@@ -1,0 +1,1101 @@
+
+<!DOCTYPE html>
+<html>
+<title>TP String</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="http://www.informatics-tech.com/highlighter/prettify.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+table tr th,td{
+  border:1px solid black;
+} 
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+.ajout-oga {background-color: green;}
+.todo-oga {background-color: red;}
+pre.enLigne{display: inline;}
+.nicho-modif{border-left: Lime 5px solid;padding-left: 5px;background: yellow;}
+tt {background-color: #ffd6cc;}
+/* Keyboard key style */
+kbd{
+	font-size:0.7em;
+	border:1px solid gray;
+	box-shadow:1px 0 1px 0 #eee, 0 2px 0 2px #ccc, 0 2px 0 3px #444;
+	border-radius:3px;
+	margin:2px 3px;
+	padding:1px 5px;
+}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>IUT<br>Département-info</b></h3>
+  </div>
+  <div class="w3-bar-block">
+     
+    <a href="#git" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Git</a> 
+    <a href="#jump" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Jump !</a> 
+    <a href="#chaines" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Les chaînes de caractères</a> 
+    <a href="#string" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">La classe String</a> 
+    <a href="#stringbuilder" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">La classe StringBuilder</a> 
+    <a href="#formatage" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Formatage</a> 
+    
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">&#9776;</a>
+  <span>Iut info BDX</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>TP Chaînes de caractères</b></h1>
+    <!-- <h1 class="w3-xxxlarge w3-text-red"><b>Mise en oeuvre avec le jeu du morpion</b></h1> -->
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <p>Lors cette séance vous allez découvrir comment manipuler les chaînes de caractères.</p>
+	  <p>À partir de cette semaine, vous utiliserez git pour versionner le code de vos TP. Nous vous expliquons comment l'utiliser.</p>
+    </div>
+
+    <div class="w3-half">
+      <img src="img/string-java.jpg">
+    </div>
+  </div>
+
+
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">&times;</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <div class="w3-container" id="git" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Gestion de version avec Git</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+    <h3>Système de gestion de versions</h3>
+    
+    <p>
+	  Un <em>système de gestion de versions</em> permet de :
+	  <ul>
+		<li><b>sauvegarder</b> son code</li>
+		<li><b>partager</b> son code (typiquement, au sein d'une équipe)</li>
+		<li>revenir sur une <b>ancienne version</b> du code
+		  (typiquement en cas de régression : quelque chose a été
+		  cassé dans la dernière version)</li>
+		<li>développer <b>en parallèle plusieurs fonctionnalités</b> (branches)</li>
+		<li>nommer certaines versions (tags),
+		  et plus généralement maintenir <b>différentes versions</b>
+		  du code d'un logiciel</li>
+		<li>gérer les <b>conflits</b> (lorsque plusieurs développeurs modifient en parallèle le même fichier)</li>
+	  </ul>
+	  Les systèmes de gestion de versions les plus répandus sont :
+	  <ul>
+	    <li><a href="http://cvs.nongnu.org/">cvs</a> et
+	      <a href="https://subversion.apache.org/">subversion (svn)</a>,
+	      et plus récemment</li>
+	    <li><a href="https://www.mercurial-scm.org/">mercurial</a>
+	      et <a href="https://git-scm.com/">git</a>.</li>
+	  </ul>
+	  Nous allons utiliser <tt>git</tt>, dont les premières versions
+	  furent développées par Linus Torvalds lui-même,
+	  pour faciliter le développement de Linux.
+    </p>
+
+    <h3>Git au département</h3>
+    
+    <p>
+	  Bien que git soit un système de gestion
+	  de versions <em>décentralisé</em>,
+	  nous allons l'utiliser de façon <em>centralisée</em> :
+	  <ul>
+	    <li>le <em>serveur</em> sera <a href="https://gitlab-ce.iut.u-bordeaux.fr/">le serveur gitlab du département</a>.
+	      Gitlab est une interface web permettant de visualiser
+	      le code présent sur le serveur, organisé en projets.
+	      Pour vous connecter, dans l'onglet LDAP entrez votre identifiant
+	      (pas votre mail) et votre mot de passe,
+	      comme pour vous connecter sur une machine du département.
+	    </li>
+	    <li>pour le <em>client</em> nous utiliserons
+	      la commande <tt>git</tt>
+	      en ligne de commande sur votre poste de développement,
+	      comme expliqué ci-après.</li>
+	  </ul>
+    </p>
+
+	<p>
+	  Commencez par <b>configurer git</b> : dans un terminal
+	  (dans n'importe quel répertoire), tapez :
+	  <ul>
+		<li>Précisez votre adresse mail :
+<pre class="prettyprint">git config --global user.email "prenom.nom@etu.u-bordeaux.fr"</pre></li>
+		<li>Précisez votre éditeur pour les messages de commit
+		  (nous proposons nano ici, mais vous pouvez mettre emacs, vim,
+		  ou autre si vous préférez) :
+<pre class="prettyprint">git config --global core.editor nano</pre></li>
+	  </ul>
+	</p>
+	
+    <h3>Utilisation en algo-prog S1</h3>
+    <p>
+      À partir de cette semaine, <b>vous devrez utiliser git pour
+      versionner le code de vos TP</b>.
+      Vos enseignants auront accès en lecture à vos dépôts.
+      Vous continuerez d'utiliser Moodle pour remettre vos TP.
+    </p>
+
+    <p>
+      Vous allez mettre en place un projet pour l'algo-prog.
+      Suivez SCRUPULEUSEMENT les étapes suivantes :
+      <ol>
+	<li>connectez-vous sur <a href="https://gitlab-ce.iut.u-bordeaux.fr/">le serveur gitlab du département</a>,</li>
+	<li>cliquez sur le bouton vert "New project" en haut à droite,</li>
+	<li>dans <tt>Project name</tt>, mettez <tt>AlgoProgS1</tt>,</li>
+	<li>laissez <tt>Visibility Level</tt> à <tt>Private</tt>,</li>
+	<li>cliquez sur "Create Project" en bas.</li>
+      </ol>
+      Normalement votre projet est créé, vous avez un message
+      "Project 'AlgoProgS1' was successfully created." en haut.
+      Donnez ensuite les droits de lecture aux enseignants :
+      <ol>
+	<li>dans le menu de gauche, Settings / Members,</li>
+	<!-- <li>onglet "Invite group",</li> -->
+	<!-- <li>dans <tt>Select a group to invite</tt> : mettre <tt>ProfsAP1</tt>,</li> -->
+	<!-- <li>dans <tt>Max access level</tt> mettre <tt>Reporter</tt>,</li> -->
+	<!-- <li>cliquer sur <tt>Invite</tt>. -->
+	<li>dans <tt>GitLab member or Email address</tt> : mettre vos chargés de TD et de TP,</li>
+	<li>dans <tt>Choose a role permission</tt> mettre <tt>Reporter</tt>,</li>
+	<li>cliquer sur <tt>Add to project</tt>.
+      </ol>
+    </p>
+
+    <h3>Structure de votre dépôt</h3>
+
+    <p>
+      Nous vous demandons de respecter la structure suivante dans votre projet :
+      <ul>
+	<li>un répertoire nommé <tt>TP</tt> à la racine,</li>
+	<li>dans celui-ci, un répertoire pour chaque TP, commençant par TPNN,
+	  où NN est le numéro de la semaine (par exemple TP10, ou TP10_String)
+	</li>
+	<li>et dans ce dossier vos différets projets NetBeans du TP,
+	  comme vous le faisiez habituellement sur votre compte.
+      </ul>
+      Pour cela :
+      <ol>
+	<li>clonez votre projet vide dans votre compte :
+	  <ul>
+	    <li>rendez-vous sur la page de votre projet AlgoProgS1 sur gitlab,
+	    </li>
+	    <li>en haut à droite, cliquez sur "Clone",
+	      puis sur l'icône "Copy URL to clipboard" de "Clone with HTTPS",
+	    </li>
+	    <li>ensuite, ouvrez un terminal, et placez-vous dans le répertoire
+	      où vous voulez que votre dépôt soit créé
+	      (typiquement, là où vous stockiez vos TP précédents).
+	    </li>
+	    <li>
+	      dans le terminal, tapez <tt>git clone </tt> puis faîtes
+	      un clic droit après clone et choisissez "Coller".
+	      Une url du type <tt>https://gitlab-ce.iut.u-bordeaux.fr/ogauwin/algoprogs1.git</tt> a due être collée.
+	      Tapez sur Entrée et entrez votre identifiant et mot de passe :
+<pre class="prettyprint">
+$ git clone https://gitlab-ce.iut.u-bordeaux.fr/ogauwin/algoprogs1.git
+Clonage dans 'algoprogs1'...
+Username for 'https://gitlab-ce.iut.u-bordeaux.fr': ogauwin
+Password for 'https://ogauwin@gitlab-ce.iut.u-bordeaux.fr': 
+warning: Vous semblez avoir cloné un dépôt vide.
+</pre>
+	    </li>
+	    <li>Placez-vous dans le répertoire <tt>algoprogs1</tt>
+	      qui vient d'être créé, et commencez à créer
+	      l'arborescence évoquée, et placez un premier fichier :
+<pre class="prettyprint">
+$ cd algoprogs1/
+$ mkdir -p TP/TP10_String
+$ echo "TP Chaînes de caractères" > TP/TP10_String/README
+</pre>	      
+	    </li>
+	  </ul>
+	</li>
+      </ol>
+    </p>
+
+    <h3>Premier commit !</h3>
+
+    <p>
+      Nous allons envoyer ces premiers répertoires et fichier sur le dépôt git.
+      <ul>
+	<li>regardons tout d'abord quel statut ont nos fichiers pour git
+	  grâce à la commande <tt>git status</tt>&nbsp;:
+<pre class="prettyprint">
+$ git status
+Sur la branche master
+
+Aucun commit
+
+Fichiers non suivis:
+  (utilisez "git add <fichier>..." pour inclure dans ce qui sera validé)
+	TP/
+
+aucune modification ajoutée à la validation mais des fichiers non suivis sont présents (utilisez "git add" pour les suivre)
+</pre>
+	</li>
+	<li>
+	  Comme nous le conseille <tt>git</tt>,
+	  nous devons maintenant choisir quels fichiers seront suivis 
+	  (= versionnés = envoyés sur le serveur).
+	  Ici, il est indiqué que le répertoire TP/ n'est pas encore suivi,
+	  nous allons donc l'ajouter ainsi que tout son contenu :
+<pre class="prettyprint">
+$ git add TP
+</pre>
+	</li>
+	<li>
+	  Observons quel est le statut maintenant :
+<pre class="prettyprint">
+$ git status
+Sur la branche master
+
+Aucun commit
+
+Modifications qui seront validées :
+  (utilisez "git rm --cached <fichier>..." pour désindexer)
+	nouveau fichier : TP/TP10_String/README
+</pre>
+	</li>
+	<li>
+	  Nous sommes prêts à envoyer <tt>TP/TP10_String/README</tt>
+	  sur le serveur ! Cela se fait en 2 étapes :
+	  <ol>
+	    <li>créer un "commit" en local, c'est-à-dire un ensemble de
+	      fichiers modifiés prêts à être versionnés.
+	      Ici l'option <tt>-m</tt> permet de préciser un message
+	      décrivant la modification (sans cette option, un éditeur
+	      sera lancé pour saisir le message) :
+<pre class="prettyprint">
+$ git commit -m "Premier commit"
+[master (commit racine) 566de2f] Premier commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 TP/TP10_String/README
+</pre>	      
+	    </li>
+	    <li>
+	      maintenant, on peut envoyer ce commit sur le serveur :
+<pre class="prettyprint">
+$ git push
+Username for 'https://gitlab-ce.iut.u-bordeaux.fr': ogauwin
+Password for 'https://ogauwin@gitlab-ce.iut.u-bordeaux.fr': 
+Énumération des objets: 5, fait.
+Décompte des objets: 100% (5/5), fait.
+Écriture des objets: 100% (5/5), 332 octets | 332.00 Kio/s, fait.
+Total 5 (delta 0), réutilisés 0 (delta 0)
+To https://gitlab-ce.iut.u-bordeaux.fr/ogauwin/algoprogs1.git
+ * [new branch]      master -> master
+</pre>	      
+	    </li>
+	  </ol>
+	  Et voilà !
+	  Observez sur <a href="https://gitlab-ce.iut.u-bordeaux.fr/">le serveur gitlab</a> : votre modification est arrivée.
+	</li>
+      </ul>
+    </p>
+
+    <h3>Envoyer une modification</h3>
+
+    <p>
+      Maintenant vous pouvez travailler dans cette arborescence.
+      Dans NetBeans, importez le projet depuis le fichier zip,
+      mais en précisant bien le répertoire où est créé le projet :
+      il faut choisir le dossier <tt>TP10_String</tt> que vous avez créé
+      (dans <tt>algoprogs1/TP</tt>).
+    </p>
+
+    <p>Dans NetBeans, vos noms de fichiers doivent apparaître en vert
+      (sinon, vous n'avez pas importé dans votre dépôt).
+      Quand vous les aurez versionné, il redeviendront en noir,
+      puis en bleu quand vous les modifierez à nouveau.
+    </p>
+    
+    <p>
+      Pour ajouter des fichiers ou envoyer une modification,
+      il faut suivre cette même procédure :
+      <ul>
+	<li><tt>git add &lt;fichiers modifiés&gt;</tt> (on peut faire <tt>"git add -u"</tt> pour ajouter tous les fichiers modifiés déjà versionnés)</li>
+	<li><tt>git commit -m "&lt;message&gt;"</tt></li>
+	<li><tt>git push</tt></li>
+      </ul>
+      en faisant des <tt>git status</tt> pour voir l'état de chaque fichier,
+      et <tt>git diff</tt> pour voir toutes les lignes modifiées.
+    </p>
+
+    <p>
+      Par exemple :
+<pre class="prettyprint">
+$ echo "Chaînes de caractères" > TP/TP10_String/README 
+
+$ git diff
+diff --git a/TP/TP10_String/README b/TP/TP10_String/README
+index 9f26d6b..7e26432 100644
+--- a/TP/TP10_String/README
++++ b/TP/TP10_String/README
+@@ -1 +1 @@
+-TP Chaînes de caractères
++Chaînes de caractères
+
+$ git add TP/TP10_String/README 
+
+$ git commit -m "modif nom du TP"
+[master 65fd2f8] modif nom du TP
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ git push
+Username for 'https://gitlab-ce.iut.u-bordeaux.fr': ogauwin
+Password for 'https://ogauwin@gitlab-ce.iut.u-bordeaux.fr': 
+Énumération des objets: 9, fait.
+Décompte des objets: 100% (9/9), fait.
+Écriture des objets: 100% (5/5), 362 octets | 362.00 Kio/s, fait.
+Total 5 (delta 0), réutilisés 0 (delta 0)
+To https://gitlab-ce.iut.u-bordeaux.fr/ogauwin/algoprogs1.git
+   566de2f..65fd2f8  master -> master
+</pre>
+    </p>
+    <p>
+      Voilà pour ces rudiments de <tt>git</tt>.
+      Vous verrez plus en détail le fonctionnement d'un projet
+      avec plusieurs développeurs en début de S2.
+    </p>
+  </div>
+
+  <!-- ------------------------------------------------------------------- -->
+
+  <div class="w3-container" id="jump" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Jump !</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+    <p>
+      Durant ce TP et celui de la semaine prochaine (sur les fichiers), 
+      nous allons travailler sur un jeu rudimentaire en mode texte&nbsp;: Jump.
+      Il s'agit d'un jeu de plateforme, qui se joue entre 1 et 4 joueurs,
+      et en mode client/serveur.
+    </p>
+
+    <h3>Installation du projet</h3>
+
+    <ol>
+      <li>Importez le projet dans NetBeans, comme d'habitude.</li>
+      <li>Compilez le projet dans NetBeans (<kbd>F11</kbd> = Build).</li>
+      <li>Lancez le serveur de jeu :
+	<ul>
+	  <li>Ouvrez une première console dans un terminal (en dehors de NetBeans).</li>
+	  <li>Placez-vous dans le dossier du projet NetBeans <tt>Jump</tt>.</li>
+	  <li>Lancez le serveur via la commande suivante&nbsp;:
+<pre class="prettyprint">
+java -cp build/classes jump.Serveur localhost
+</pre>
+            Analysons cette commande :
+            <ul>
+	      <li>
+		<tt>java</tt> est la commande qui lance la JVM (Java Virtual Machine)
+	      </li>
+	      <li>
+		<tt>-cp build/classes</tt> définit le "classpath" (cp), c'est-à-dire le répertoire où se trouvent les classes compilées de l'application (bytecode), autrement dit les fichiers <tt>.class</tt>. Ici le chemin <tt>build/classes</tt> est celui où NetBeans place les classes compilées. Pour le vérifier, faîtes un <tt>tree</tt>&nbsp;:
+<pre class="prettyprint">
+$ tree build/classes/
+build/classes/
+└── jump
+    ├── Action$1.class
+    ├── Action.class
+    ├── Callback.class
+    ├── Case.class
+    ├── Client.class
+...
+</pre>
+	      </li>
+	      <li>
+		<tt>jump.Serveur</tt> est la classe qui va être exécutée. Ici c'est la classe <tt>Serveur</tt> du package <tt>jump</tt>. Plus exactement, c'est la méthode <tt>main()</tt> de cette classe qui sera exécutée.
+	      </li>
+	      <li>
+		<tt>localhost</tt> est un argument passé au programme, et donc au <tt>main()</tt>. Ici, il s'agit de l'adresse du serveur : on souhaite qu'il tourne en local.
+	      </li>
+	    </ul>
+	  </li>
+	  <li>
+	    Vous devez obtenir quelque chose comme :
+<pre class="prettyprint">
+$ java -cp build/classes jump.Serveur localhost
+[i] 20/08/20 15:20:18 Démarrage du serveur.
+[i] 20/08/20 15:20:18 Serveur prêt !
+</pre>
+	  </li>
+	</ul>
+      <li>
+	Lancez un client :
+	<ul>
+	  <li>
+	    Ouvrez une seconde console dans un terminal (par exemple via Ctrl+Maj+T).
+	  </li>
+	  <li>
+	    Placez-vous dans le dossier du projet NetBeans <tt>Jump</tt>.
+	  </li>
+	  <li>
+	    Lancez le client via la commande suivante, et entrez votre nom :
+<pre class="prettyprint">
+$ java -cp build/classes jump.Client localhost
+. connexion au serveur rmi://localhost:52369/Jump... ok
+. identifiant : Olivier
++--------------------------------------------------+ Tour #0
+|                                                  |  
+|                         ===         === ====     |     Joueurs    | Scores 
+|========       =========                =         | ---------------+--------
+|                                 =======          |     Olivier    |    0
+|                 == ==                            | 
+|          =======                  =  =           |  
+|     =                                    =====   | Actions possibles :
+|        ===   ==           =     =========        | [d] démarrer
+|                     ======                       | [q] quitter
+|O    ==  =          =          == ====            |
+|====           ====      ===                  =   |
+|            ===       ===            ===          |
+|     ==         =  ===             ==   ======    |
+|           ====       ====            ==          |
+|===========      ==              ===       =      |
+|                              ==    =         === |
+|             ========      =          =           |
+|      =                                      ===  |
+|              ====   =            =======         |
+|      ==                     ===                  |
++--------------------------------------------------+
+</pre>
+	  </li>
+	  <li>
+	    Observez dans la console du serveur que la connexion d'un joueur a été détectée.
+<pre class="prettyprint">
+[+] 20/08/20 15:20:39 connexion : Olivier
+[i] 20/08/20 15:20:39 envoi d'un message à tous les joueurs
+</pre>
+
+
+	  </li>
+	</ul>
+      </li>
+      <li>Vous pouvez lancer d'autres clients dans d'autres consoles (jusqu'à 4).
+      </li>
+    </ol>
+    <p>
+      Dans ce TP, utilisez NetBeans comme éditeur,
+      et quand vous faîtes un changement,
+      recompilez (via <kbd>F11</kbd>) dans NetBeans,
+      et relancez le serveur et le(s) client(s) dans leurs terminaux.
+    </p>
+    <p>
+      Vous pouvez aussi compiler directement en ligne de commande,
+      depuis le dossier <tt>Jump/</tt> du projet&nbsp;:
+<pre class="prettyprint">
+javac -d build/classes src/jump/*.java
+</pre>
+Cette commande <tt>javac</tt> prend en entrée tous les fichiers <tt>.java</tt> placés dans <tt>src/jump</tt> et les transforme en <tt>.class</tt>,
+qu'elle place dans <tt>build/classes</tt> (option <tt>-d</tt>). 
+C'est ce que lance NetBeans quand vous faîtes <kbd>F11</kbd> (Build).
+Testez cette commande.
+    </p>
+
+    <h3>Debugger</h3>
+
+    <p><img src="img/attention.png"/>
+      Comme nous allons utiliser la console pour faire tourner
+      le serveur et les clients, nous ne pourrons pas profiter
+      du debugger de NetBeans à l'exécution.
+      Cela dit, vous pouvez l'utiliser 
+      pour <b>débugger les tests unitaires</b>, qui couvrent une bonne
+      partie du code.
+    </p>
+
+    <h3>Le jeu</h3>
+    
+    <p>Vous observez :
+      <ul>
+	<li>à gauche, le plateau du jeu, avec les plateformes,
+	  et l'initiale de chaque joueur sur la gauche.
+	</li>
+	<li>à droite, le numéro du tour de jeu, 
+	  la liste des joueurs avec leur score,
+	  et la liste des actions possibles.
+	</li>
+      </ul>
+    </p>
+
+    <p>
+      Une fois que le (ou les) joueur(s) sont connectés,
+      la partie commence dès que l'un d'eux choisit "d" pour démarrer.
+    </p>
+
+    <p>
+      À chaque tour de jeu, chaque joueur joue une (et une seule) fois,
+      dans n'importe quel ordre. On repère les joueurs devant encore jouer 
+      pendant le tour par le symbole <tt>*</tt> devant leur nom.
+      Ceux qui ont perdu sont précédés du symbole <tt>-</tt>.
+    </p>
+
+    <p>Chaque joueur a le choix entre 3 actions : haut / rester / bas.
+      <b>Haut</b> et <b>bas</b> correspondent à sauter 
+      sur la plateforme du dessus 
+      ou du dessous (le joueur perd si elle n'existe pas).
+      <b>Rester</b> consiste à rester sur la plateforme actuelle.
+      Ces actions sont appliquées immédiatement.
+    </p>
+    
+    <p>
+      Quand tous les joueurs ont joué, le plateau avance en se décalant d'une
+      colonne vers la gauche automatiquement.
+      Ceux dont la plateforme se prolonge glissent naturellement 
+      vers la case suivante.
+      Ceux dont la plateforme s'arrête "tombent" sur la plateforme en-dessous,
+      ou perdent si elle n'existe pas.
+    </p>
+
+    <p>
+      Le score est simplement le nombre de tours où le joueur a survécu.
+      Les plateaux contiennent parfois des passages infranchissables.
+    </p>
+
+    <p>
+      En fin de partie, une nouvelle partie est relancée, les joueurs
+      restent connectés et d'autres peuvent les rejoindre.
+    </p>
+    
+    <p>
+      Faîtes une partie courte à deux joueurs pour bien comprendre le principe,
+      puis passez à la suite. 
+      Vous pouvez vous connecter à un serveur d'une autre machine en remplaçant 
+      <tt>localhost</tt> par l'IP de la machine du serveur, 
+      que vous pouvez obtenir via <tt>hostname -I</tt> 
+      (prenez l'adresse en 192.168).
+    </p>
+
+    <h3>Le code</h3>
+    
+    <p>
+      Ne cherchez pas à comprendre tout le code,
+      nous n'allons le modifier que localement, 
+      et vous serez guidés.
+    </p>
+
+    <p>
+      La partie "client" est très basique et ne fait que récupérer
+      les commandes saisies par le joueur, les envoyer au serveur,
+      et afficher ce qu'envoie le serveur.
+
+      En particulier l'affichage du jeu (plateau, tableau des scores, etc)
+      est calculé par le serveur et envoyé au client pour simple affichage.
+    </p>
+
+    <p>
+      Donc la plus grosse partie du code se trouve côté serveur 
+      (classes <tt>Serveur</tt> et <tt>Partie</tt> en particulier),
+      et c'est là que nous allons travailler.
+    </p>
+  </div>
+    
+
+  <!-- ------------------------------------------------------------------- -->
+
+
+  <div class="w3-container" id="chaines" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Les chaînes de caractères</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>
+      Une <b>chaîne de caractères</b> est une simple suite de caractères.
+      Son stockage et sa manipulation posent certaines questions techniques&nbsp;:
+      <ul>
+	<li>comment <b>stocker un caractère</b> ? <br/>
+	  Nous avons vu en début d'année que le type <tt>char</tt> était simplement stocké comme un entier, défini via la <a href="http://www.asciitable.com/">norme ASCII</a>.
+          Cela dit, au-delà des 128 premiers caractères, qui sont "standard",
+se pose le problème des caractères spéciaux, lettres accentuées de l'alphabet latin, mais aussi toutes les lettres et pictogrammes des autres alphabets... D'autres encodages de caractères sont donc apparus, les plus importants étant&nbsp;:
+	  <ul>
+	    <li><a href="https://en.wikipedia.org/wiki/ISO/IEC_8859-1">Latin-1</a> (de son vrai nom : ISO-8859-1), adapté à l'alphabet latin (pays occidentaux), où chaque caractère est codé sur 1 octet (8 bits).</li>
+	    <li><a href="https://en.wikipedia.org/wiki/UTF-8">UTF-8</a>, qui couvre beaucoup plus de caractères, dont tous les <a href="https://en.wikipedia.org/wiki/Unicode">caractères Unicode</a>. Un caractère UTF-8 prend entre 1 et 4 octets. C'est devenu le standard pour les pages web, les systèmes de fichiers, etc.</li>
+	    <li><a href="https://en.wikipedia.org/wiki/UTF-16">UTF-16</a> est similaire à UTF-8 mais utilise uniquement 2 ou 4 octets par caractère, plus adapté pour les processeurs. C'est l'encodage utilisé par Java.
+	  </ul>
+	</li>
+	<li>
+	  comment <b>stocker une chaîne de caractères</b> ?<br/>
+	  Globalement, dans un <i>tableau de caractères</i>.
+	  Cela dit, il y a une grosse différence entre&nbsp;:
+	  <ul>
+	    <li>les chaînes de caractères <b>que l'on modifie</b>, et</li>
+	    <li>les chaînes de caractères <b>qui ne changent pas</b>.</li>
+	  </ul>
+	  Nous verrons cela un peu plus loin dans le TP.
+	</li>
+      </ul>
+    </p>
+    <p>
+      Il existe de nombreux <b>caractères spéciaux</b>.
+      Le plus connu est <tt>'\n'</tt> qui désigne 
+      le <a href="https://fr.wikipedia.org/wiki/Carriage_Return_Line_Feed">passage à une nouvelle ligne</a> sous les systèmes Unix.
+      Pour obtenir le caractère correspondant du 
+      système d'exploitation de la machine qui exécute le programme,
+      on peut utiliser <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#lineSeparator--"><tt>System.lineSeparator()</tt></a>.
+    </p>
+  </div>
+
+  <!-- ------------------------------------------------------------------ -->
+    
+  <div class="w3-container" id="string" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>La classe String</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>
+      La classe <tt>String</tt> est la classe que l'on utilise habituellement
+      pour stocker une chaîne de caractères en Java.
+      Elle inclut des méthodes pour examiner de manière
+      individuelle chaque caractère d'une chaîne, comparer des chaînes,
+      rechercher des caractères ou chaînes dans une chaîne, extraire
+      des sous-chaînes, créer/copier/transformer des chaînes...
+    </p>
+    <p>
+      Notons que par défaut tout objet Java possède une méthode
+      <tt>toString()</tt> pour le convertir en <tt>String</tt>.
+      Cette méthode est redéfinissable, pour
+      préciser comment l'objet est affiché. Nous le verrons un peu plus tard.
+    </p>
+    <p>
+      Allez jeter un coup d'oeil à <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">la documentation Oracle de String</a> pour compléter cette brève introduction.
+    </p>
+    
+    <p>La manière standard de déclarer et d'initialiser une chaîne est simplement&nbsp;:</p>
+
+<pre class="prettyprint">
+String phrase1 = "Bonjour !";
+</pre>
+
+     L'opération de base sur les chaînes est la <b>concaténation</b> de 2 chaînes, c'est-à-dire le fait de les "coller". En Java, c'est l'opérateur "+" qui s'en charge&nbsp;:
+<pre class="prettyprint">
+String phrase1 = "Bonjour ";
+String phrase2 = "le monde !";
+String phrase3 = phrase1 + phrase2;
+System.out.println(phrase3);
+</pre>
+affichera "Bonjour le monde !".
+</p>
+
+<p>
+  Pour <b>comparer deux chaînes</b>, il faut ABSOLUMENT utiliser la méthode <tt>equals()</tt>, et pas <tt>==</tt>&nbsp;:
+<pre class="prettyprint">
+String phrase1 = ...;
+if ("Bonjour".equals(phrase1)) { // OUI !
+    ...
+}
+if ("Bonjour" == phrase1) { // NON !!!
+    ...
+}
+</pre>  
+Notez qu'on préfère <tt>"Bonjour".equals(phrase1)</tt> à <tt>phrase1.equals("Bonjour")</tt> pour éviter un <tt>NullPointerException</tt> si phrase1 est <tt>null</tt>.
+</p>
+
+<p>
+Remarque : depuis Java 13, une nouvelle façon de définir les <tt>String</tt>
+est disponible, via des blocs de texte.
+En attendant son adoption dans la prochaine version stable (Java 17),
+les curieux peuvent regarder 
+<a href="https://openjdk.java.net/jeps/355">de quoi il s'agit</a>.
+</p>
+
+<h3>1. Vérifier la première lettre du nom</h3>
+
+<p>
+Commencez par lire la documentation des méthodes suivantes de la classe String :
+<ul>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#isEmpty--">isEmpty()</a></li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#charAt-int-">charAt()</a></li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#contains-java.lang.CharSequence-">contains()</a>, qui fonctionne aussi en passant un argument de type <tt>String</tt> en paramètre.</li>
+</ul>
+</p>
+
+<p>
+Nous allons contrôler davantage les noms de joueur possibles.
+Ce contrôle est effectué par la méthode <tt>nomCorrect()</tt> 
+de la classe <tt>Joueur</tt>.
+Écrivez le code de cette méthode pour que les noms acceptés soient
+uniquement ceux&nbsp;:
+<ul>
+  <li>qui commencent par une majuscule non accentuée, et</li>
+  <li>qui ne contiennent ni le caractère <tt>Partie.SEPARATEUR</tt>, 
+    ni <tt>Joueur.SEPARATEUR</tt>, ni <tt>Plateau.SEPARATEUR</tt>.</li>
+</ul>
+Petit rappel : on peut très bien comparer des caractères avec
+les opérateurs <tt>&lt;=</tt>, <tt>&gt;=</tt>, etc.
+</p>
+
+<p>
+Assurez-vous que le test unitaire correspondant passe (<tt>testNomCorrect()</tt>
+dans <tt>JoueurTest</tt>).
+</p>
+
+<p>
+Pourquoi la méthode <tt>nomCorrect()</tt> n'est-elle pas déclarée <tt>static</tt>&nbsp;?
+</p>
+
+
+<h3>2. Interdire les mêmes initiales</h3>
+
+<p>
+Dans le jeu, deux joueurs peuvent avoir la même initiale, 
+ce qui rend le jeu injouable. Nous allons empêcher cela.
+</p>
+
+<p>
+La classe <tt>Joueur</tt> permet de stocker les informations de chaque 
+joueur&nbsp;: son nom, son score, sa colonne, etc.
+La liste des joueurs est stockée dans le tableau <tt>joueurs</tt>
+de la classe <tt>Partie</tt>, dont l'attribut <tt>nbJoueurs</tt>
+indique le nombre de joueurs.
+Ainsi, les joueurs sont rangés dans l'ordre, dans les cases
+0 à <tt>nbJoueurs-1</tt> du tableau <tt>joueurs</tt>.
+</p>
+
+<p>
+La méthode <tt>trouverJoueur()</tt> de la classe <tt>Partie</tt>
+parcourt ce tableau à la recherche d'un joueur avec un nom donné.
+Modifiez le code de cette méthode pour que
+seule la première lettre du nom compte, et pas le nom entier.
+</p>
+
+<p>
+Assurez-vous que le test correspondant passe.
+</p>
+
+
+<h3>3. Limiter la longueur des noms</h3>
+
+<p>
+Commencez par lire la documentation des méthodes suivantes de la classe String :
+<ul>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#length--">length()</a></li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#substring-int-int-">substring()</a></li>
+</ul>
+</p>
+
+<p>
+Pour l'instant les noms des joueurs ne sont pas limités en longueur,
+ce qui peut poser problème pour l'affichage.
+</p>
+
+<p>
+Dans le constructeur de la classe <tt>Joueur</tt>, 
+faîtes en sorte que l'attribut <tt>nom</tt> soit composé 
+des 10 premiers caractères du nom passé en paramètre
+(si le nom dépasse 10 caractères).
+</p>
+
+<p>
+Assurez-vous que le test correspondant passe (<tt>testJoueur()</tt>
+dans la classe <tt>JoueurTest</tt>).
+</p>
+
+
+<h3>4. Afficher des objets</h3>
+
+<p>
+En Java, toutes les classes ont une méthode <tt>toString()</tt>
+par défaut, qui est héritée de la classe <tt>Object</tt> 
+(vous aborderez cela au S2).
+Cette méthode <tt>toString()</tt> est appelée automatiquement
+lorsqu'on affiche un objet (par exemple), mais son
+affichage n'est pas très parlant : il contient la classe et la référence.
+Ainsi,
+<pre class="prettyprint">
+Joueur george = new Joueur("George");
+System.out.println(george);
+</pre>
+va afficher quelque chose comme :
+<pre class="prettyprint">
+jump.Joueur@337d0578
+</pre>
+On peut cependant redéfinir cette méthode dans les classes que l'on souhaite.
+Il faut indiquer l'annotation <tt>@Override</tt> et respecter la signature :
+<pre class="prettyprint">
+@Override
+public String toString() {
+    ...
+}
+</pre>
+</p>
+
+<p>
+Les classes <tt>Case</tt> et <tt>Plateau</tt> utilisent des méthodes 
+<tt>afficher()</tt> : remplacez-les par des méthodes <tt>toString()</tt>
+(vous ne devez plus avoir de méthode <tt>afficher()</tt>).
+Remplacez aussi les appels aux méthodes <tt>afficher()</tt> 
+par des appels aux méthodes <tt>toString()</tt>.
+</p>
+
+<p>
+Vérifiez que les deux tests correspondants passent.
+</p>
+
+
+<h3>5. Compter les plateformes</h3>
+
+<p>
+Commencez par lire la documentation des méthodes suivantes de la classe String&nbsp;:
+<ul>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html#indexOf-java.lang.String-">indexOf(String str)</a></li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html#indexOf-java.lang.String-int-">indexOf(String str, int fromIndex)</a></li>
+</ul>
+</p>
+
+<p>
+Nous allons implémenter la méthode <tt>nbPlateformesLigne()</tt> de la classe
+<tt>Plateau</tt>, qui prend en paramètre un numéro de ligne, et renvoie
+le nombre de plateformes de cette ligne.
+Lisez le test unitaire correspondant pour vous assurer que vous avez
+compris ce que doit faire cette méthode.
+</p>
+
+<p>
+Avant de coder : pourquoi cette méthode n'est-elle pas 
+une méthode de classe (<tt>static</tt>)&nbsp;?
+</p>
+
+<p>
+La ligne suivante :
+<pre class="prettyprint">
+String texteLigne = serialiserLigne(ligne, false).toString();
+</pre>
+permet de récupérer la chaîne représentant la ligne numéro <tt>ligne</tt>
+du plateau sous forme d'une <tt>String</tt>.
+Ici les initiales des joueurs ont été remplacées par une case vide.
+Il n'y a donc que des caractères vides (<tt>Case.CAR_VIDE</tt>)
+et des caractères de plateforme (<tt>Case.CAR_PLATEFORME</tt>).
+</p>
+
+<p>
+Codez la méthode <tt>nbPlateformesLigne()</tt>, en utilisant <b>uniquement</b> 
+les méthodes <tt>indexOf</tt>
+pour chercher la prochaine plateforme et/ou la prochaine case vide, 
+et ainsi compter les plateformes.
+</p>
+
+<p>
+Le test correspondant doit passer.
+</p>
+</div>
+
+  <!-- ------------------------------------------------------------------ -->
+    
+  <div class="w3-container" id="stringbuilder" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>La classe StringBuilder</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+    <p>
+      Quel que soit le langage de programmation,
+      les chaînes de caractères sont compliquées à stocker
+      car elles sont de taille variable, volumineuses,
+      ont besoin d'être construites de manière simple,
+      et analysées rapidement.
+    </p>
+
+    <p>
+      En Java, il y a plusieurs classes pour les chaînes de caractères, en fonction de leur usage&nbsp;:
+      <ul>
+	<li>
+	  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">String</a> est une classe <em>immuable</em>, c'est-à-dire que les objets de type String <b>ne sont pas modifiables</b>.
+	  Par exemple, dans le code suivant,
+<pre class="prettyprint">
+String s1 = "un";
+s1 = s1 + "e";
+</pre>
+l'expression <pre class="prettyprint enLigne">s1 = s1 + "e"</pre> ne
+modifie pas la chaîne <tt>"un"</tt>,
+mais crée un nouvel objet String contenant la
+chaîne <tt>"une"</tt>, qui est ensuite affecté à <tt>s1</tt>.
+L'un des intérêts d'être immuable est de pouvoir être partagé de manière sûre.
+Par exemple, dans ce code :
+<pre class="prettyprint">
+String s1 = "bonjour";
+String s2 = "bonjour";
+</pre>
+Java peut se permettre de ne créer qu'une seule chaîne <tt>"bonjour"</tt>,
+et d'affecter cette chaîne aux deux variables <tt>s1</tt> et <tt>s2</tt>.
+
+Ainsi la classe String est plutôt réservée aux chaînes <b>peu modifiées</b>,
+puisque chaque concaténation crée un nouvel objet.
+	</li>
+	<li>
+	  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html">StringBuilder</a> est une classe <em>mutable</em>, donc adaptée à des chaînes qui doivent être <b>modifiées</b>.
+	  La concaténation se fait via l'opération <tt>append()</tt>.
+	  Cette méthode renvoie elle-même le StringBuilder modifié,
+	  ce qui permet d'enchaîner les opérations, comme le montre par exemple
+	  la méthode <tt>tableauJoueurs()</tt> de la classe <tt>UI</tt>&nbsp;:
+<pre class="prettyprint">
+StringBuilder tabJoueurs = new StringBuilder();
+tabJoueurs
+        .append(" ").append(System.lineSeparator())
+        .append("    Joueurs    | Scores ").append(System.lineSeparator())
+        .append("---------------+--------").append(System.lineSeparator());
+for (int i = 0; i < partie.nbJoueurs; i++) {
+    Joueur joueur = partie.joueurs[i];
+    tabJoueurs.append(ligneJoueur(joueur));
+}
+</pre>
+La conversion de <tt>StringBuilder</tt> vers <tt>String</tt> se fait simplement
+via la méthode <tt>toString()</tt>.
+	</li>
+	<li>
+	  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuffer.html">StringBuffer</a> est une version plus élaborée de <tt>StringBuilder</tt> permettant de gérer des chaînes dans des programmes multithreads. Nous n'aborderons pas cette classe dans ce TP (elle est notamment moins performante).
+	</li>
+      </ul>
+    </p>
+
+    <h3>6. StringBuilder pour les plateaux</h3>
+
+    <p>
+    Modifiez votre méthode <tt>toString()</tt> de la classe <tt>Plateau</tt>
+    pour qu'elle utilise un <tt>StringBuilder</tt>.
+    Convertissez ce <tt>StringBuilder</tt> en <tt>String</tt>
+    pour obtenir le résultat de la méthode.
+    Vérifiez que le test correspondant passe toujours.
+    </p>
+</div>
+    
+  <!-- ------------------------------------------------------------------ -->
+    
+  <div class="w3-container" id="formatage" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Formatage</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+    <p>
+    L'une des problématiques rencontrées avec les chaînes de caractères 
+    est le formatage : afficher les données (date, nombre, etc)
+    suivant un certain format, les aligner, etc.
+
+    La classe String possède pour cela la méthode
+    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#format-java.lang.String-java.lang.Object...-">format()</a>, dont voici un exemple d'utilisation&nbsp;:
+<pre class="prettyprint">
+float pi = 3.141592653589793f;
+int n = 123456789;
+String s = "un texte beaucoup trop long";
+String f = String.format("chaîne formatée : %f %d %s", pi, n, s);
+System.out.println(f);
+</pre>
+affiche :
+<pre class="prettyprint">
+chaîne formatée : 3,141593 123456789 un texte beaucoup trop long
+</pre>
+Ainsi la méthode <tt>format()</tt> prend comme premier argument 
+une chaîne de caractères dont les caractères spéciaux 
+(ici : <tt>%f</tt>, <tt>%d</tt> et <tt>%s</tt>) sont remplacés
+par les arguments suivants (ici <tt>pi</tt>, <tt>n</tt> et <tt>s</tt>).
+Les caractères spéciaux indiquent le type de données (<tt>s</tt> pour String,
+<tt>f</tt> pour float, <tt>d</tt> pour un entier).
+</p>
+<p>
+On peut y ajouter des options de format, placées entre le symbole <tt>%</tt>
+et le symbole de type (par exemple <tt>s</tt>).
+Nous utiliserons principalement le symbole <tt>-</tt> pour justifier à gauche,
+et la largeur minimale de la chaîne obtenue.
+Par exemple, en prenant désormais le format suivant&nbsp;:
+<pre class="prettyprint">
+String f = String.format("chaîne formatée : %-12f | %15d | %s", pi, n, s);
+</pre>
+on obtient :
+<pre class="prettyprint">
+chaîne formatée : 3,141593     |       123456789 | un texte beaucoup trop long
+</pre>
+car <tt>%-12f</tt> signifie qu'on souhaite intégrer un float (le <tt>%f</tt>)
+justifié à gauche (le <tt>-</tt>) et sur une largeur d'au moins  
+<tt>12</tt> caractères.
+La documentation sur le formatage des chaînes se trouve 
+<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax">ici</a>.
+    </p>
+    <p>
+      Notez que la méthode <tt>format()</tt> est une 
+      <em>méthode de classe</em> (<tt>static</tt>).
+      Elle n'opère pas sur une chaîne, mais produit une nouvelle chaîne
+      à partir d'objets.
+    </p>
+
+    <h3>7. Liste des joueurs</h3>
+
+    <p>
+      Sur la droite de l'écran, la liste des joueurs est mal formatée&nbsp;:
+<pre class="prettyprint">
+    Joueurs    | Scores 
+---------------+--------
+ *  Morpheus | 11
+ -  Trinity | 8
+</pre>
+      On souhaite que le nom du joueur soit affiché sur exactement 10 caractères
+      (il est déjà limité à 10 caractères maxi), aligné à gauche,
+      alors que le score doit être aligné à droite, sur 3 chiffres, 
+      le chiffre des unités apparaissant sous le "r" de "Scores"&nbsp;:
+<pre class="prettyprint">
+    Joueurs    | Scores 
+---------------+--------
+ *  Morpheus   |   11
+ -  Trinity    |    8
+</pre>
+    </p>
+
+    <p>
+      Faîtes les changements nécessaires dans la méthode <tt>ligneJoueur()</tt>
+      de la classe <tt>UI</tt>.
+      Le test correspondant doit passer.
+    </p>
+
+</div>
+
+
+
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML =  element.alt;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+/*body { margin: 0; padding: 0; border: 0; }
+section { min-height: 100vh; }
+div { background-color: lightgrey; }
+div:nth-of-type(5n+1) { background-color: #1abc9c; }
+div:nth-of-type(5n+2) { background-color: #3498db; }
+div:nth-of-type(5n+3) { background-color: #9b59b6; }
+div:nth-of-type(5n+4) { background-color: #e67e22; }
+div:nth-of-type(5n) { background-color: #e74c3c; }
+span { background-color: rgba(255, 255, 255, .5); border-radius: 50%;
+display: block; font-size: 48px; height: auto; line-height: 3em; text-align: center; width: 3em;}
+
+ /* @media screen {
+    section{
+        display: flex;
+    }
+
+    section div:last-child{
+        display: none;
+    }
+}   */
+
+ /* @media screen{
+    section{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    section span{
+        display: flex;
+        justify-content: center;
+    }
+    section div:last-child{
+        display:none;
+    }
+    section div{
+        margin-top:0.5%;
+        margin-bottom: 0.5%;
+        width: 24%;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+}   */
+
+  /* @media screen{
+    section{
+        height: 1000px;
+        display:flex;
+        flex-wrap:wrap;
+        flex-direction: column;
+        width:95%;
+        margin-left:auto;
+        margin-right:auto;
+        justify-content:space-between;
+        align-items:stretch;
+        align-content:stretch;
+    }
+    section span{
+        display: flex;
+        justify-content: center;
+    }
+    div:nth-child(5){
+        width: 24%;
+    }
+    section div:last-child{
+        height:100%;
+      }
+    section div{
+        /*height: 300px;
+        margin-top:10px;
+        margin-bottom: 10px; */ /*
+       padding:45px;
+        width: 24%;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+  } 
+    @media(max-width:1024px){
+  section div{
+    height:300px;
+    width:49%;
+  }
+}
+@media(max-width:600px){
+  section div{
+    height:200px;
+    width:100%;
+  }
+ } */ 
+
+/*body { margin: 0; padding: 0; border: 0; }
+section { min-height: 100vh; }
+div { background-color: lightgrey; }
+div:nth-of-type(5n+1) { background-color: #1abc9c; }
+div:nth-of-type(5n+2) { background-color: #3498db; }
+div:nth-of-type(5n+3) { background-color: #9b59b6; }
+div:nth-of-type(5n+4) { background-color: #e67e22; }
+div:nth-of-type(5n) { background-color: #e74c3c; }
+span { background-color: rgba(255, 255, 255, .5); border-radius: 50%;
+display: block; font-size: 48px; height: auto; line-height: 3em; text-align: center; width: 3em; }
+
+section div{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    width: 20%;
+    padding: 40px;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+/*body { margin: 0; padding: 0; border: 0; }
+ul { list-style: none; padding: 0; margin: 0; height: 100px; }
+li { background-color: lightgrey; text-align: center; }
+li:nth-of-type(5n+1) { background-color: #1abc9c; }
+li:nth-of-type(5n+2) { background-color: #3498db; }
+li:nth-of-type(5n+3) { background-color: #9b59b6; }
+li:nth-of-type(5n+4) { background-color: #e67e22; }
+li:nth-of-type(5n) { background-color: #e74c3c; }
+a { color: white; font-size: 16px; line-height: 50px; text-decoration:
+none; }
+
+ul{
+    width: 100%;
+    display: flex;
+}
+ul li{
+    margin-top: 20px;
+    height: 50px;
+    width: 100%;
+}
+
+ul li:hover{
+    margin-top: 0px;
+    height: 80px;
+    width: 115%;
+}
+
+@media (max-width: 600px){
+
+ul{
+    flex-direction: column;
+ }
+} */
+/*body { border: 0; margin: 0; padding: 0; }
+header { background-color: #1abc9c; line-height: 80px; }
+nav { background-color: #3498db; }
+article { background-color: #9b59b6; }
+footer { background-color: #e67e22; }
+header, nav, article, footer { color: white; padding: 10px; }
+header, footer { height: 80px; text-align: center; }
+h1, p { margin: 0 0 15px 0; }
+nav a { border-bottom: 1px solid rgba(255,255,255,.3); color: white;
+display: block; line-height: 40px; text-decoration: none; }
+
+main{
+    display:flex;
+    height:100%;
+  
+  }
+  
+  main article{
+    width:80%;
+  }
+
+  main nav {
+     width: 20%
+  }
+
+  @media(max-width:600px){
+    main{
+      flex-direction:column;
+    }
+    main article{
+      order:1;
+    }
+    main nav{
+      width:100%;
+      order:2;
+    }
+  } */
+
+.row div {
+    border: 1px solid red;
+}
+
+  
+
+

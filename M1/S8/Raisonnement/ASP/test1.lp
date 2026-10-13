@@ -1,0 +1,1 @@
+:- not oncle(pierre, lea).

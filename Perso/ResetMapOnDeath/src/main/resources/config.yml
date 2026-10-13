@@ -1,0 +1,11 @@
+# Configuration ResetMapOnDeath
+
+
+reset-delay: 100
+message: §c§l%player% est mort ! RIP la run...
+
+# Les données des joueurs (morts) s'enregistreront automatiquement ci-dessous.
+# Il est déconseillé de modifier cette section manuellement quand le serveur tourne.
+player-deaths:
+  ad754470-8f3e-45ea-930e-278197757958: 1
+  c7f98a42-591e-46da-9b80-358a4e994cf7: 1

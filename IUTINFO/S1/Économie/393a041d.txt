@@ -1,0 +1,85 @@
+
+Évaluation :
+    - 2 notes de TD (+ participation + absentéisme)
+    - Un DS
+
+PPN = Programme Pédagogique National
+	- 30h supposées (28h/TD)
+	- Objectif : à l'issue des 28h de cours, il faudrait que l'on soit capable d'argumenter sur plus ou moins n'importe quel problème économique (que l'on ne parle plus comme dans un café du commerce -> Déconstruire les présupposés économiques).
+
+	Pour comprendre le fonctionnement du monde économique il faut répondre à 4 types de question :
+	
+		* Quel est l'objet de la science économique? (I)
+
+	* A - Des besoins illimités
+À cause de leur conscience les humains ont un besoin illimité.
+
+	* B - Des biens limités
+À cause de contraintes climatiques, géologiques, etc.
+À cause de la production couteuse en homme, organisation et produits 
+
+	* C - Définition
+- L'économie à pour objet de satisfaire des besoins humains illimités avec des biens limités ou rares. Des choix sont nécessaires. La science économique est la science des choix.
+
+- L'économie est la science qui étudie comment les ressources rares sont employées pour la satisfaction des besoins des hommes vivant en société. (Dixit Edmond Malinvaud, économiste réputé)
+
+
+		* Quelles sont les méthodes d'analyses économique (II)
+
+	* A - La micro économie
+On analyse le choix des individus, des consommateurs.
+
+	* B - La macro économie
+On étudie un territoire, à grande échelle. Des "variables agrégées" (lorsque que l'on rassemble/ajoute/rassemble dans une variable tous les comportements individuels).
+e.g.: On étudie les comportements des français en France.
+
+
+		* Une représentation de l'économie : le circuit économique (III)
+
+	* A - La notion de circuit
+Une représentation simplifiée des principales relations économique entre les pricipaux agents économiques.
+(http://www.citeco.fr/Le-circuit-economique)
+
+	* B - Les principaux agents économiques
+
+Les différents agents économiques : 
+    - L'état
+    - Les entreprises (Les institutions de crédit (banques)/les autres acteurs)
+    - Les ménage
+    - Les autres pays
+    
+	* C - Circuit à deux agents
+(cf la diapo 21)
+- R (revenus) : Le salaire est versé aux ménages par les entreprises
+- C  (consommation) : Le ménage consomme une partie de son salaire (qu'il "rend" à l'entreprise)
+- S (épargne/saving) : Le reste de l'argent qui n'a pas été dépensé.
+- I (investissement) :
+
+- La demande adressée aux entreprises est égale à D=C+I.
+- Le revenu des ménages est égal à R=C+S.
+- Ainsi, on a : I=S. C'est une réalité économique indiscutable.
+
+	* D - Circuit à trois agents.
+ 
+	* E - Circuit d'ensemble
+Un acteur n'apparaît pas sur le schéma : "Le reste du monde", avec lequel on échange, on importe et on exporte.
+L'acteur essentiel ajouté est l'Administration (l'état).
+Les entreprises prélève des taxes (impôts, TVA, etc) aux entreprises, les reverse (service publique) aux ménages.
+
+		* La science éco n'est pas unique. Quels sont les principaux courants? (IV)
+
+--------------------------------------------
+ETAT : déficit publique, dette publique (emprunts)
+Recettes :
+    - Impôts
+
+Dépenses :
+    - Bourses, dépenses administratives...
+
+Déficit: quand la recette est inférieure aux dépenses.
+
+PIB 2019 : 2427 M €.
+Dette 2019 : 100.0 % PIB
+Deficit 2019 : 3.0% PIB
+
+Esther Duflo :

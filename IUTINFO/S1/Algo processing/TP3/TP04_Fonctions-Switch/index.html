@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html>
+<title>TP 4 - Structures de contrôle et fonctions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="http://www.informatics-tech.com/highlighter/prettify.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+table tr th,td{
+  border:1px solid black;
+} 
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+.ajout-oga {background-color: green;}
+.todo-oga {background-color: red;}
+pre.enLigne{display: inline;}
+.nicho-modif{border-left: Lime 5px solid;padding-left: 5px;background: yellow;}
+.test th{width:300px;}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>IUT<br>Département-info</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#exo1" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Dessin de formes imposées</a> 
+    <a href="#exo2" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Zigzag aléatoire</a>     
+    <a href="#exo3" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Animations avec draw()</a> 
+    <a href="#exo4" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Suite de Syracuse</a> 
+    
+    
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">&#9776;</a>
+  <span>Iut info BDX</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>TP 4 - Structures de contrôle et fonctions</b></h1>
+    
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div class="w3-half">
+    <p>
+Avant de commencer le TP, copiez chez vous les fichiers fournis pour ce TP (dossier <tt>code</tt>).</p>
+
+  <h2 ><b>Structure de contrôle conditionnelle - switch</b></h2>
+<hr style="width:50px;border:5px solid red" class="w3-round">
+
+
+    <p>
+      Syntaxe&nbsp;:
+	<pre class="prettyprint">
+	
+
+switch ( variable )
+{
+	case valeur_1 :
+		instruction_1_1
+		instruction_1_2
+		...
+		break;
+	
+	case valeur_2 :
+		instruction_2_1
+		instruction_2_2
+		...
+		break;
+	
+	...
+	
+	default :
+		instruction_d_1
+		instruction_d_2
+}
+	</pre>
+
+
+</p>
+
+  
+    </div>
+
+
+
+    <div class="w3-half">
+      <img src="img/Strip-Commentaires-davant-vacances-650-final-2.jpg">
+    </div>
+
+
+  
+  </div>
+
+  <p>
+  	Exemples :  	
+  </p>
+
+  <p>
+  	<pre class="prettyprint">
+void menu (int choix )
+{
+	switch ( choix )
+	{
+	case 1 :
+		println ("le jeu commence !");
+ 		jouer ();
+ 		break ;
+ 	case 2 :
+ 		solution ();
+ 		break ;
+ 	default :
+ 		println (" entree incorrecte ");
+ 	}
+ }
+  	</pre>
+
+
+<pre class="prettyprint">
+void keyPressed ()
+{
+	switch ( key )
+	{
+	case ’a’ :
+	case ’e’ :
+	case ’i’ :
+	case ’o’ :
+	case ’u’ :
+	case ’y’ :
+		println (" Voyelle ");
+		break ;
+	default :
+		println (" Consonne ou ...");
+		break ;
+	}
+}
+</pre>
+  </p>
+
+
+<h1 id="exo1" class="w3-jumbo"><b>Dessin de formes imposées</b></h1>
+    
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+<p>
+Nous allons réaliser ici des dessins de formes (ligne, chemin, carré, etc) à l’aide d’une suite de pastilles blanches.
+</p>
+
+<h3>Prise en main du code fourni</h3>
+
+<p>Ouvrez le sketch Processing fourni Sketch_TP04_Formes. Vous obtenez les onglets suivants :
+<ul>
+	<li>Sketch_TP04_Formes : c’est l’onglet principal, il contient la fonction <tt>setup()</tt>, et contiendra toutes vos fonctions,</li>
+	<li>Bases : code de base de dessin des formes (vous modifierez uniquement la fonction <tt>initForm</tt>).</li>
+</ul>
+
+Exécutez le code fourni, vous obtenez deux chemins. Vous constatez qu’ils commencent chacun par une pastille rouge,
+dessinée par la fonction <pre class="prettyprint enLigne">initForm</pre>, puis se poursuivent par des pastilles blanches, dessinées les unes après les autres par la fonction <pre class="prettyprint enLigne">goDisplay</pre>. Les changements de direction du dessin sont réalisés grâce aux fonctions <pre class="prettyprint enLigne">turnLeft</pre> et
+<pre class="prettyprint enLigne">turnRight</pre>.
+</p>
+
+<h3>Question 1 : lecture de code</h3>
+<span>
+Lisez bien le code (y compris les commentaires) pour comprendre chaque fonction de base, et le contenu de la fonction <pre class="prettyprint enLigne">setup</pre> qui a produit les dessins observés.
+</span>
+
+
+
+<h3>Question 2 : compréhension</h3>
+<p>
+Jouez avec la constante DEPLACEMENT dans l’onglet Bases pour bien comprendre son rôle et testez avec 3 valeurs
+différentes :
+<ul>
+  <li>DEPLACEMENT < DIAMETRE</li>
+  <li>DEPLACEMENT = DIAMETRE</li>
+  <li>DEPLACEMENT > DIAMETRE</li>
+</ul>
+</p>
+
+
+<h3>Question 3 : structuration</h3>
+<span>
+Dans la fonction <pre class="prettyprint enLigne">setup()</pre>, déplacez le code des deux chemins dans des fonctions <pre class="prettyprint enLigne">premierChemin()</pre> et <pre class="prettyprint enLigne">deuxiemeChemin()</pre>
+respectivement.	
+</span>	
+
+
+<h3>Question 4 : fonction move()</h3>
+<span>
+	Dans la fonction <pre class="prettyprint enLigne">move</pre> de l’onglet <pre class="prettyprint enLigne">Bases</pre>, le changement de direction est actuellement réalisé par une suite de if ...
+else if. Transformez ce bout de code en le remplaçant par une structure switch.
+</span>
+
+
+<h3>Question 5 : forme ligne</h3>
+<span>
+Écrivez la fonction <pre class="prettyprint enLigne">void ligne(int n)</pre> qui affiche une ligne de n pastilles. Puis utilisez-la dans les fonctions <pre class="prettyprint enLigne">premierChemin</pre>
+et <pre class="prettyprint enLigne">deuxiemeChemin</pre> à la place des bouts de code qui vous semblent opportuns.
+</span>
+
+
+<h3>Question 6 : forme carré</h3>
+<span>
+Écrivez la fonction <pre class="prettyprint enLigne">void carre(int x, int y, int n)</pre> qui affiche un carré dont le coin haut-gauche est positionné
+en (x,y), et dont chaque côté compte n pastilles. Testez cette fonction.	Remarque : pensez à la réutilisation de fonctions déjà écrites.
+</span>
+
+
+<h3>Question 7 : forme escalier</h3>
+<span>
+Écrivez la fonction <pre class="prettyprint enLigne">void escalier(int x, int y, int n, int nbMarches)</pre> qui affiche un escalier montant de
+<pre class="prettyprint enLigne">nbMarches</pre> marches qui sont chacune de hauteur et largeur n pastilles.	
+</span>
+<p>
+	Exemple avec n=7 et nbMarches=5&nbsp;:
+</p>
+<p>
+	<img src="img/escalier_7_5.png">
+</p>
+<p>
+	Exemple avec n=4 et nbMarches=10&nbsp;:
+</p>
+<p>
+	<img src="img/escalier_4_10.png">
+</p>
+
+
+<h3>Question 8 : forme escargot</h3>
+<span>
+	Écrivez la fonction <pre class="prettyprint enLigne">void escargot(int x, int y, int n)</pre> qui affiche un "escargot (une "spirale carrée") avec n
+branches et dont le centre (pastille rouge de départ du dessin) est positionné en (x,y).
+</span>
+	Exemple avec n=20&nbsp;:
+</p>
+<p>
+	<img src="img/escargot_20.png">
+</p>
+
+
+
+
+
+
+<h1 id="exo2" class="w3-jumbo"><b>Zigzag aléatoire</b></h1>
+<hr style="width:50px;border:5px solid red" class="w3-round">
+
+<p>
+	Le but de cette section est de dessiner un zigzag aléatoire d’une certaine longueur fixée (nombre de pastilles fixé).
+Dans une première version, on ne se préoccupera pas du fait que le zigzag sorte des bordures de l’écran ou non. La
+deuxième version prendra en compte ce cas-là.
+</p>
+<h3>Question 9 : version 1 : zigzag aléatoire sans contrainte</h3>
+<p>
+<ol>
+	<li>Écrivez la fonction void randTurn() qui permet aléatoirement de tourner à gauche ou à droite (<pre class="prettyprint enLigne">turnLeft()</pre>
+ou <pre class="prettyprint enLigne">turnRight()</pre>).</li>
+	<li>Écrivez la fonction <pre class="prettyprint enLigne">void zigzag1(int x, int y, int n)</pre> qui affiche un chemin de n pastilles blanches, débutant avec une pastille rouge en (x,y), et qui tourne aléatoirement à gauche ou à droite toutes les 10 pastilles.</li>
+</ol>
+ 
+</p>
+
+
+	<p>Exemple avec n=100&nbsp;:
+</p>
+<p>
+	<img style="margin-right: 20px;" src="img/zigzag1_100.png"><img src="img/zigzag1_100bis.png">
+</p>
+
+
+
+<h3>Question 10 : version 2 : zigzag aléatoire contraint par les bordures</h3>
+
+<ol>
+	<li>Écrivez la fonction boolean <pre class="prettyprint enLigne">touchBorder()</pre> qui retourne vrai si la pastille courante touche une des bordures
+de la fenêtre de dessin, faux sinon.</li>
+	<li>Écrivez la fonction <pre class="prettyprint enLigne">void zigzag2(int x, int y, int n)</pre> qui affiche un chemin de n pastilles blanches, débutant
+avec une pastille rouge en (x,y), et qui tourne aléatoirement à gauche ou à droite toutes les 10 pastilles. Si
+les n pastilles peuvent être dessinées sans toucher aucune bordure de la fenêtre, la fonction affiche "Gagné !",
+sinon, le dessin s’arrête dès qu’une pastille touche une bordure et la fonction affiche "Perdu !".</li>
+</ol>
+
+	<p>Exemple avec n=100&nbsp;:
+</p>
+<p>
+	<img style="margin-right: 20px;" src="img/zigzag2_100.png"><img src="img/zigzag2_100bis.png">
+</p>
+
+<h1 id="exo3" class="w3-jumbo"><b>Animations avec draw()</b></h1>
+<hr style="width:50px;border:5px solid red" class="w3-round">
+
+<h3>Question 11 : animation du zigzag</h3>
+
+<p>
+	Pour pouvoir voir à l’écran l’animation du zigzag (c’est-à-dire voir les pastilles se dessiner les unes après les autres) :
+	<ul>
+		<li>introduisez dans le code la fonction <pre class="prettyprint enLigne">void draw()</pre> de Processing,</li>
+		<li>répartissez le code de la fonction <pre class="prettyprint enLigne">void zigzag2</pre> entre les fonctions <pre class="prettyprint enLigne">setup()</pre> et <pre class="prettyprint enLigne">draw()</pre>, en remarquant que la
+structure de boucle n’est plus nécessaire (la boucle de dessin étant gérée maintenant par <pre class="prettyprint enLigne">draw()</pre>),</li>
+		<li>pour arrêter l’appel à la fonction <pre class="prettyprint enLigne">draw()</pre> une fois affiché "Gagné" ou "Perdu", vous pouvez utiliser la fonction Processing <pre class="prettyprint enLigne">noLoop()</pre>.</li>
+	</ul>
+</p>
+
+<h1 id="exo4" class="w3-jumbo"><b>Supplément : Suite de Syracuse</b></h1>
+<hr style="width:50px;border:5px solid red" class="w3-round">
+
+<p>On considère la suite entière définie, pour une valeur u<sub>1</sub> positive fixée, par :</p>
+<p style="text-align: center;"><img width="450px;" src="img/syracuseformule.png"></p>
+
+<p>
+	On conjecture que, quel que soit u<sub>1</sub> > 0, cette suite converge vers le cycle (1; 4; 2). On appelle vol associé à une
+valeur donnée de u<sub>1</sub> la liste des valeurs prises par la suite entre u<sub>1</sub> et u<sub>k</sub>, où k est le plus petit entier tel que u<sub>k</sub> = 1.
+</p>
+
+<p>
+<h3>Question 12 : Syracuse</h3>
+<ol>
+	<li>Compilez et exécutez le programme fourni dans le sketch sketch_TP04_Syracuse. Il ne fonctionne pas correctement (boucle infinie...). Grâce au mode Debug et/ou aux affichages suivants, corrigez ce programme.</li>
+	<li>Modifiez le programme précédent pour qu’il affiche la longueur du vol, c’est-à-dire le premier k tel que uk = 1.</li>
+	<li>Modifiez le programme précédent pour qu’il affiche aussi l’altitude maximale, c’est-à-dire le plus grand élément
+du vol.</li>
+	<li>Rajoutez au programme une visualisation graphique de la courbe de Syracuse, par exemple :</li>
+
+	<img width="850px;" src="img/syracuse.png">
+</ol>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<!-- 
+<pre class="prettyprint">
+void nextStep()
+</pre>
+permettant de faire une itération du cycle de vie de la matrice.
+</p>
+
+<p>Si votre code est correct, la grille suivante devrait apparaitre</p>
+<p><img src="img/life1.png"></p>
+ -->
+
+</div>
+<!-- 
+<pre class="prettyprint">
+void nextStep()
+</pre>
+permettant de faire une itération du cycle de vie de la matrice.
+</p>
+
+<p>Si votre code est correct, la grille suivante devrait apparaitre</p>
+<p><img src="img/life1.png"></p>
+ -->
+
+</div>
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML =  element.alt;
+}
+</script>
+
+</body>
+</html>

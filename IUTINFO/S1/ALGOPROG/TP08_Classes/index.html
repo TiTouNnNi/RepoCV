@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html>
+<title>TP Classes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="http://www.informatics-tech.com/highlighter/prettify.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+table tr th,td{
+  border:1px solid black;
+} 
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+.ajout-oga {background-color: green;}
+.todo-oga {background-color: red;}
+pre.enLigne{display: inline;}
+.nicho-modif{border-left: Lime 5px solid;padding-left: 5px;background: yellow;}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>IUT<br>Département info</b></h3>
+  </div>
+  <div class="w3-bar-block">
+     
+    <a href="#exo0" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Quelques explications</a> 
+    <a href="#exo1" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Fabrique à bonbons</a> 
+    <a href="#exo2" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Classe Distributeur</a> 
+    <a href="#exo4" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Parce qu'un peu d'algorithmique fait toujours ...</a> 
+    
+    
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">&#9776;</a>
+  <span>Iut info BDX</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1 class="w3-jumbo"><b>TP classes et manipulation d'objets</b></h1>
+    <!-- <h1 class="w3-xxxlarge w3-text-red"><b>Mise en oeuvre avec le jeu du morpion</b></h1> -->
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-containerg">
+    <div class="w3-container">
+
+
+	  <p>Lors de cette séance vous allez découvrir comment définir et manipuler des classes et des instances (objets).</p>
+
+      <img src="img/strip-salon-650.jpg">
+
+<div class="w3-container" id="exo0" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Quelques explications</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+
+	<h3>Classes, constructeurs</h3>
+	
+    <p>Nous avons vu lors des séances précédentes comment nous pouvons définir des classes en Java. Pour cela, ont été introduits les concepts de constructeurs (méthodes permettant d'instancier un objet) et d'attributs (données qui définissent les instances de cette classe). Pour rappel, les constructeurs portent nécessairement le nom de la classe, par exemple pour une classe <tt>Salle</tt> :
+    <pre class="prettyprint">
+    class Salle {
+        ...
+        Salle() { ... } // constructeur par défault
+        Salle(int unNumero, ...) { ... } // constructeur paramétré
+        ...
+    }
+    </pre>
+
+	<h3>Attributs</h3>
+	
+    Un attribut se déclare simplement à l'intérieur de la définition de la classe (mais en dehors de toute méthode), par exemple :
+    <pre class="prettyprint">
+    class Salle {
+        ...
+        int numero;
+        boolean libreService;
+        ...
+    }
+    </pre>
+
+	<h3>Instantiation</h3>
+	
+    On peut ensuite utiliser cette classe comme n'importe quel autre type, et ainsi instancier une classe, c'est-à-dire déclarer et initialiser une variable dont le type est cette classe. On utilise la notation pointée pour accéder à l'un des attributs d'une instance (un objet) :
+    <pre class="prettyprint">
+    Salle s = new Salle();
+    ...
+    System.out.println(s.numero); // affiche le numéro de la salle s</pre>
+
+	<h3>Méthodes</h3>
+	
+    Toutefois, les classes ne sont pas simplement des structures de données permettant de <b>regrouper des données</b> au sein d'une même entité. En effet, une autre manière de voir une classe est de la considérer comme un <b>fournisseur de services</b> : les attributs ne sont alors que les données nécessaires à la réalisation de ces services. Pour cela, nous pouvons définir des méthodes (fonctions définies à l'intérieur d'une classe).
+
+	<h3>Méthode (et attribut) d'instance (non statique) ou de classe (statique)</h3>
+
+	On distingue les <b>méthodes</b> :
+    <ul>
+        <li> <b>d'instance</b> (= non statiques) : elles sont appliquées sur l'instance courante. On peut alors désigner cette instance avec le mot-clé "<tt>this</tt>".</li>
+        <li> <b>de classe</b> (= statiques) : elles ne sont pas liées à une instance, mais à la classe. Ainsi, l'utilisation de "<tt>this</tt>" est interdite dans le corps de ces méthodes, ainsi que l'accès aux attributs non statiques.</li>
+    </ul>
+    Il est important de noter que les <b>attributs</b> peuvent aussi être statiques et donc non pas liés à une instance mais à la classe.
+    
+    <pre class="prettyprint">
+    class Salle {
+        ...
+        int numero; // attribut d'instance
+        static int nombreDeSalles = 0; // attribut lié à la classe et non à une instance. 
+                                       // Permet de compter combien de salles ont été
+                                       // instanciées
+        
+        Salle() {                 // constructeur
+            ...
+            nombreDeSalles++;     // à chaque nouvelle instance, on incrémente 
+                                  // nombreDeSalles
+            ...
+        }
+	
+        int numero() { // méthode d'instance : il s'agit du numéro d'une salle précise
+            return this.numero;
+        }
+        
+        static int nombreDeSalles() { // méthode de classe : liée à la classe et non à 
+                                      // une instance précise
+            return nombreDeSalles;
+        }
+        ...
+    }
+</pre>
+    Demander à une instance d'exécuter une méthode d'instance se fait (tout comme pour les attributs) en utilisant la notation pointée. Pour une méthode de classe, on ne peut pas demander à une instance de l'exécuter. On utilise la notation <tt>NomDeLaClasse.methodeDeClasse()</tt> :
+    <pre class="prettyprint">
+    Salle s = new Salle();
+    ...
+    System.out.println(s.numero()); // affiche le numéro de la salle s
+    System.out.println("Nombre de salles : " + Salle.nombreDeSalles()); 
+                // affiche le nombre de salles qui ont été instanciées.
+</pre>    
+    
+	<h3>Code fourni</h3>
+	
+    </p>
+    <p>Ouvrez tout d'abord le code qui vous est fourni. Vous y trouverez 6 fichiers :
+    <ul>
+        <li><tt>DistributeurFriandise.java</tt> : la fonction principale ainsi que tout le déroulement de l'application. Dans ce fichier, il faudra simplement décommenter certaines instructions lorsque vous voudrez exécuter le code que vous allez écrire.</li>
+        <li><tt>Bonbon.java</tt> : la définition de la classe Bonbon permettant de modéliser et de manipuler les bonbons.</li>
+        <li><tt>Distributeur.java</tt> : la définition de la classe <tt>Distributeur</tt> permettant de modéliser et de manipuler un distributeur de bonbons.</li>
+        <li><tt>Parfum.java</tt> : une énumération permettant de définir le parfum d'un bonbon. Vous n'aurez a priori pas à modifier ce fichier.</li>
+        <li><tt>BonbonTest.java</tt> : les tests unitaires de la classe <tt>Bonbon</tt> (dans Test Packages). Pour les lancer, faire un clic droit sur cette classe dans Projects, puis <em>Run File</em>.</li>
+        <li><tt>DistributeurTest.java</tt> : les tests unitaires de la classe <tt>Distributeur</tt> (dans Test Packages).</li>
+    </ul>
+    </p>
+
+	<h3>Énumérations</h3>
+    
+    <p>Une énumération est un type de donnée particulier dont une instance ne peut prendre que certaines valeurs, celles définies dans l'énumération. Par exemple, dans le fichier <tt>Parfum.java</tt> : </p>
+    <pre class="prettyprint">
+    enum Parfum {
+        NOISETTE,
+        CARAMEL,
+        FRAISE, 
+        POMME,
+        CHOCOLAT,
+        RIZ
+    }
+</pre>
+    <p>Permet de définir une énumération <tt>Parfum</tt> dont chaque instance ne peut prendre qu'une valeur parmi <tt>NOISETTE, CARAMEL, ..., RIZ</tt>. Pour déclarer une variable :  
+    <pre class="prettify">
+    Parfum p = Parfum.NOISETTE;
+    </pre>
+    On peut aussi utiliser une énumération comme paramètre ou comme type de retour d'une fonction ou d'une méthode, par exemple dans Bonbon.java, <pre class="prettyprint enLigne">static Parfum choixParfum()</pre>.
+	</p>
+
+	<h3>Consigne</h3>
+	<p>
+	  Dans la suite de cette séance, nous vous indiquerons si une méthode doit être statique ou non. Pour chacune des méthodes que vous implémenterez, justifier la définition d'une méthode de classe ou d'une méthode d'instance.
+  </p>
+
+	</div>
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">&times;</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  
+<!-- Services -->
+  <div class="w3-container" id="exo1" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Fabrique à bonbons</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+   
+<h3>Question 1</h3>
+<p> Lisez attentivement la classe Bonbon.</p>
+
+<p>Afin de faciliter l'instanciation de Bonbon particulier mais aussi (d'une certaine manière) de garantir que les valeurs utilisées pour instancier les bonbons sont  correctes, il peut être intéressant d'implémenter des méthodes statiques retournant des Bonbons particuliers.</p>
+
+<p>Implémenter les méthodes statiques :
+    <ul>
+        <li> <pre class="prettyprint enLigne">static Bonbon tigre()</pre> qui retourne un bonbon ayant la dénomination "Tigre", un parfum CHOCOLAT, un poids de 45g et 228 calories.</li>
+        <li> <pre class="prettyprint enLigne">static Bonbon venus()</pre> qui retourne un bonbon ayant la dénomination "Venus", un parfum CARAMEL, un poids de 45g et 228 calories.</li>
+        <li> <pre class="prettyprint enLigne">static Bonbon noisettes()</pre> qui retourne un bonbon ayant la dénomination "Noisettes", un parfum NOISETTE, un poids de 50g et 250 calories.</li>
+        <li> <pre class="prettyprint enLigne">static Bonbon chypresers()</pre> qui retourne un bonbon ayant la dénomination "Chypresers", un parfum RIZ, un poids de 55g et 242 calories.</li>
+        <li> <pre class="prettyprint enLigne">static Bonbon chewingGum(Parfum p)</pre> qui retourne un bonbon ayant la dénomination "Chewing Gum", un parfum p, un poids de 10g et 52 calories.</li>
+    </ul>
+    <p>Indiquez pour quelle raison ces méthodes sont définies comme statiques.</p>
+    
+    Décommentez dans DistributeurFriandise le contenu de la méthode <pre class="prettyprint enLigne">static void ajouterBonbon(Distributeur d)</pre>, exécutez.
+</p>
+
+  </div>
+
+  <h3>Question 2</h3>
+  <p>
+Dans la classe <tt>BonbonTest</tt>, écrivez les tests unitaires de ces méthodes en vous assurant que les objets ainsi instanciés ont les caractéristiques souhaitées.
+  </p>
+
+  Notez que pour tester l'égalité de deux nombres de type <tt>float</tt>,
+  il faut indiquer le degré de précision de la comparaison. Cela donne,
+  pour vérifier que <tt>c = a + b</tt>&nbsp;:
+<pre class="prettyprint">
+float a = 1;
+float b = 3;
+float c = 4;
+assert Math.abs(c - (a + b)) < 0.01;	
+</pre>  
+
+<div class="w3-container" id="exo2" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Classe Distributeur</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+
+<p>Lisez attentivement le contenu de la classe Distributeur. Vous pouvez observer que, parmi les attributs d'instance, on trouve un tableau de <tt>Bonbon</tt> (<tt>contenu</tt>) qui permet de stocker l'ensemble des bonbons contenus dans le distributeur.
+</p>
+<h3>Question 1</h3>
+	<p>
+	  <ul>
+		<li>Écrivez le test unitaire de la méthode <pre class="prettyprint enLigne">boolean vide()</pre> qui retourne <tt>true</tt> si le distributeur est vide et <tt>false</tt> sinon.</li>
+
+		<li>Écrivez le contenu de la méthode <pre class="prettyprint enLigne">boolean vide()</pre>.</li>
+	  </ul>
+	</p>
+
+<h3>Question 2</h3>
+	<p>
+	  <ul>
+		<li>
+		  Écrivez le test unitaire de la méthode <pre class="prettyprint enLigne">boolean plein()</pre> qui retourne <tt>true</tt> si le distributeur est plein (i.e. le nombre de bonbons a atteint la capacité du distributeur) et <tt>false</tt> sinon.
+		</li>
+		<li>
+		  Écrivez le contenu de la méthode <pre class="prettyprint enLigne">boolean plein()</pre>.
+		</li>
+	  </ul>
+	</p>
+
+
+
+<h3>Question 3</h3>
+
+	<p>Écrivez le contenu de la méthode <pre class="prettyprint enLigne">void afficher()</pre> qui affiche dans le terminal les caractéristiques du distributeur.
+	Par exemple, si un distributeur contient un Tigre et un Venus alors <tt>affiche()</tt> produira : </p>
+    <tt>Ce distributeur contient 2 bonbons</tt><br>
+    <tt>Bonbon</tt><br>
+    <tt><span STYLE="padding:0 0 0 20px;">   Dénomination : Tigres</tt></span><br>
+    <tt><span STYLE="padding:0 0 0 20px;">    Parfum principal : CHOCOLAT</tt></span><br>
+    <tt><span STYLE="padding:0 0 0 20px;">    Poids : 45 Calories : 228</tt></span><br>
+    <tt>Bonbon</tt><br>
+    <tt><span STYLE="padding:0 0 0 20px;">    Dénomination : Venus</tt></span><br>
+    <tt><span STYLE="padding:0 0 0 20px;">    Parfum principal : CARAMEL</tt></span><br>
+    <tt><span STYLE="padding:0 0 0 20px;">    Poids : 45 Calories : 228</tt></span><br>
+    
+
+<h3>Question 4</h3>
+	<p>
+	  <ul>
+		<li>
+		  Écrivez le test unitaire de la méthode <pre class="prettyprint enLigne">Bonbon retirerBonbon()</pre> qui, s'il existe, retire un Bonbon du distributeur et le retourne, et sinon retourne <tt>null</tt>.
+		</li>
+		<li>
+		  Écrivez le contenu de la méthode <pre class="prettyprint enLigne">Bonbon retirerBonbon()</pre>.		  
+		</li>
+		<li>
+		  Décommentez le contenu de <pre class="prettyprint enLigne">static void retirerBonbon(Distributeur d)</pre> dans le fichier <tt>DistributeurFriandise</tt> et exécutez.
+		</li>
+		<li>
+		  Pour quelle raison cette méthode est-elle statique ?
+		</li>
+	  </ul>
+	</p>
+
+
+<h3>Question 5</h3>
+	<p>
+	  <ul>
+		<li>
+		  Écrivez le test unitaire de la méthode <pre class="prettyprint enLigne">Bonbon[] retirerBonbons(int nombreBonbons)</pre> qui, s'il en existe, retire <tt>nombreBonbons</tt> Bonbons du distributeur et retourne un tableau les contenant.
+		</li>
+		<li>
+		  Écrivez le contenu de la méthode <pre class="prettyprint enLigne">Bonbon[] retirerBonbons(int nombreBonbons)</pre>.
+		</li>
+	  </ul>
+	</p>
+
+	<p>
+	  <ul>
+		<li>
+		  Écrivez le test unitaire de la méthode <pre class="prettyprint enLigne">Bonbon[] retirerBonbons()</pre> qui, s'il en existe, retire tous les Bonbons du distributeur et retourne un tableau les contenant.
+		</li>
+		<li>
+		  Écrivez le contenu de la méthode <pre class="prettyprint enLigne">Bonbon[] retirerBonbons()</pre>.
+		</li>
+		<li>
+		  Décommentez le contenu de <pre class="prettyprint enLigne">static void retirerBonbons(Distributeur d)</pre> dans le fichier <tt>DistributeurFriandise.java</tt> et exécutez.
+		</li>
+	  </ul>
+	</p>
+</div>
+
+<div class="w3-container" id="exo4" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Parce qu'un peu d'algorithmique fait toujours ...</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+
+On souhaite maintenant pouvoir dessiner le distributeur sous cette forme :
+<pre class="prettyprint">
+
+    /-------\
+    |       |
+    |       |
+    |       |
+    |       |
+    |CCC    |
+    |CCCCCCC|
+    \---c---/
+    
+</pre>
+où chaque caractère correspond à un bonbon du distributeur (un caractère par parfum).
+
+<h3>Question 1</h3>
+Implémenter la méthode <pre class="prettyprint enLigne">void dessiner()</pre> de la classe <tt>Bonbon</tt> qui affiche un caractère différent en fonction du parfum du bonbon.
+
+<h3>Question 2</h3>
+Implémenter la méthode <pre class="prettyprint enLigne">void dessiner()</pre> de la classe <tt>Distributeur</tt> qui dessine le distributeur dans le terminal.
+
+
+</div>
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML =  element.alt;
+}
+</script>
+
+</body>
+</html>

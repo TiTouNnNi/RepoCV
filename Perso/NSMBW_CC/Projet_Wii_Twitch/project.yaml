@@ -1,0 +1,4 @@
+# Master project configuration
+output_dir: Build
+modules:
+  - twitch_mod.yaml
